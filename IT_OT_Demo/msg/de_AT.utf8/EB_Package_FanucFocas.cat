@@ -1,0 +1,40 @@
+deleteTag,Wollen Sie das folgende Tag wirklich löschen?
+deletePlc,Wollen Sie die PLC wirklich löschen?
+displayName,FANUC Focas
+header,FANUC Focas Konfiguration
+updateTagDatatype,Wollen Sie den Datentyp des Tags wirklich ändern? Die Archivdaten gehen dabei verloren!
+updateReadFunction,Wollen Sie die Read Function des Tags wirklich ändern? Die Archivdaten gehen dabei verloren!
+TagReused,Fehler: $1/$2 - Der eingegebene Tagname wird bereits verwendet! Bitte wählen Sie einen anderen Tagnamen!
+TagInvalid,Fehler: $1/$2 - Das Tag kann nicht gelesen werden! Mögliche Ursachen: keine Verbindung zur SPS, fehlerhafte Adresskonfiguration.
+newPlcIp,IP Adresse eingeben
+newPlcDescription,Beschreibung eingeben (optional)
+newPlcLocation,Standort eingeben (optional)
+newPlcAddress,PLC Adresse eingeben
+newTagOk,Gültiger Tagname
+newTagNok,Der eingegebene Tagname wird bereits verwendet! Bitte wählen Sie einen anderen Tagnamen!
+Panel1Name,Geräte
+Panel1Desc,Geräte
+Panel2Name,Tags
+Panel2Desc,Tags
+IpaddressInvalid,Die eingegebene IP Adresse ist ungültig!
+invalidAddress,Die eingegebene Adresse ist ungültig.\nEs muss im Bereich 0 - 65535 sein.
+deleteTags,Wollen Sie die folgenden Tags wirklich löschen? Die Archivdaten gehen dabei verloren!
+deleteAllTags,Wollen Sie wirklich alle Tags löschen? Die Archivdaten gehen dabei verloren!
+importTitle,Import FANUC Focas Tags
+importFailed,Konnte nicht alle FANUC Focas Tags importieren. Erste fehlerhafte Zeilen: 
+importEmpty,Konnte keine leere Datei importieren
+notAllowedChangeTags,Der Tagname kann nicht geändert werden
+notAllowedChangeDatatype,Der Datentyp kann nicht geändert werden
+tooltipTagReady,Das Tag kann erstellt werden.
+tooltipTagAlreadyUsed,Der eingegebene Tagname wird bereits verwendet! Bitte wählen Sie einen anderen Tagnamen!
+tooltipTagInvalid,Das Tag ist ungültig, da der Wert nicht vom Treiber stammt.\r\nBitte überprüfen Sie die Tagkonfiguration und den Verbindungsstatus des Geräts.
+tooltipTagOk,Das Tag und die Verbindung zur PLC sind OK.
+tooltipTagInactive,Das Tag ist inaktiv.
+tooltipRangeOkAndTagOk,Das Tag ist OK.
+tooltipRangeNokAndTagOk,Der Wertebereich dieses Tags ist ungültig.
+tooltipRangNokAndTagNok,Der Tagname und die Konfiguration des Wertebereichs dieses Tags sind ungültig.
+addDevicePlaceholderText,PLC Name hinzufügen....
+tooltipTagAddressOk,Das Tag und die Adresse sind OK.
+deleteDevice,Wollen Sie die PLC wirklich löschen? Die Archivdaten gehen dabei verloren!
+deviceName,PLC Name
+addDevice,PLC hinzufügen

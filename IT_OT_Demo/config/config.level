@@ -1,0 +1,19 @@
+[ctrl]
+LoadCtrlLibs = "EB_Package_S7/DriverAppS7"
+LoadCtrlLibs = "EB_Package_S7Plus/DriverAppS7Plus"
+LoadCtrlLibs = "EB_Package_Sinumerik/DriverAppSinumerik"
+LoadCtrlLibs = "EB_Package_FanucFocas/DriverAppFanucFocas"
+LoadCtrlLibs = "EB_Package_IEC61850/DriverAppIEC61850"
+LoadCtrlLibs = "EB_Package_MTConnect/DriverAppMTConnect"
+LoadCtrlLibs = "EB_Package_BACnet/DriverAppBACnet"
+
+[mnsp]
+protocolWhitelist = "S7|SINUMERIK|S7PLUS|FANUCFOCAS|IEC61850|MTCONNECT|BACNET"
+browsingDefaultUnit = "-"
+simpleFileCheckIEC61850 = 1
+
+mqttHost = "10.10.10.10"
+mqttPort  = 1884
+[general]
+mxProxy = "none"
+

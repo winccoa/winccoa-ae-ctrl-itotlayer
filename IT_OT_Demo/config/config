@@ -1,0 +1,109 @@
+[general]
+pvss_path = "/opt/WinCC_OA/3.20"
+proj_path = "/opt/WinCC_OA/3.20/TestFramework_3.20"
+proj_path = "/home/debian/Documents/IT_OT_Demo"
+proj_version = "3.20"
+langs = "en_US.utf8"
+lang = "en_US.utf8"
+cnsUseDoubleAsterisk = 0
+noReverseLookup = 1
+
+maxLogFileSize = 5
+
+useSQLite = 1
+useNGA = 1
+
+#data = "127.0.0.1"
+#event = "127.0.0.1"
+
+#dataPort = 29701
+#eventPort = 29702
+#pmonPort = 29700
+
+localAddress = "::"
+
+#useCMLicense = 1
+#useCMContainerSerialNumber = "130-4078650901"
+
+pmonPort = 4999
+[data]
+#transactionLogging = 1
+
+[s7]
+aliveInterval = 10
+useConnections = 1
+
+[opcua_3]
+checkCertificateHost = 0
+
+[s5]
+AutoGQ = "N"
+
+[pmon]
+# Enable sending of SNMP traps with these entries
+# The Diagnostic library uses these SNMP traps
+allowSNMP = "yes"
+sendManagerStateChange = "Yes"
+v1TrapTarget = "localhost/162"
+v1WriteCommunity = "admin"
+SNMPPortNr = 29703
+
+[onlineBackup]
+autoOnlineBackup = 0
+
+[mnsp]
+#mqttPort = 29500
+
+[snmpa]
+PmonPortNr = 29703
+
+[mnsp]
+mqttHost = autotest
+[bacnet]
+net = 1 "IP" "" "" 47808 "" 0 120
+[iec61850_12]
+
+
+
+
+
+#These entries I added them manually
+clientIedName = "MindSphereClient"
+[mqttpub_2]
+connDp = "MqttPublisher2"
+useCnsDisplayPath = 1
+
+[mqttpub_1]
+connDp = "MqttPublisher"
+useCnsDisplayPath = 1
+
+
+[opcuasrv]
+disableSecurity = 1
+enableAnonymous = 1
+tcpServerPort = 34841
+
+[webClient]
+
+httpsPort = 31090
+httpPort = 31290
+httpAuth = 0
+
+[httpServer]
+indexPage = "data/dashboard/index.html"
+
+[ui]
+compatLegacyPainting = 1
+
+#enable this when you try to run the dashboard in edge
+#[wssServer]
+#httpsPort = 8449
+#tokenExpire = 60000
+#useSharedWorker = 0
+#heartbeatSeconds = 0
+#jwtWssPort = 38449
+#canWritePermissionBit = 6
+
+
+
+

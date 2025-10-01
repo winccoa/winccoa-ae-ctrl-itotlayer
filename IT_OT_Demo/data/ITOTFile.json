@@ -1,0 +1,615 @@
+{
+  "SystemConfig": {
+    "version": "1.0",
+    "createdAt": "2025-10-01",
+    "author": "Ahmed"
+  },
+  "Southbound": [
+    {
+      "name": "mt_S7Plus_11",
+      "description": "",
+      "protocol": "S7PLUS",
+      "readCycle": "1",
+      "protocolData": {
+        "ipAddress": "158.226.215.241"
+      },
+      "dataPoints": [
+        {
+          "name": "LiquidTemperatureValue",
+          "description": "This is my liquid temp value",
+          "unit": "kg",
+          "dataType": "INT",
+		  "archive":true,
+		  "minimumValue":16,
+		  "maximumValue":20,
+          "dataPointData": {
+            "address": "DB1001.DBD60",
+			"addressActive" : false,
+            "onChange": false,
+			"readCycle":"3",
+            "direction": "READ"
+			
+
+          }
+        }
+		,
+		{
+          "name": "DatapointForTesting",
+          "description": "This is my test temp value",
+          "unit": "kg",
+          "dataType": "INT",
+		  "archive":true,
+		  "minimumValue":25,
+		  "maximumValue":60,
+          "dataPointData": {
+            "address": "DB1001.DBD66",
+			"addressActive" : false,
+            "onChange": false,
+			"readCycle":"3",
+            "direction": "READ"
+			
+
+          }
+        },
+        {
+          "name": "WaterTemperatureValue",
+          "description": "",
+          "unit": "ms",
+          "dataType": "DOUBLE",
+		  "archive":true,
+		  "minimumValue":19,
+		  "maximumValue":90,
+          "dataPointData": {
+            "address": "DB1001.DBD61",
+			"addressActive" : false,
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "HeaterON",
+          "description": "",
+          "unit": "ms",
+          "dataType": "BOOLEAN",
+		  "minimumValue":19,
+		  "maximumValue":90,
+		  "archive":true,
+          "dataPointData": {
+            "address": "DB1001.DBD62",
+			"addressActive" : false,
+            "onChange": false,
+            "direction": "READ"
+          }
+        }
+      ]
+    },
+    {
+      "name": "sinumeriktestdriver",
+      "description": "",
+      "protocol": "SINUMERIK",
+      "readCycle": "1",
+      "protocolData": {
+        "ipAddress": "158.226.215.241"
+      },
+      "dataPoints": [
+        {
+          "name": "FlowValue",
+          "description": "",
+          "unit": "°C",
+          "dataType": "INT",
+          "dataPointData": {
+            "address": "DB15.DBX6.21",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "FlowSetPoint",
+          "description": "",
+          "unit": "°C",
+          "dataType": "INT",
+          "dataPointData": {
+            "address": "DB15.DBX6.22",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+                {
+          "name": "FlowTracking",
+          "description": "",
+          "unit": "KG",
+          "dataType": "INT",
+          "dataPointData": {
+            "address": "DB15.DBX6.55",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "PressureOn",
+          "description": "",
+          "unit": "°C",
+          "dataType": "BOOLEAN",
+          "dataPointData": {
+            "address": "DB15.DBX6.23",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "TempratureSetPoint",
+          "description": "",
+          "unit": "°C",
+          "dataType": "DOUBLE",
+          "dataPointData": {
+            "address": "DB15.DBX6.24",
+            "onChange": false,
+            "direction": "READ"
+          }
+        }
+      ]
+    },
+    {
+      "name": "s7testdriver",
+      "description": "",
+      "protocol": "S7",
+      "readCycle": "1",
+      "protocolData": {
+        "ipAddress": "158.226.215.241"
+      },
+      "dataPoints": [
+        {
+          "name": "SpeedSensor",
+          "description": "",
+          "unit": "kg",
+          "dataType": "INT",
+          "dataPointData": {
+            "address": "DB1001.DBD60",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "LiquidLevelSensor",
+          "description": "",
+          "unit": "ms",
+          "dataType": "DOUBLE",
+          "dataPointData": {
+            "address": "DB1001.DBD61",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "ValvePositionStart",
+          "description": "",
+          "unit": "ms",
+          "dataType": "BOOLEAN",
+          "dataPointData": {
+            "address": "DB1001.DBD62",
+            "onChange": false,
+            "direction": "READ"
+          }
+        }
+      ]
+    },
+    {
+      "name": "BACnetDev1",
+      "description": "",
+      "protocol": "BACNET",
+      "readCycle": "2",
+      "protocolData": {
+        "ipAddress": "",
+        "deviceId": "555",
+        "networkId": "1"
+      },
+      "dataPoints": [
+        {
+          "name": "ValvePositionSensor",
+          "description": "",
+          "unit": "",
+          "dataType": "INT",
+          "dataPointData": {
+            "address": "",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "PackageSealQualitySensor",
+          "description": "",
+          "unit": "",
+          "dataType": "DOUBLE",
+          "dataPointData": {
+            "address": "",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "PackageWeightSensor",
+          "description": "",
+          "unit": "",
+          "dataType": "STRING",
+          "dataPointData": {
+            "address": "",
+            "onChange": false,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "LabelingAccuracySensor",
+          "description": "",
+          "unit": "",
+          "dataType": "BOOLEAN",
+          "dataPointData": {
+            "address": "",
+            "onChange": false,
+            "direction": "READ"
+          }
+        }
+      ]
+    },
+    {
+      "name": "IEC61850conn",
+      "description": "",
+      "protocol": "IEC61850",
+      "readCycle": "1",
+      "protocolData": {
+        "ipAddress": "192.168.1.50",
+        "sclFile": "",
+        "apName": "MSC_AP",
+        "serverName": "MSC_SRV01"
+      },
+      "dataPoints": [
+        {
+          "name": "FoilTemperatureSensor",
+          "description": "",
+          "unit": "m",
+          "dataType": "INT",
+          "dataPointData": {
+            "address": "some$ref$for$test1",
+            "onChange": true,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "LabelDispenseRateSensor",
+          "description": "",
+          "unit": "m",
+          "dataType": "DOUBLE",
+          "dataPointData": {
+            "address": "some$ref$for$test2",
+            "onChange": true,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "EmergencyTrigger",
+          "description": "",
+          "unit": "m",
+          "dataType": "BOOLEAN",
+          "dataPointData": {
+            "address": "some$ref$for$test3",
+            "onChange": true,
+            "direction": "READ"
+          }
+        },
+        {
+          "name": "SetLabelName",
+          "description": "",
+          "unit": "m",
+          "dataType": "STRING",
+          "dataPointData": {
+            "address": "some$ref$for$test4",
+            "onChange": true,
+            "direction": "READ"
+          }
+        }
+      ]
+    }
+  ],
+  "Publish": [
+    {
+      "connectionName": "ExternalMQTT",
+      "connectionType": "MQTT",
+      "broker": "192.168.1.96",
+      "port": "31884",
+      "initialTopic": "",
+      "exposedViews": [
+        "S7PLUS",
+        "SINUMERIK"
+      ],
+      "useUnifiedNameSpace": false,
+      "credentials": {
+        "username": "",
+        "password": ""
+      }
+    },
+    {
+      "connectionName": "ExternalOPCUA",
+      "connectionType": "OPCUA",
+      "exposedViews": [
+        "S7PLUS",
+        "SINUMERIK"
+      ],
+      "useUnifiedNameSpace": true
+    },
+    {
+      "connectionName": "InternalMQTT",
+      "connectionType": "MQTT",
+      "broker": "ie-databus",
+      "port": "1883",
+      "exposedViews": [
+        "S7PLUS",
+        "SINUMERIK",
+        "BACNET",
+        "IEC61850",
+        "S7"
+      ],
+      "initialTopic": "ie",
+      "useUnifiedNameSpace": true,
+      "credentials": {
+        "username": "",
+        "password": ""
+      }
+    }
+  ],
+  "Subscribe": [
+    {
+      "connectionType": "OPCUA",
+      "server": "192.168.216.128",
+      "port": "34841",
+      "readCycle": "36",
+      "dataPoints": [
+        {
+          "name": "shiftNumber",
+          "description": "sdfsdf",
+          "unit": "kg",
+          "dataType": "DOUBLE",
+          "readCycle": "67",
+          "active": true,
+		  "archive":false,
+		  "minimumValue":16,
+		  "maximumValue":20,
+          "dataPointData": {
+            "address": "ns=2;s=Plant1.Production2.Area2.Packaging.Wrapper1.SimulationData",
+            "onChange": true
+          }
+        },
+        {
+          "name": "TotalAvailability",
+          "description": "sdddfsdf",
+          "unit": "kgg",
+          "dataType": "INT",
+          "readCycle": "19",
+		  "archive":true,
+		  "maximumValue":20,
+          "active": true,
+          "dataPointData": {
+            "address": "ns=2;s=Plant1.Production2.Area2.Packaging.Labeller1.test_221",
+            "onChange": false
+          }
+        }
+      ]
+    },
+    {
+      "connectionType": "MQTT",
+      "broker": "192.168.1.96",
+      "port": "31884",
+      "credentials": {
+        "username": "",
+        "password": ""
+      },
+      "dataPoints": [
+        {
+          "name": "TotalQuality",
+          "description": "",
+          "unit": "°C",
+          "dataType": "INT",
+          "active": true,
+		  "archive":true,
+		  "minimumValue":16,
+          "dataPointData": {
+            "topic": "test/test2",
+            "onChange": true
+          }
+        },
+        {
+          "name": "TotalOEE",
+          "description": "",
+          "unit": "°C",
+          "dataType": "INT",
+          "active": false,
+		  "archive":true,
+		  "minimumValue":5,
+		  "maximumValue":20,
+          "dataPointData": {
+            "topic": "test/test3",
+            "onChange": true
+          }
+        }
+,
+
+        {
+          "name": "TotalReportingData",
+          "description": "",
+          "unit": "°C",
+          "dataType": "INT",
+          "active": false,
+		  "archive":true,
+		  "minimumValue":5,
+		  "maximumValue":20,
+          "dataPointData": {
+            "topic": "test/test6",
+            "onChange": true
+          }
+        }
+      ]
+    }
+  ],
+  "UnifiedNameSpace": {
+    "Plant1": {
+      "Production2": {
+        "Area1": {
+          "Line1": {
+            "Station1": {
+              "Conveyor1": [
+                "WaterTemperatureValue",
+                "HeaterOn"
+              ],
+              "Robot1": [
+                "PressureOn",
+                "SpeedSensor"
+              ]
+            },
+            "Station2": {
+              "Mixer1": [
+                "FlowValue",
+                "FlowSetPoint"
+              ],
+              "Pump1": [
+                "LiquidLevelSensor"
+              ]
+            }
+          },
+          "Line2": {
+            "Station3": {
+              "Tank1": [
+                "LiquidLevelSensor"
+              ],
+              "Valve1": [
+                "ValvePositionStart"
+              ]
+            },
+            "Station4": {
+              "Sealer1": [
+                "PackageSealQualitySensor"
+              ]
+            }
+          }
+        },
+        "Area2": {
+          "Packaging": {
+            "Wrapper1": [
+              "PackageWeightSensor"
+            ],
+            "Labeller1": [
+              "PackageSealQualitySensor"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Dashboard": [
+    {
+     "name": "Dashboard1",
+      "description": "This is my dashboard description1",
+      "widgets": [
+        {
+          "type": "pie",
+          "title": "Utility Temperatures",
+          "x": 22,
+          "y": 0,
+          "rows": 9,
+          "cols": 16,
+          "dataPoints": [
+            "LiquidTemperatureValue",
+            "FoilTemperatureSensor",
+            "WaterTemperatureValue"
+          ],
+          "dataPointsDescription": [
+            "LiquidTemperatureValue",
+            "FoilTemperatureSensor",
+            "WaterTemperatureValue"
+          ]
+        },
+        {
+          "type": "gauge",
+          "title": "TotalOEE",
+          "x": 0,
+          "y": 0,
+          "rows": 9,
+          "cols": 11,
+          "dataPoint": "TotalOEE",
+          "rangeSettings": {
+            "type": "oa",
+            "max": 100,
+            "min": 9.0
+          }
+        },
+        {
+          "type": "label",
+          "title": "Sealer1Quality",
+          "x": 11,
+          "y": 0,
+          "rows": 9,
+          "cols": 11,
+          "dataPoint": "PackageSealQualitySensor"
+        },
+        {
+          "type": "trend",
+          "title": "TotalAvailability",
+          "x": 0,
+          "y": 9,
+          "rows": 10,
+          "cols": 38,
+          "dataPoint": "TotalAvailability"
+        }
+      ]
+    },
+    {
+      "name": "Dashboard3",
+      "description": "This is my dashboard description2",
+      "widgets": [
+        {
+          "type": "gauge",
+          "title": "Conveyors Temperature",
+          "x": 22,
+          "y": 0,
+          "rows": 9,
+          "cols": 16,
+          "dataPoint": "WaterTemperatureValue",
+          "rangeSettings": {
+            "type": "manual",
+            "max": 100,
+            "min": 9.0
+          }
+        },
+        {
+          "type": "gauge",
+          "title": "Robot Sensor Speed",
+          "x": 0,
+          "y": 0,
+          "rows": 9,
+          "cols": 11,
+          "dataPoint": "SpeedSensor",
+          "rangeSettings": {
+            "type": "manual",
+            "max": 100,
+            "min": 9.0
+          }
+        },
+        {
+          "type": "label",
+          "title": "Mixer Flow Value",
+          "x": 11,
+          "y": 0,
+          "rows": 9,
+          "cols": 11,
+          "dataPoint": "FlowValue"
+        },
+        {
+          "type": "label",
+          "title": "Pub Liquid Level",
+          "x": 0,
+          "y": 9,
+          "rows": 10,
+          "cols": 15,
+          "dataPoint": "LiquidLevelSensor"
+        }
+      ]
+    }
+  ]
+}

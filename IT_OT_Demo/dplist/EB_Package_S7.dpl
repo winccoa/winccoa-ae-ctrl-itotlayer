@@ -1,0 +1,8 @@
+# ascii dump of database
+
+# Datapoint/DpId
+DpName	TypeName	ID
+EB_Package_S7	EB_Packages
+_Driver2	_DriverCommon
+_Driver2_2	_DriverCommon
+

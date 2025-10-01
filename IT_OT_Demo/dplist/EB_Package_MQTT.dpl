@@ -1,0 +1,34 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_DriverCommon._DriverCommon	1#1
+	GQ	20#2
+	SQ	27#3
+	SM	20#4
+	EM	20#5
+	PM	23#6
+	PE	22#7
+	MS	23#8
+	DC	23#9
+	AD	1#10
+		HWMask	25#11
+		DPMatch	29#12
+	HW	1#13
+		HWMask	25#14
+		HWMatch	9#15
+	IGQ	25#16
+	DT	25#17
+	OV	23#18
+	AL	1#19
+		AckDps	29#20
+		AckData	9#21
+		AClasses	9#22
+EB_MQTT.EB_MQTT	1#1
+	BrokerList	25#2
+
+# Datapoint/DpId
+DpName	TypeName	ID
+_Driver9	_DriverCommon	7996
+EB_MQTT	EB_MQTT	8311
+_Driver9_2	_DriverCommon	8312

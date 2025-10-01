@@ -1,0 +1,39 @@
+deleteTag,Do you really want to delete the following tag?
+deletePlc,Do you really want to delete the PLC?
+displayName,FANUC Focas
+header,FANUC Focas configuration
+updateTagDatatype,Do you really want to change the data type of the tag? Archived data would be lost!
+updateReadFunction,Do you really want to change the read function of the tag? Archived data would be lost!
+TagReused,Error: $1/$2 - The entered tag name is already in use! Please use another tag name!
+TagInvalid,Error: $1/$2 - Tag cannot be read. Possible reason: no PLC connection, incorrect address configuration.
+newPlcIp,Enter IP address
+newPlcDescription,Enter description (optional)
+newPlcLocation,Enter location (optional)
+newPlcAddress,Enter PLC address
+newTagOk,Tag name is valid
+newTagNok,The entered tag name is already in use! Please use another tag name!
+Panel1Name,Devices
+Panel1Desc,Devices
+Panel2Name,Tags
+Panel2Desc,Tags
+invalidAddress,The entered address is not valid.\nIt must be in the range 0 - 65535.
+deleteTags,Do you really want to delete the following tags? Archived data would be lost!
+deleteAllTags,Do you really want to delete all tags? Archived data would be lost!
+importTitle,Import FANUC Focas tags
+importFailed,Unable to import all FANUC Focas tags. First rows with error(s): 
+importEmpty,Unable to import empty file
+notAllowedChangeTags,The tag name can't be changed
+notAllowedChangeDatatype,The data type can't be changed
+tooltipTagReady,The tag is ready to create.
+tooltipTagAlreadyUsed,The choosen tag name is already in use for this PLC! Please change the tag name to a valid one.
+tooltipTagInvalid,The configured tag is marked as invalid because the value was not written by the Driver. \r\n Please check the address configuration of the tag and the connection state of the PLC!
+tooltipTagOk,The configured tag is valid and connected to the PLC.
+tooltipTagInactive,The tag is not active.
+tooltipRangeOkAndTagOk,The tag is OK.
+tooltipRangeNokAndTagOk,The range configuration of the tag is not OK!
+tooltipRangNokAndTagNok,The choosen tag name is already in use for this PLC! Also the range configuration is not OK.
+addDevicePlaceholderText,Add PLC Name....
+tooltipTagAddressOk,The configured tag is valid and the address is OK.
+deleteDevice,Do you really want to delete the PLC? Archived data would be lost!
+deviceName,PLC Name
+addDevice,add PLC

@@ -1,0 +1,51 @@
+displayName,SIMATIC S7Plus
+name,SIMATIC S7Plus Client
+header,SIMATIC S7Plus Client
+connectedDevice,Verbunden zu S7 Gerät: $1
+disconnectedDevice,Keine Verbindung zu S7 Gerät: $1
+TagInvalid,Fehler: $1/$2 - Das Tag kann nicht gelesen werden! Mögliche Ursachen: keine Verbindung zum S7 Gerät, fehlerhafte Adresskonfiguration.
+deleteAllTags,Wollen Sie wirklich alle Tags löschen?
+deleteSingleTag,Wollen Sie das Tag wirklich löschen? 
+deleteDevice,Wollen Sie das Gerät wirklich löschen? Die Archivdaten gehen dabei verloren!
+yes,Ja
+no,Nein
+Panel1Name,Geräte
+Panel1Desc,Geräte
+Panel2Name,Tags
+Panel2Desc,Tags
+treeHeaderDisplayname,S7Plus Browsingresultat
+treeHeaderDatatype,Datentyp
+deleteTag,Wollen Sie das folgende Tag wirklich löschen? Die Archivdaten gehen dabei verloren!
+deleteTags,Wollen Sie die folgenden Tags wirklich löschen? Die Archivdaten gehen dabei verloren!
+importTitle,Import S7Plus Tags
+importFailed,Konnte nicht alle S7Plus Tags importieren. Erste fehlerhafte Zeilen: 
+importEmpty,Konnte keine leere Datei importieren
+notAllowedChangeTags,Der Tagname kann nicht geändert werden!
+notAllowedChangeDatatype,Der Datentyp kann nicht geändert werden!
+tooltipTagReady,Das Tag kann erstellt werden.
+tooltipTagAlreadyUsed,Der Tagname wird bereits verwendet! Bitte geben Sie einen gültigen Tagnamen ein.
+tooltipTagInvalid,Das Tag ist ungültig, da der Wert nicht vom Treiber stammt.\r\nBitte überprüfen Sie die Tagkonfiguration und den Verbindungsstatus des Geräts.
+tooltipTagOk,Das Tag und die Geräteverbindung sind OK.
+tooltipTagInactive,Das Tag ist inaktiv.
+tooltipRangeOkAndTagOk,Das Tag ist OK.
+tooltipRangeNokAndTagOk,Der Wertebereich des Tags ist ungültig.
+tooltipRangNokAndTagNok,Der Tagname wird bereits verwendet! Die Konfiguration des Wertebereichs ist auch ungültig!
+nameIsUsed,Der Name wird bereits verwendet.
+NotConnected,Nicht verbunden
+addDevicePlaceholderText,Gerätenamen hinzufügen...
+newDeviceDescription,Beschreibung eingeben (optional)
+newDeviceLocation,Standort eingeben (optional)
+newDeviceAddress,Geräteadresse eingeben
+updateTagDatatype,Wollen Sie den Datentyp des Tags wirklich ändern?  Die Archivdaten gehen dabei verloren!
+newDeviceUsername,Benutzername eingeben
+newDevicePassword,Passwort eingeben
+newDeviceCert,Zertifikat eingeben
+fileExtensionError,Die Datei hat eine ungültige Dateiendung. Sie muss die Endung ".der" haben.
+authAnonym,Anonym
+authUser,Benutzer/Passwort
+authCert,Benutzerzertifikat
+deviceName,Gerätename
+addDevice,Gerät hinzufügen
+noData,Die Tags konnten nicht importiert werden, da die Datei leer ist.
+deviceNotConnected,Gerät nicht verbunden.
+wrong_datatype,Der ausgewählte Datentyp wird nicht unterstützt.

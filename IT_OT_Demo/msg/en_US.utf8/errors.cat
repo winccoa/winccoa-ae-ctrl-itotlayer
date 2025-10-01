@@ -1,0 +1,61 @@
+000101,Project start
+000102,Project stop
+000103,Project restart
+000104,License expires
+000105,Broker connection failure
+000106,device is not onboarded
+000107,device is onboarded
+000108,Emergency mode to be left in 30 seconds
+000109,Diagnostic command received -> commandId: "$1", createdAt: "$2", command: "$3"
+000110,Running managers
+000120,Configuration change requested
+000121,Configuration change executed successfully
+000122,Configuration change executed not successfully
+000125,Command value from Mindsphere received -> commandId: "$1", protocol: "$2"
+000130,Download of SCD file from Mindsphere failed for file: "$1", device: "$2"
+000131,Download of SCD file from Mindsphere succeeded for file: "$1", device: "$2"
+000200,Memory almost full
+000201,Memory full
+000202,Disk almost full
+000203,Disk full
+000204,System CPU usage high (idle: $2%)
+000205,System CPU usage too high (idle: $2%)
+000206,Event CPU usage high
+000207,Event CPU usage too high
+000208,Emergency mode active, possible causes memory and/or disk usage too high
+000209,Emergency solved, restart project to return to normal operation
+???210,$1 CPU usage high ($2%)
+???211,$1 CPU usage too high ($2%)
+???212,$1 Memory usage high ($2%)
+???213,$1 Memory usage too high ($2%)
+000216,File '$1' transferred successfully for: $2
+000217,File '$1' transfer failed for: $2
+000301,User '$1' logged in at: $2
+000302,User '$1' logged out from: $2
+000401,Driver start: $2 $3
+000402,Driver stop: $2 $3
+000403,Driver restart: $1 $2
+???404,Manager is not running: $1 $2
+???406,[$1] Device $3 '$2' connection established
+???407,[$1] Device $3 '$2' connection failure
+???408,[$1] Device $3 '$2' created
+???409,[$1] Device '$2' creation failure
+???410,Manager start failed: $1
+???411,Manager stop failed: $1
+???422,App '$1' installation successful
+???423,App '$1' installation failure
+???424,App '$1' update successful
+???425,App '$1' update failure
+???426,App '$1' removal successful
+???427,App '$1' removal failure
+???450,App '$1' command value received -> datapoint: "$2", value: "$3", commandId: "$4", time: "$5"
+???451,App '$1' command value successfully written -> datapoint: "$2", value: "$3", commandId: "$4"
+???452,App '$1' command value write failure, device has not accepted the value -> datapoint: "$2", value: "$3", device value: "$4", commandId: "$5"
+000428,Tag count: $1
+000429,Allowed tags: $1
+000430,Configured connections: $1
+000431,Active connections: $1
+???501,[$1] Device $3 '$2' browsing requested
+???502,[$1] Device $3 '$2' browsing done, first level items: $4
+???503,[$1] Device $3 '$2' browsing executed successfully
+???504,[$1] Device $3 '$2' browsing executed not successfully

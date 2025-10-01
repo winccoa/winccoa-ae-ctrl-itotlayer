@@ -1,0 +1,109 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 400 400 N "_3DFace" 0
+E E E E E 1 -1 -1 0  110 180
+""0  1
+E E 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "96.0754"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+13 1
+"PUSH_BUTTON1"
+""
+1 75 140 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 43 Noto Sans,-1,16,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  73 98 277 202
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON1
+"main(mapping event)
+{
+  string x=\"The 'Added' SouthBound datapoints and the accociated drivers are: \\n \\n hi\";
+  DebugTN(\"x\",x);
+      CreateStandardInfo(PRIO_INFO, 4, x);
+
+}
+
+
+
+
+
+
+CreateStandardInfo(int logImportance, int seQuenceNumber, string errorMessage, string logCategory = \"ITOT_LOG\", int  logType = ERR_PARAM)
+{
+  errClass retError;
+  retError = makeError(logCategory, logImportance, logType, seQuenceNumber, errorMessage); /* Function call.*/
+
+int i =throwError(retError);
+//  DebugTN(  throwError(retError)); /* Outputs the error message */
+
+}" 0
+ E E E
+13 2
+"PUSH_BUTTON2"
+""
+1 100 295 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 43 Noto Sans,-1,16,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  98 278 252 332
+
+T 
+1
+LANG:10001 12 PUSH_BUTTON2
+"main(mapping event)
+{
+  langString x;
+ DebugTN( cnsGetDisplayNames(\"System1.EB_Package_S7Plus:Node_1753705571.Node_1753705573\",x));
+  DebugTN( x);
+}" 0
+ E E E
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0

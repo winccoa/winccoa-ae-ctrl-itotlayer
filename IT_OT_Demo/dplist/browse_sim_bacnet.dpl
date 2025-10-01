@@ -1,0 +1,9 @@
+# ascii dump of database
+
+# DpValue
+ElementName	TypeName	_original.._value
+_Bacnet_13.Browse.Objects.ObjectType	_Bacnet	
+_Bacnet_13.Browse.Objects.Instance	_Bacnet	
+_Bacnet_13.Browse.Objects.PropertyId	_Bacnet	
+_Bacnet_13.Browse.Objects.Name	_Bacnet	
+

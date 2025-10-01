@@ -1,0 +1,441 @@
+# syntax for object type config
+# <objectType>.<property>,<DPE-type integer code>:<array or bitstring length>,<address config mode>,<poll group>
+
+
+# do not create
+#*.Tags,-2,0
+#*.Property_List,-2,0
+#*.Active_COV_Multiple_Subscriptions,-2,0
+#*.Active_COV_Subscriptions,-2,0
+
+
+# for all object types
+*.Ack_Required,-1:3,13
+*.Action,-1,13
+*.Adjust_Value,-1,13
+*.Alarm_Values,4,13
+*.Align_Intervals,-1,13
+*.Allow_Group_Delay_Inhibit,-1,13
+*.Archive,-1,13
+*.Attempted_Samples,-1,13
+*.Backup_Failure_Timeout,-1,13
+*.BACnet_IP_Global_Address,-1,13
+*.BACnet_IP_Mode,-1,13
+*.BACnet_IP_UDP_Port,-1,13
+*.BACnet_IPv6_Mode,-1,13
+*.BACnet_IPv6_Multicast_Address,-1,13
+*.BACnet_IPv6_UDP_Port,-1,13
+*.Base_Device_Security_Policy,-1,13
+*.BBMD_Accept_FD_Registrations,-1,13
+*.BBMD_Broadcast_Distribution_Table,-1,13
+*.Bias,-1,13
+*.Bit_Text,-1,13
+*.Blink_Warn_Enable,-1,13
+*.Buffer_Size,-1,13
+*.Change_Of_State_Count,-1,13
+*.Channel_Number,-1,13
+*.Client_COV_Increment,-1,13
+*.Control_Groups,-1,13
+*.Command,-1,13
+*.Controlled_Variable_Reference,-1,13
+*.Controlled_Variable_Units,-1,13
+*.COV_Resubscription_Interval,-1,13
+*.COVU_Period,-1,13
+*.COVU_Recipients,-1,13
+*.Date_List,-1,13
+*.Default_Fade_Time,-1,13
+*.Default_Ramp_Rate,-1,13
+*.Default_Step_Increment,-1,13
+*.Default_Timeout,-1,13
+*.Deployed_Profile_Location,-1,13
+*.Derivative_Constant,-1,13
+*.Derivative_Constant_Units,-1,13
+*.Description,-1,13
+*.Device_Type,-1,13
+*.Do_Not_Hide,-1,13
+*.Duty_Window,-1,13
+*.Effective_Period,-1,13
+*.Egress_Active,-1,13
+*.Egress_Time,-1,13
+*.Elapsed_Active_Time,-1,13
+*.Enable,-1,13
+*.Error_Limit,-1,13
+*.Event_Message_Texts_Config,-1:3,13
+*.Event_Algorithm_Inhibit,-1,13
+*.Event_Algorithm_Inhibit_Ref,-1,13
+*.Event_Detection_Enable,-1,13
+*.Event_Enable,-1:3,13
+*.Event_Parameters,-1,13
+*.Exception_Schedule,-1,13
+*.Execution_Delay,-1,13
+*.Expected_Shed_Level,-1,13
+*.Fault_Parameters,-1,13
+*.Fault_Values,4,13
+*.FD_BBMD_Address,-1,13
+*.FD_Subscription_Lifetime,-1,13
+*.Full_Duty_Baseline,-1,13
+*.Group_Members,-1,13
+*.Group_Member_Names,-1,13
+*.In_Progress,-1,13
+*.Instantaneous_Power,-1,13
+*.Integral_Constant,-1,13
+*.Integral_Constant_Units,-1,13
+*.Interval_Offset,-1,13
+*.IP_Address,-1,13
+*.IP_Default_Gateway,-1,13
+*.IP_DHCP_Enable,-1,13
+*.IP_DNS_Server,-1,13
+*.IP_Subnet_Mask,-1,13
+*.IPv6_Address,-1,13
+*.IPv6_Auto_Addressing_Enable,-1,13
+*.IPv6_Default_Gateway,-1,13
+*.IPv6_DNS_Server,-1,13
+*.IPv6_Prefix_Length,-1,13
+*.IPv6_Zone_Index,-1,13
+*.Is_UTC,-1,13
+*.Last_Key_Server,-1,13
+*.Lighting_Command,25,13
+*.Lighting_Command_Default_Priority,-1,13
+*.Limit_Enable,-1:2,13
+*.Link_Speed,-1,13
+*.Link_Speed_Autonegotiate,-1,13
+*.List_Of_Object_Property_References,-1,13
+*.List_Of_Group_Members,-1,13
+*.Local_Forwarding_Only,-1,13
+*.Logging_Type,-1,13
+*.Log_Interval,-1,13
+*.MAC_Address,-1,13
+*.Manipulated_Variable_Reference,-1,13
+*.Manual_Slave_Address_Binding,-1,13
+*.Maximum_Output,-1,13
+*.Max_Actual_Value,22,13
+*.Max_Info_Frames,-1,13
+*.Max_Master,-1,13
+*.Member_Status_Flags,-1,13
+*.Minimum_Off_Time,-1,13
+*.Minimum_On_Time,-1,13
+*.Minimum_Output,-1,13
+*.Min_Actual_Value,22,13
+*.Mode,-1,13
+*.Network_Access_Security_Policies,-1,13
+*.Network_Interface_Name,-1,13
+*.Network_Number,-1,13
+*.Node_Subtype,-1,13
+*.Node_Type,-1,13
+*.Notification_Class,-1,13
+*.Notification_Threshold,-1,13
+*.Notify_Type,-1,13
+*.Number_Of_States,-1,13
+*.Object_Property_Reference,-1,13
+*.Out_Of_Service,-1,13
+*.Packet_Reorder_Time,-1,13
+*.Power,-1,13
+*.Prescale,-1,13
+*.Priority,-1,13
+*.Priority_For_Writing,-1,13
+*.Process_Identifier_Filter,-1,13
+*.Program_Change,-1,13
+*.Proportional_Constant,-1,13
+*.Proportional_Constant_Units,-1,13
+*.Recipient_List,-1,13
+*.Record_Count,-1,13
+*.Reference_Port,-1,13
+*.Requested_Shed_Level,-1,13
+*.Requested_Update_Interval,-1,13
+*.Restart_Notification_Recipients,-1,13
+*.Scale,-1,13
+*.Scale_Factor,-1,13
+*.Schedule_Default,-1,13
+*.Security_PDU_Timeout,-1,13
+*.Security_Time_Window,-1,13
+*.Setpoint,-1,13
+*.Setpoint_Reference,-1,13
+*.Shed_Duration,-1,13
+*.Shed_Level_Descriptions,-1,13
+*.Shed_Levels,-1,13
+*.Slave_Proxy_Enable,-1,13
+*.Start_Time,-1,13
+*.State_Text,-1,13
+*.Stop_Time,-1,13
+*.Stop_When_Full,-1,13
+*.Strike_Count,-1,13
+*.Subordinate_Annotations,-1,13
+*.Subscribed_Recipients,-1,13
+*.Supported_Formats,-1,13
+*.Supported_Formats_Classes,-1,13
+*.Time_Delay,-1,13
+*.Time_Delay_Normal,-1,13
+*.Time_Synchronization_Interval,-1,13
+*.Time_Synchronization_Recipients,-1,13
+*.Timer_Running,-1,13
+*.Timer_State,-1,13
+*.Transition,-1,13
+*.Trigger,-1,13
+*.Units,-1,13
+*.Update_Interval,-1,13
+*.Update_Key_Set_Timeout,-1,13
+*.UTC_Time_Synchronization_Recipients,-1,13
+*.Value_Source,-1,13
+*.Virtual_MAC_Address_Table,-1,13
+*.Weekly_Schedule,-1,13
+*.Window_Interval,-1,13
+*.Window_Samples,-1,13
+*._Error,-1,2
+
+
+# accumulator
+Accumulator.Fault_High_Limit,20,13
+Accumulator.Fault_Low_Limit,20,13
+Accumulator.Present_Value,20,6
+Accumulator.High_Limit,20,13
+Accumulator.Low_Limit,20,13
+Accumulator.Max_Pres_Value,20,13
+
+# alert enrollment
+AlertEnrollment.Present_Value,20,2
+
+# analog input
+AnalogInput.COV_Increment,22,13
+AnalogInput.Deadband,22,13
+AnalogInput.Fault_High_Limit,22,13
+AnalogInput.Fault_Low_Limit,22,13
+AnalogInput.High_Limit,22,13
+AnalogInput.Low_Limit,22,13
+AnalogInput.Max_Pres_Value,22,13
+AnalogInput.Min_Pres_Value,22,13
+AnalogInput.Present_Value,22,6
+AnalogInput.Resolution,22,13
+
+# analog output
+AnalogOutput.COV_Increment,22,13
+AnalogOutput.Deadband,22,13
+AnalogOutput.High_Limit,22,13
+AnalogOutput.Low_Limit,22,13
+AnalogOutput.Max_Pres_Value,22,13
+AnalogOutput.Min_Pres_Value,22,13
+AnalogOutput.Present_Value,22,6
+AnalogOutput.Relinquish_Default,22,13
+AnalogOutput.Resolution,22,13
+
+# analog value
+AnalogValue.COV_Increment,22,13
+AnalogValue.Deadband,22,13
+AnalogValue.Fault_High_Limit,22,13
+AnalogValue.Fault_Low_Limit,22,13
+AnalogValue.High_Limit,22,13
+AnalogValue.Low_Limit,22,13
+AnalogValue.Max_Pres_Value,22,13
+AnalogValue.Min_Pres_Value,22,13
+AnalogValue.Present_Value,22,6
+AnalogValue.Relinquish_Default,22,13
+AnalogValue.Resolution,22,13
+
+# averaging
+Averaging.Object_Property_Reference,25,13
+
+# binary input
+BinaryInput.Present_Value,20,6
+
+# binary lighting output
+BinaryLightingOutput.Present_Value,20,6
+BinaryLightingOutput.Feedback_Value,20,11
+BinaryLightingOutput.Relinquish_Default,20,13
+
+# binary output
+BinaryOutput.Present_Value,20,6
+BinaryOutput.Feedback_Value,20,11
+BinaryOutput.Relinquish_Default,20,13
+
+# binary value
+BinaryValue.Present_Value,20,6
+BinaryValue.Relinquish_Default,20,13
+
+# bit string value
+BitStringValue.Alarm_Values,25,13
+BitStringValue.Present_Value,7,6
+BitStringValue.Relinquish_Default,7,13
+BitStringValue.Bit_Mask,7,13
+
+# calendar
+Calendar.Present_Value,23,2
+
+# channel
+Channel.Present_Value,25,6
+
+# character string value
+CharacterStringValue.Alarm_Values,25,13
+CharacterStringValue.Fault_Values,25,13
+CharacterStringValue.Present_Value,25,6
+CharacterStringValue.Relinquish_Default,25,13
+
+# command
+Command.Present_Value,20,6
+
+# credential data input
+CredentialDataInput.Present_Value,25,6
+
+# date value
+DateValue.Present_Value,25,6
+DateValue.Relinquish_Default,25,13
+
+# date pattern value
+DatePatternValue.Present_Value,25,6
+DatePatternValue.Relinquish_Default,25,13
+
+# date time value
+DateTimeValue.Present_Value,25,6
+DateTimeValue.Relinquish_Default,25,13
+
+# date time pattern value
+DateTimePatternValue.Present_Value,25,6
+DateTimePatternValue.Relinquish_Default,25,13
+
+# device
+Device.Object_List,4,11
+Device.Protocol_Object_Types_Supported,7,11
+Device.Protocol_Services_Supported,7,11
+Device.Structured_Object_List,4,11
+
+# event log
+
+# group
+Group.Present_Value,25,2
+
+# integer value (Deadband is really Unsigned)
+IntegerValue.COV_Increment,20,13
+IntegerValue.Deadband,20,13
+IntegerValue.Fault_High_Limit,21,13
+IntegerValue.Fault_Low_Limit,21,13
+IntegerValue.High_Limit,21,13
+IntegerValue.Low_Limit,21,13
+IntegerValue.Max_Pres_Value,21,13
+IntegerValue.Min_Pres_Value,21,13
+IntegerValue.Present_Value,21,6
+IntegerValue.Relinquish_Default,21,13
+IntegerValue.Resolution,21,11
+
+# large analog value (Deadband is really Unsigned)
+LargeAnalogValue.COV_Increment,22,13
+LargeAnalogValue.Deadband,22,13
+LargeAnalogValue.Fault_High_Limit,22,13
+LargeAnalogValue.Fault_Low_Limit,22,13
+LargeAnalogValue.High_Limit,22,13
+LargeAnalogValue.Low_Limit,22,13
+LargeAnalogValue.Max_Pres_Value,22,13
+LargeAnalogValue.Min_Pres_Value,22,13
+LargeAnalogValue.Present_Value,22,6
+LargeAnalogValue.Relinquish_Default,22,13
+LargeAnalogValue.Resolution,22,11
+
+# life safety point
+LifeSafetyPoint.Life_Safety_Alarm_Values,4,13
+LifeSafetyPoint.Present_Value,20,2
+LifeSafetyPoint.Tracking_Value,20,13
+
+# life safety zone
+LifeSafetyZone.Life_Safety_Alarm_Values,4,13
+LifeSafetyZone.Present_Value,20,2
+LifeSafetyZone.Tracking_Value,20,13
+
+# lighting output
+LightingOutput.COV_Increment,22,13
+LightingOutput.Feedback_Value,22,11
+LightingOutput.Present_Value,22,6
+LightingOutput.Relinquish_Default,22,13
+LightingOutput.Tracking_Value,22,13
+
+# load control
+LoadControl.Present_Value,20,6
+
+# loop
+Loop.Action,20,13
+Loop.Controlled_Variable_Reference,25,13
+Loop.COV_Increment,22,13
+Loop.Deadband,22,13
+Loop.Manipulated_Variable_Reference,25,13
+Loop.Present_Value,22,6
+
+# multi state input
+MultistateInput.Alarm_Values,4,13
+MultistateInput.Fault_Values,4,13
+MultistateInput.Present_Value,20,6
+
+# multi state output
+MultistateOutput.Present_Value,20,6
+MultistateOutput.Relinquish_Default,20,13
+
+# multi state value
+MultistateValue.Present_Value,20,6
+MultistateValue.Relinquish_Default,20,13
+MultistateValue.Alarm_Values,4,13
+MultistateValue.Fault_Values,4,13
+
+# network port
+NetworkPort.BACnet_IP_Multicast_Address,25,6
+NetworkPort.BACnet_IP_NAT_Traversal,23,6
+
+# notification class
+NotificationClass.Priority,-1:3,13
+
+# notification forwarder
+NotificationForwarder.Port_Filter,25,6
+
+# date time pattern value
+OctetStringValue.Present_Value,46,6
+OctetStringValue.Relinquish_Default,46,13
+
+# positive integer value
+PositiveIntegerValue.COV_Increment,20,13
+PositiveIntegerValue.Deadband,20,13
+PositiveIntegerValue.Fault_High_Limit,20,13
+PositiveIntegerValue.Fault_Low_Limit,20,13
+PositiveIntegerValue.High_Limit,20,13
+PositiveIntegerValue.Low_Limit,20,13
+PositiveIntegerValue.Max_Pres_Value,20,13
+PositiveIntegerValue.Min_Pres_Value,20,13
+PositiveIntegerValue.Present_Value,20,6
+PositiveIntegerValue.Relinquish_Default,20,13
+PositiveIntegerValue.Resolution,20,11
+
+# pulse converter
+PulseConverter.COV_Increment,22,13
+PulseConverter.Deadband,22,13
+PulseConverter.High_Limit,22,13
+PulseConverter.Input_Reference,25,13
+PulseConverter.Low_Limit,22,13
+PulseConverter.Present_Value,22,6
+
+# schedule
+Schedule.Present_Value,25,6
+
+# structured view
+StructuredView.Subordinate_List,25,6
+StructuredView.Subordinate_Tags,25,6
+StructuredView.Represents,25,6
+
+# time value
+TimeValue.Present_Value,25,6
+TimeValue.Relinquish_Default,25,13
+
+# time pattern value
+TimePatternValue.Present_Value,25,6
+TimePatternValue.Relinquish_Default,25,13
+
+# timer
+Timer.List_Of_Object_Property_References,25,13
+Timer.Max_Pres_Value,20,13
+Timer.Min_Pres_Value,20,13
+Timer.Present_Value,20,6
+Timer.Resolution,20,13
+Timer.State_Change_Values,25,13
+
+# trendlog
+TrendLog.Log_Buffer,-1,2
+TrendLog.Log_DeviceObjectProperty,25,13
+
+# trendlogMultiple
+TrendLogMultiple.Log_Buffer,-1,2
+TrendLogMultiple.Log_DeviceObjectProperty,25,13
+
+# eventlog
+EventLog.Log_Buffer,25,2

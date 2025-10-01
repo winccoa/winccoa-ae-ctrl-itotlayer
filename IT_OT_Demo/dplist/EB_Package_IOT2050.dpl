@@ -1,0 +1,17 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_IOT2050._IOT2050	1#1
+	UsedPorts	9#2
+	NrUsedPorts	20#3
+	Errors	9#4
+
+# Datapoint/DpId
+DpName	TypeName	ID
+_IOT2050_local	_IOT2050	4536
+
+# CNS
+CNSpath	name	displaySeparators	displayNames	data	CNSDataIdentifierType	UserData	ViewId
+	"EB_Package_IOT2050"	lt:3 LANG:10000 "." LANG:10001 "." LANG:10027 "." 	lt:3 LANG:10000 "IOT2050" LANG:10001 "IOT2050" LANG:10027 "IOT2050" 				81
+".EB_Package_IOT2050:"	"localiot"		lt:3 LANG:10000 "localiot" LANG:10001 "localiot" LANG:10027 "localiot" 		1		

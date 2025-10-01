@@ -1,0 +1,108 @@
+<testsuites>
+ <testsuite time="0" failures="3" timestamp="1970-01-01T00:00:00.000+00:00" name="MSC_General_Results." hostname="IOT2050two" skipped="0" tests="28" errors="0">
+  <testcase time="0.068" name="MSC-AUTO-0301" assertions="1"/>
+  <testcase time="0.766" name="MSC-AUTO-0247" assertions="2"/>
+  <testcase time="0.786" name="MSC-AUTO-0310" assertions="2"/>
+  <testcase time="0.25" name="MSC-AUTO-0246" assertions="1"/>
+  <testcase time="0.901" name="MSC-AUTO-0245" assertions="1"/>
+  <testcase time="0.21" name="MSC-AUTO-0244" assertions="1"/>
+  <testcase time="0.246" name="MSC-AUTO-0242" assertions="1"/>
+  <testcase time="0.999" name="MSC-AUTO-0240" assertions="1"/>
+  <testcase time="2.368" name="MSC-AUTO-0230" assertions="53"/>
+  <testcase time="20.571" name="MSC-AUTO-0214" assertions="3">
+   <failure message="2024.06.04 16:50:13.408: Something failed. See also stack trace for more information: &#xa;  Passed : 2&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_General_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:50:33.960: (FAILED) Testcase 'MSC-AUTO-0214' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkBoolCmd(const string &amp;sDeviceName, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1065
+	int TstMnspGeneral::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl:471
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl:571, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.356
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="20.309" name="MSC-AUTO-0134" assertions="3"/>
+  <testcase time="14.32" name="MSC-AUTO-0300" assertions="1"/>
+  <testcase time="1.649" name="MSC-AUTO-0000-SETUP" assertions="2"/>
+  <testcase time="11.842" name="MSC-AUTO-0050" assertions="49"/>
+  <testcase time="29.211" name="MSC-AUTO-0213" assertions="3">
+   <failure message="2024.06.04 16:49:44.197: Something failed. See also stack trace for more information: &#xa;  Passed : 2&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_General_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:50:13.388: (FAILED) Testcase 'MSC-AUTO-0213' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkBoolCmd(const string &amp;sDeviceName, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1065
+	int TstMnspGeneral::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl:465
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl:571, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.356
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="14.843" name="MSC-AUTO-0190" assertions="3"/>
+  <testcase time="0.648" name="MSC-AUTO-0100" assertions="3"/>
+  <testcase time="1.279" name="MSC-AUTO-0133" assertions="3"/>
+  <testcase time="2.555" name="MSC-AUTO-0060" assertions="68"/>
+  <testcase time="1.412" name="MSC-AUTO-0070" assertions="68"/>
+  <testcase time="1.448" name="MSC-AUTO-0090" assertions="3"/>
+  <testcase time="8.561" name="MSC-GEN-MQTT-CFG-010" assertions="2">
+   <failure message="2024.06.04 16:50:55.023: Something failed. See also stack trace for more information: &#xa;  Passed : 0&#xa;  Skipped : 0&#xa;  Failed : 2&#xa;  Errors : 0&#xa;Test suite: MSC_General_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:51:03.437: (FAILED) Testcase 'MSC-GEN-MQTT-CFG-010' failed, actual value (autotest) is NOT equal to expected value (10.10.10.10), 
+  Note: check if correct host address set on connection datapoint
+  StackTrace: 
+	int TstMnsp::checkMqttCfgEntries(const string &amp;sMqttHost, const int &amp;iMqttPort) at tstMnsp.ctl:2127
+	int TstMnspGeneral::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl:524
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl:571, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 452
+  Duration: 8.416
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 452
+
+2024.06.04 16:51:03.446: (FAILED) Testcase 'MSC-GEN-MQTT-CFG-010' failed, actual value (1883) is NOT equal to expected value (1884), 
+  Note: check if correct port number set on connection datapoint
+  StackTrace: 
+	int TstMnsp::checkMqttCfgEntries(const string &amp;sMqttHost, const int &amp;iMqttPort) at tstMnsp.ctl:2128
+	int TstMnspGeneral::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl:524
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl:571, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 452
+  Duration: 0.01
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_general.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 452
+
+</failure>
+  </testcase>
+  <testcase time="0.379" name="MSC-AUTO-0091" assertions="3"/>
+  <testcase time="0.649" name="MSC-AUTO-0110" assertions="3"/>
+  <testcase time="30.852" name="MSC-AUTO-0131" assertions="5"/>
+  <testcase time="13.97" name="MSC-AUTO-0120" assertions="60"/>
+  <testcase time="0.775" name="MSC-AUTO-0080" assertions="68"/>
+  <testcase time="21.27" name="MSC-AUTO-0132" assertions="3"/>
+ </testsuite>
+</testsuites>

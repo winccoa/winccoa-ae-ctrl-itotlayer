@@ -1,0 +1,8 @@
+# ascii dump of database
+
+# Datapoint/DpId
+DpName	TypeName	ID
+EB_Package_BACnet EB_Packages
+_Driver13	_DriverCommon
+_Driver13_2	_DriverCommon
+_Bacnet_13	_Bacnet

@@ -1,0 +1,3 @@
+Filesystem                    1K-blocks    Used Available Use% Mounted on
+/dev/mapper/debian12--vg-root  23852880 7905476  14710412  35% /
+/dev/mapper/debian12--vg-home 219851752 3779760 204831340   2% /home
