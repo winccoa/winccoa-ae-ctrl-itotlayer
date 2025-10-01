@@ -1,4 +1,4 @@
-# IT OT Layer Application Example
+# WinCC OA IT OT Layer
 **Turning configuration into automation. This application example shows how one JSON file can automatically configure southbound drivers, datapoints, publishing to northbound, subscribing to northbound, and creating dashboards in WinCC OA --- reducing engineering effort and errors.**
 
 <img width="1280" height="720" alt="Architecture" src="https://github.com/user-attachments/assets/963b46ca-94e5-4cf9-a64b-0c5a86c4c9b0" />
