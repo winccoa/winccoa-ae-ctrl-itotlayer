@@ -347,7 +347,7 @@
         "IEC61850",
         "S7"
       ],
-      "initialTopic": "ie",
+      "initialTopic": "/winccoa",
       "useUnifiedNameSpace": true,
       "credentials": {
         "username": "",
