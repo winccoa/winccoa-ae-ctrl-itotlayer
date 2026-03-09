@@ -16,8 +16,9 @@ useNGA = 1
 #data = "127.0.0.1"
 #event = "127.0.0.1"
 
-#dataPort = 29701
-#eventPort = 29702
+#dataPort = 34897
+#eventPort = 34998
+
 #pmonPort = 29700
 
 localAddress = "::"
@@ -25,7 +26,6 @@ localAddress = "::"
 #useCMLicense = 1
 #useCMContainerSerialNumber = "130-4078650901"
 
-pmonPort = 4999
 [data]
 #transactionLogging = 1
 
@@ -85,8 +85,8 @@ tcpServerPort = 34841
 
 [webClient]
 
-httpsPort = 31090
-httpPort = 31290
+httpsPort = 38050
+httpPort = 38040
 httpAuth = 0
 
 [httpServer]
@@ -97,7 +97,7 @@ compatLegacyPainting = 1
 
 #enable this when you try to run the dashboard in edge
 #[wssServer]
-#httpsPort = 8449
+#httpsPort = 38449
 #tokenExpire = 60000
 #useSharedWorker = 0
 #heartbeatSeconds = 0
