@@ -1,0 +1,16 @@
+{
+  "RepoName": "WinCC OA IT/OT Layer",
+  "Keywords": [
+    "ctrl",
+    "itot",
+    "it ot",
+    "dashboard",
+    "integration",
+    "opcua",
+    "mqtt",
+    "scada engineering automation"
+  ],
+  "Version": "1.0.0",
+  "Description": "Provides a ready-to-use automation layer for WinCC OA that drives the entire project configuration from a single JSON file. It automatically creates southbound drivers, datapoints, northbound publishing/subscribing via OPC UA and MQTT, and generates dashboards, reducing engineering effort and ensuring consistency and scalability.",
+  "OaVersions": "^3.20.10"
+}
