@@ -1,0 +1,30 @@
+# ascii dump of database
+
+# DpType
+TypeName
+EB_FanucFocas.EB_FanucFocas	1#1
+	PlcList	25#2
+_FocasConnection._FocasConnection	1
+	Config	1
+		Address	25
+		AcquireValuesOnConnect	23
+		EstablishmentMode	20
+		SetInvalidBit	23
+		CheckConn	23
+		LifebeatTimeout	20
+		ReconnectTimeout	20
+		DrvNumber	20
+	Command	1
+		Enable	23
+		GQ	23
+	State	1
+		ConnState	20
+		DrvType	25
+		Disabled	23
+		RequestOverload	23
+
+# Datapoint/DpId
+DpName	TypeName
+EB_Package_FanucFocas	EB_Packages
+_Driver11	_DriverCommon
+_Driver11_2	_DriverCommon

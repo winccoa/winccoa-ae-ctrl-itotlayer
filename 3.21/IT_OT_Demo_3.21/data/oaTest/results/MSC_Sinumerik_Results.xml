@@ -1,0 +1,61 @@
+<testsuites>
+ <testsuite time="0" failures="2" timestamp="1970-01-01T00:00:00.000+00:00" name="MSC_Sinumerik_Results." hostname="IOT2050two" skipped="0" tests="17" errors="0">
+  <testcase time="1.791" name="MSC-AUTO-0273" assertions="17"/>
+  <testcase time="2.048" name="MSC-AUTO-0000-SETUP" assertions="2"/>
+  <testcase time="12.192" name="MSC-AUTO-0029" assertions="87"/>
+  <testcase time="12.532" name="MSC-AUTO-0272" assertions="17"/>
+  <testcase time="9.692" name="MSC-AUTO-0023" assertions="30"/>
+  <testcase time="1.287" name="MSC-AUTO-0024" assertions="53"/>
+  <testcase time="1.67" name="MSC-AUTO-0028" assertions="15"/>
+  <testcase time="31.973" name="MSC-AUTO-0211" assertions="10">
+   <failure message="2024.06.04 16:36:16.147: Something failed. See also stack trace for more information: &#xa;  Passed : 9&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_Sinumerik_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:36:48.104: (FAILED) Testcase 'MSC-AUTO-0211' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstMnspSinumerik::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_Sinumerik.ctl:384
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_Sinumerik.ctl:423, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_Sinumerik.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.311
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_Sinumerik.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="11.95" name="MSC-AUTO-0042" assertions="3"/>
+  <testcase time="1.18" name="MSC-AUTO-0323" assertions="12"/>
+  <testcase time="1.002" name="MSC-AUTO-0026" assertions="72"/>
+  <testcase time="39.928" name="MSC-AUTO-0201" assertions="10">
+   <failure message="2024.06.04 16:35:36.223: Something failed. See also stack trace for more information: &#xa;  Passed : 9&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_Sinumerik_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:36:16.131: (FAILED) Testcase 'MSC-AUTO-0201' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstMnspSinumerik::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_Sinumerik.ctl:378
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_Sinumerik.ctl:423, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_Sinumerik.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.308
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_Sinumerik.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="10.76" name="MSC-AUTO-0322" assertions="12"/>
+  <testcase time="1.064" name="MSC-AUTO-0027" assertions="34"/>
+  <testcase time="11.003" name="MSC-AUTO-0044" assertions="3"/>
+  <testcase time="1.985" name="MSC-AUTO-0025" assertions="87"/>
+  <testcase time="0.474" name="MSC-AUTO-0046" assertions="3"/>
+ </testsuite>
+</testsuites>

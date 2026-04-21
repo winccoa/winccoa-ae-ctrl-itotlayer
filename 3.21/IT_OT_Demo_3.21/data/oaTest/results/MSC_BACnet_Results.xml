@@ -1,0 +1,62 @@
+<testsuites>
+ <testsuite time="0" failures="2" timestamp="1970-01-01T00:00:00.000+00:00" name="MSC_BACnet_Results." hostname="IOT2050two" skipped="0" tests="18" errors="0">
+  <testcase time="5.466" name="MSC-BACNET-BROWSE-020" assertions="4"/>
+  <testcase time="5.674" name="MSC-BACNET-BROWSE-010" assertions="4"/>
+  <testcase time="31.605" name="MSC-BACNET-WRITE-020" assertions="10">
+   <failure message="2024.06.04 16:46:49.740: Something failed. See also stack trace for more information: &#xa;  Passed : 9&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_BACnet_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:47:21.322: (FAILED) Testcase 'MSC-BACNET-WRITE-020' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstBACnet::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_BACnet.ctl:408
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_BACnet.ctl:473, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_BACnet.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.362
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_BACnet.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="36.023" name="MSC-BACNET-WRITE-010" assertions="10">
+   <failure message="2024.06.04 16:46:13.716: Something failed. See also stack trace for more information: &#xa;  Passed : 9&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_BACnet_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:46:49.718: (FAILED) Testcase 'MSC-BACNET-WRITE-010' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstBACnet::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_BACnet.ctl:402
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_BACnet.ctl:473, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_BACnet.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.363
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_BACnet.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="8.125" name="MSC-BACNET-TRANS-020" assertions="52"/>
+  <testcase time="23.984" name="MSC-BACNET-GEN-030" assertions="82"/>
+  <testcase time="10.996" name="MSC-BACNET-GEN-010" assertions="38"/>
+  <testcase time="1.955" name="MSC-BACNET-GEN-020" assertions="56"/>
+  <testcase time="1.025" name="MSC-BACNET-GEN-040" assertions="71"/>
+  <testcase time="1.423" name="MSC-BACNET-GEN-080" assertions="41"/>
+  <testcase time="8.659" name="MSC-AUTO-0000-SETUP" assertions="2"/>
+  <testcase time="20.112" name="MSC-BACNET-TRANS-010" assertions="52"/>
+  <testcase time="13.74" name="MSC-BACNET-GEN-110" assertions="46"/>
+  <testcase time="3.869" name="MSC-BACNET-GEN-050" assertions="15"/>
+  <testcase time="34.043" name="MSC-BACNET-GEN-060" assertions="67"/>
+  <testcase time="21.816" name="MSC-BACNET-GEN-070" assertions="56"/>
+  <testcase time="21.74" name="MSC-BACNET-GEN-090" assertions="15"/>
+  <testcase time="11.844" name="MSC-BACNET-GEN-100" assertions="53"/>
+ </testsuite>
+</testsuites>

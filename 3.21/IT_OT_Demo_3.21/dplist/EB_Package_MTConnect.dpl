@@ -1,0 +1,64 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_TimedFunc._TimedFunc	1#1
+	delay	21#2
+	interval	20#3
+	mode	20#4
+	month	5#5
+	monthDay	5#6
+	result	1#7
+		inPeriod	23#8
+	syncDay	21#9
+	syncMonth	21#10
+	syncTime	21#11
+	syncWeekDay	21#12
+	time	5#13
+	validFrom	26#14
+	validUntil	26#15
+	weekDay	5#16
+_MTDevices._MTDevices	1#1
+	URL	9#7
+	PollRate	9#8
+	LastUpdate	10#9
+	LastInstanceId	9#10
+	ConnectionDpe	9#14
+	Description	9#13
+	PolledDP	9#15
+_MTConnect._MTConnect	1#1
+	ConnState	21#2
+MTC_CURRENT_CSV.MTC_CURRENT_CSV	9#1
+MTC_PROBE_CSV.MTC_PROBE_CSV	9#1
+EB_MTConnect.EB_MTConnect	1#1
+	DeviceList	25#2
+
+# Datapoint/DpId
+DpName	TypeName	ID
+MTCPollSec5	_TimedFunc	554
+MTCPollSec10	_TimedFunc	555
+MTCPollSec15	_TimedFunc	556
+MTCPollSec30	_TimedFunc	557
+MTCPollSec60	_TimedFunc	558
+MTCPollMin5	_TimedFunc	559
+MTCPollMin30	_TimedFunc	560
+EB_MTConnect	EB_MTConnect	10071
+_MTDevices	_MTDevices	10101
+
+# DpValue
+Manager/User	ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+ASC (1)/0	MTCPollSec5.interval	_TimedFunc	5	0x8300000000000101	26.10.2018 19:03:03.208
+ASC (1)/0	MTCPollSec5.syncTime	_TimedFunc	-1	0x8300000000000101	26.10.2018 19:03:03.208
+ASC (1)/0	MTCPollSec10.interval	_TimedFunc	10	0x8300000000000101	26.10.2018 19:03:03.208
+ASC (1)/0	MTCPollSec10.syncTime	_TimedFunc	-1	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollSec15.interval	_TimedFunc	15	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollSec15.syncTime	_TimedFunc	-1	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollSec30.interval	_TimedFunc	30	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollSec30.syncTime	_TimedFunc	-1	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollSec60.interval	_TimedFunc	60	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollSec60.syncTime	_TimedFunc	-1	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollMin5.interval	_TimedFunc	300	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollMin5.syncTime	_TimedFunc	-1	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollMin30.interval	_TimedFunc	1800	0x8300000000000101	26.10.2018 19:03:03.210
+ASC (1)/0	MTCPollMin30.syncTime	_TimedFunc	-1	0x8300000000000101	26.10.2018 19:03:03.211
+# ascii dump of database

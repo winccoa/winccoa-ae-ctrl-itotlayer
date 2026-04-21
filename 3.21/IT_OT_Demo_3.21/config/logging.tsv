@@ -1,0 +1,21 @@
+000104	2	<10080	_Event.License.RemainingTime
+000105	3	!3	_MindsphereMQTT.State.ConnState
+000200	2	<30	_MemoryCheck.FreePerc
+000201	3	<10	_MemoryCheck.FreePerc
+000202	2	<30	_ArchivDisk.FreePerc
+000202	2	<30	_BackupMedium.FreePerc
+000203	3	<10	_ArchivDisk.FreePerc
+000203	3	<10	_BackupMedium.FreePerc
+000204	2	<30	_RessourceMonitor_Idle.cpu
+000205	3	<10	_RessourceMonitor_Idle.cpu
+000206	2	>70	_RessourceMonitor_Event.cpu	
+000207	3	>90	_RessourceMonitor_Event.cpu	
+000208	3	=TRUE	_DataManager.DiskSpaceCheck.EmergencyStopWrite.Status
+000209	1	=3	_DataManager.DiskSpaceCheck.EmergencyStopWrite.Status:_alert_hdl.._act_state
+???210	2	>70	_RessourceMonitor_*.cpu
+???211	3	>90	_RessourceMonitor_*.cpu
+???212	2	>10	_RessourceMonitor_*.memory
+???213	3	>20	_RessourceMonitor_*.memory
+000301	1	!	@_Ui.UserName,.DisplayName	1
+???401	1	=1	@_EB_DriverConnection.State	1
+???402	2	>1	@_EB_DriverConnection.State

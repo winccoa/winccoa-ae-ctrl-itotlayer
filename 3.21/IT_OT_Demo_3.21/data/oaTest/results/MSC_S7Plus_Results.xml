@@ -1,0 +1,167 @@
+<testsuites>
+ <testsuite time="0" failures="4" timestamp="1970-01-01T00:00:00.000+00:00" name="MSC_S7Plus_Results." hostname="IOT2050two" skipped="0" tests="21" errors="3">
+  <testcase time="3.692" name="MSC-AUTO-0321" assertions="12"/>
+  <testcase time="13.096" name="MSC-AUTO-0320" assertions="12"/>
+  <testcase time="5.755" name="MSC-AUTO-0275" assertions="44"/>
+  <testcase time="25.026" name="MSC-AUTO-0274" assertions="44"/>
+  <testcase time="0.014" name="MSC-S7PLUS-IP-CHANGE" assertions="2">
+   <error message="2024.06.04 16:42:56.840: Something failed. See also stack trace for more information: &#xa;  Passed : 0&#xa;  Skipped : 0&#xa;  Failed : 0&#xa;  Errors : 2&#xa;Test suite: MSC_S7Plus_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:42:56.846: Setup of TC aborted due to previous TC
+  Duration: 0.006
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 598
+
+2024.06.04 16:42:56.851: The function beforeTc() returns the errCode: 1
+  Duration: 0.005
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 598
+
+</error>
+  </testcase>
+  <testcase time="0.013" name="MSC-AUTO-0343" assertions="2">
+   <error message="2024.06.04 16:42:56.827: Something failed. See also stack trace for more information: &#xa;  Passed : 0&#xa;  Skipped : 0&#xa;  Failed : 0&#xa;  Errors : 2&#xa;Test suite: MSC_S7Plus_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:42:56.832: Setup of TC aborted due to previous TC
+  Duration: 0.005
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 598
+
+2024.06.04 16:42:56.837: The function beforeTc() returns the errCode: 1
+  Duration: 0.005
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 598
+
+</error>
+  </testcase>
+  <testcase time="31.76" name="MSC-AUTO-0216" assertions="7">
+   <failure message="2024.06.04 16:40:34.896: Something failed. See also stack trace for more information: &#xa;  Passed : 6&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_S7Plus_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:41:06.638: (FAILED) Testcase 'MSC-AUTO-0216' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstMnspS7Plus::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl:444
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl:580, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.357
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="1.3" name="MSC-AUTO-0227" assertions="64"/>
+  <testcase time="13.76" name="MSC-AUTO-0220" assertions="34"/>
+  <testcase time="1.88" name="MSC-AUTO-0000-SETUP" assertions="2"/>
+  <testcase time="1.162" name="MSC-AUTO-0221" assertions="49"/>
+  <testcase time="31.636" name="MSC-AUTO-0212" assertions="10">
+   <failure message="2024.06.04 16:39:31.625: Something failed. See also stack trace for more information: &#xa;  Passed : 9&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_S7Plus_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:40:03.235: (FAILED) Testcase 'MSC-AUTO-0212' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstMnspS7Plus::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl:432
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl:580, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.352
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="12.129" name="MSC-AUTO-0222" assertions="87"/>
+  <testcase time="1.134" name="MSC-AUTO-0223" assertions="68"/>
+  <testcase time="2.635" name="MSC-AUTO-0224" assertions="15"/>
+  <testcase time="13.433" name="MSC-AUTO-0225" assertions="34"/>
+  <testcase time="2.684" name="MSC-AUTO-0228" assertions="15"/>
+  <testcase time="29.649" name="MSC-AUTO-0226" assertions="49"/>
+  <testcase time="51.993" name="MSC-AUTO-0202" assertions="10">
+   <failure message="2024.06.04 16:38:39.627: Something failed. See also stack trace for more information: &#xa;  Passed : 9&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_S7Plus_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:39:31.596: (FAILED) Testcase 'MSC-AUTO-0202' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstMnspS7Plus::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl:426
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl:580, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.357
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="62.604" name="MSC-AUTO-0342" assertions="5">
+   <error message="2024.06.04 16:41:54.228: Something failed. See also stack trace for more information: &#xa;  Passed : 1&#xa;  Skipped : 0&#xa;  Failed : 0&#xa;  Errors : 4&#xa;Test suite: MSC_S7Plus_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:42:06.420: Browsing request timed out
+  Duration: 50.362
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 598
+
+2024.06.04 16:42:56.795: The function startTestCase() returns the errCode: 1
+  Duration: 0.015
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 598
+
+2024.06.04 16:42:56.795: Cleanup of TC aborted due to previous TC
+  Duration: 0.011
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 598
+
+2024.06.04 16:42:56.795: The function afterTc() returns the errCode: 1
+  Duration: 0.013
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 598
+
+</error>
+  </testcase>
+  <testcase time="31.641" name="MSC-AUTO-0215" assertions="7">
+   <failure message="2024.06.04 16:40:03.255: Something failed. See also stack trace for more information: &#xa;  Passed : 6&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_S7Plus_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:40:34.876: (FAILED) Testcase 'MSC-AUTO-0215' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstMnspS7Plus::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl:438
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl:580, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.348
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7plus.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+ </testsuite>
+</testsuites>

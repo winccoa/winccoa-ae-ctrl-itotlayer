@@ -1,0 +1,397 @@
+# ascii dump of database
+
+# DpType
+TypeName
+MTC_9617890b-7526-9f6b-214f-0c860ace6485_1.MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1
+	name	25
+	uuid	25
+	id	25
+	serialNumber	25
+	Samples	1
+		xpm	22
+		xpw	22
+		xl	22
+		xf	22
+		ypm	22
+		ypw	22
+		yl	22
+		yf	22
+		zpm	22
+		zpw	22
+		zl	22
+		zf	22
+		cl	22
+		sl	22
+		cf	22
+		cs	22
+		ctemp	22
+		cposm	22
+		cposw	22
+		al	22
+		af	22
+		aposm	22
+		aposw	22
+		cl2	22
+		sl2	22
+		cf2	22
+		cs2	22
+		ctemp2	22
+		cpos2m	22
+		cpos2w	22
+		atime	22
+		yltime	22
+		ctime	22
+		tcltime	22
+		pf	22
+		cooltemp	22
+		concentration	22
+	Conditions	1
+		servo	21
+		spndl	21
+		xt	21
+		yt	21
+		zt	21
+		ct	21
+		spc	21
+		tmp	21
+		at	21
+		ct2	21
+		spc2	21
+		tmp2	21
+		ccond	21
+		logic	21
+		system	21
+		motion	21
+		path_system	21
+		electric	21
+		hydhealth	21
+		coolhealth	21
+		pneucond	21
+		lube	21
+	Events	1
+		avail	25
+		functionalmode	25
+		d1_asset_chg	25
+		d1_asset_rem	25
+		xaxisstate	25
+		yaxisstate	25
+		zaxisstate	25
+		rf	25
+		caxisstate	25
+		arf	25
+		aaxisstate	25
+		rf2	25
+		c2axisstate	25
+		estop	25
+		pltnum	25
+		peditmode	25
+		peditname	25
+		hd1chuckstate	25
+		pfr	25
+		pfo	25
+		Sovr	22
+		pgm	25
+		spgm	25
+		ln	25
+		unit	25
+		seq	25
+		pc	21
+		tid	25
+		tid2	25
+		tid3	25
+		exec	25
+		mode	25
+		pcmt	25
+		spcmt	25
+		door	25
+
+# Datapoint/DpId
+DpName	TypeName
+9617890b-7526-9f6b-214f-0c860ace6485_1	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.xpm	""	lt:2 LANG:10000 "POSITION/Xabs@@MILLIMETER" LANG:10001 "POSITION/Xabs@@MILLIMETER" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.xpw	""	lt:2 LANG:10000 "POSITION/Xpos@@MILLIMETER" LANG:10001 "POSITION/Xpos@@MILLIMETER" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.xl	""	lt:2 LANG:10000 "LOAD/Xload@@PERCENT" LANG:10001 "LOAD/Xload@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.xf	""	lt:2 LANG:10000 "AXIS_FEEDRATE/Xfrt@@MILLIMETER/SECOND" LANG:10001 "AXIS_FEEDRATE/Xfrt@@MILLIMETER/SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ypm	""	lt:2 LANG:10000 "POSITION/Yabs@@MILLIMETER" LANG:10001 "POSITION/Yabs@@MILLIMETER" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ypw	""	lt:2 LANG:10000 "POSITION/Ypos@@MILLIMETER" LANG:10001 "POSITION/Ypos@@MILLIMETER" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.yl	""	lt:2 LANG:10000 "LOAD/Yload@@PERCENT" LANG:10001 "LOAD/Yload@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.yf	""	lt:2 LANG:10000 "AXIS_FEEDRATE/Yfrt@@MILLIMETER/SECOND" LANG:10001 "AXIS_FEEDRATE/Yfrt@@MILLIMETER/SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.zpm	""	lt:2 LANG:10000 "POSITION/Zabs@@MILLIMETER" LANG:10001 "POSITION/Zabs@@MILLIMETER" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.zpw	""	lt:2 LANG:10000 "POSITION/Zpos@@MILLIMETER" LANG:10001 "POSITION/Zpos@@MILLIMETER" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.zl	""	lt:2 LANG:10000 "LOAD/Zload@@PERCENT" LANG:10001 "LOAD/Zload@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.zf	""	lt:2 LANG:10000 "AXIS_FEEDRATE/Zfrt@@MILLIMETER/SECOND" LANG:10001 "AXIS_FEEDRATE/Zfrt@@MILLIMETER/SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cl	""	lt:2 LANG:10000 "LOAD/Cload@@PERCENT" LANG:10001 "LOAD/Cload@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.sl	""	lt:2 LANG:10000 "LOAD/Sload@@PERCENT" LANG:10001 "LOAD/Sload@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cf	""	lt:2 LANG:10000 "ANGULAR_VELOCITY/Cfrt@@DEGREE/SECOND" LANG:10001 "ANGULAR_VELOCITY/Cfrt@@DEGREE/SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cs	""	lt:2 LANG:10000 "ROTARY_VELOCITY/Srpm@@REVOLUTION/MINUTE" LANG:10001 "ROTARY_VELOCITY/Srpm@@REVOLUTION/MINUTE" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ctemp	""	lt:2 LANG:10000 "TEMPERATURE/Stemp@@CELSIUS" LANG:10001 "TEMPERATURE/Stemp@@CELSIUS" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cposm	""	lt:2 LANG:10000 "ANGLE/Cabs@@DEGREE" LANG:10001 "ANGLE/Cabs@@DEGREE" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cposw	""	lt:2 LANG:10000 "ANGLE/Cpos@@DEGREE" LANG:10001 "ANGLE/Cpos@@DEGREE" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.al	""	lt:2 LANG:10000 "LOAD/Aload@@PERCENT" LANG:10001 "LOAD/Aload@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.af	""	lt:2 LANG:10000 "ANGULAR_VELOCITY/Afrt@@DEGREE/SECOND" LANG:10001 "ANGULAR_VELOCITY/Afrt@@DEGREE/SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.aposm	""	lt:2 LANG:10000 "ANGLE/Aabs@@DEGREE" LANG:10001 "ANGLE/Aabs@@DEGREE" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.aposw	""	lt:2 LANG:10000 "ANGLE/Apos@@DEGREE" LANG:10001 "ANGLE/Apos@@DEGREE" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cl2	""	lt:2 LANG:10000 "LOAD/C2load@@PERCENT" LANG:10001 "LOAD/C2load@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.sl2	""	lt:2 LANG:10000 "LOAD/S2load@@PERCENT" LANG:10001 "LOAD/S2load@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cf2	""	lt:2 LANG:10000 "ANGULAR_VELOCITY/C2frt@@DEGREE/SECOND" LANG:10001 "ANGULAR_VELOCITY/C2frt@@DEGREE/SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cs2	""	lt:2 LANG:10000 "ROTARY_VELOCITY/S2rpm@@REVOLUTION/MINUTE" LANG:10001 "ROTARY_VELOCITY/S2rpm@@REVOLUTION/MINUTE" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ctemp2	""	lt:2 LANG:10000 "TEMPERATURE/S2temp@@CELSIUS" LANG:10001 "TEMPERATURE/S2temp@@CELSIUS" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cpos2m	""	lt:2 LANG:10000 "ANGLE/C2abs@@DEGREE" LANG:10001 "ANGLE/C2abs@@DEGREE" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cpos2w	""	lt:2 LANG:10000 "ANGLE/C2pos@@DEGREE" LANG:10001 "ANGLE/C2pos@@DEGREE" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.atime	""	lt:2 LANG:10000 "ACCUMULATED_TIME/auto_time@@SECOND" LANG:10001 "ACCUMULATED_TIME/auto_time@@SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.yltime	""	lt:2 LANG:10000 "ACCUMULATED_TIME/total_time@@SECOND" LANG:10001 "ACCUMULATED_TIME/total_time@@SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ctime	""	lt:2 LANG:10000 "ACCUMULATED_TIME/cut_time@@SECOND" LANG:10001 "ACCUMULATED_TIME/cut_time@@SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.tcltime	""	lt:2 LANG:10000 "ACCUMULATED_TIME/total_auto_cut_time@@SECOND" LANG:10001 "ACCUMULATED_TIME/total_auto_cut_time@@SECOND" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.pf	""	lt:2 LANG:10000 "PATH_FEEDRATE/Fact@@" LANG:10001 "PATH_FEEDRATE/Fact@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cooltemp	""	lt:2 LANG:10000 "TEMPERATURE/cooltemp@@CELSIUS" LANG:10001 "TEMPERATURE/cooltemp@@CELSIUS" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.concentration	""	lt:2 LANG:10000 "CONCENTRATION/CONCENTRATION@@PERCENT" LANG:10001 "CONCENTRATION/CONCENTRATION@@PERCENT" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.servo	""	lt:2 LANG:10000 "servo_cond@@" LANG:10001 "servo_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spndl	""	lt:2 LANG:10000 "spindle_cond@@" LANG:10001 "spindle_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.xt	""	lt:2 LANG:10000 "Xtravel@@" LANG:10001 "Xtravel@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.yt	""	lt:2 LANG:10000 "Ytravel@@" LANG:10001 "Ytravel@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.zt	""	lt:2 LANG:10000 "Ztravel@@" LANG:10001 "Ztravel@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct	""	lt:2 LANG:10000 "Ctravel@@" LANG:10001 "Ctravel@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc	""	lt:2 LANG:10000 "Sload_cond@@" LANG:10001 "Sload_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp	""	lt:2 LANG:10000 "Stemp_cond@@" LANG:10001 "Stemp_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.at	""	lt:2 LANG:10000 "Atravel@@" LANG:10001 "Atravel@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct2	""	lt:2 LANG:10000 "C2travel@@" LANG:10001 "C2travel@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc2	""	lt:2 LANG:10000 "S2load_cond@@" LANG:10001 "S2load_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp2	""	lt:2 LANG:10000 "S2temp_cond@@" LANG:10001 "S2temp_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ccond	""	lt:2 LANG:10000 "comms_cond@@" LANG:10001 "comms_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.logic	""	lt:2 LANG:10000 "logic_cond@@" LANG:10001 "logic_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.system	""	lt:2 LANG:10000 "system_cond@@" LANG:10001 "system_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.motion	""	lt:2 LANG:10000 "motion_cond@@" LANG:10001 "motion_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.path_system	""	lt:2 LANG:10000 "path_system@@" LANG:10001 "path_system@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.electric	""	lt:2 LANG:10000 "electric_cond@@" LANG:10001 "electric_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.hydhealth	""	lt:2 LANG:10000 "hydra_cond@@" LANG:10001 "hydra_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.coolhealth	""	lt:2 LANG:10000 "coolant_cond@@" LANG:10001 "coolant_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.pneucond	""	lt:2 LANG:10000 "pneu_cond@@" LANG:10001 "pneu_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.lube	""	lt:2 LANG:10000 "lubrication_cond@@" LANG:10001 "lubrication_cond@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.avail	""	lt:2 LANG:10000 "avail@@" LANG:10001 "avail@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.functionalmode	""	lt:2 LANG:10000 "functionalmode@@" LANG:10001 "functionalmode@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.d1_asset_chg	""	lt:2 LANG:10000 "ASSET_CHANGED@@" LANG:10001 "ASSET_CHANGED@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.d1_asset_rem	""	lt:2 LANG:10000 "ASSET_REMOVED@@" LANG:10001 "ASSET_REMOVED@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.xaxisstate	""	lt:2 LANG:10000 "AXIS_STATE@@" LANG:10001 "AXIS_STATE@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.yaxisstate	""	lt:2 LANG:10000 "AXIS_STATE@@" LANG:10001 "AXIS_STATE@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.zaxisstate	""	lt:2 LANG:10000 "AXIS_STATE@@" LANG:10001 "AXIS_STATE@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.rf	""	lt:2 LANG:10000 "crfunc@@" LANG:10001 "crfunc@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.caxisstate	""	lt:2 LANG:10000 "AXIS_STATE@@" LANG:10001 "AXIS_STATE@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.arf	""	lt:2 LANG:10000 "arfunc@@" LANG:10001 "arfunc@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.aaxisstate	""	lt:2 LANG:10000 "AXIS_STATE@@" LANG:10001 "AXIS_STATE@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.rf2	""	lt:2 LANG:10000 "c2rfunc@@" LANG:10001 "c2rfunc@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.c2axisstate	""	lt:2 LANG:10000 "AXIS_STATE@@" LANG:10001 "AXIS_STATE@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.estop	""	lt:2 LANG:10000 "estop@@" LANG:10001 "estop@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pltnum	""	lt:2 LANG:10000 "pallet_num@@" LANG:10001 "pallet_num@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.peditmode	""	lt:2 LANG:10000 "PROGRAM_EDIT@@" LANG:10001 "PROGRAM_EDIT@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.peditname	""	lt:2 LANG:10000 "PROGRAM_EDIT_NAME@@" LANG:10001 "PROGRAM_EDIT_NAME@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.hd1chuckstate	""	lt:2 LANG:10000 "CHUCK_STATE@@" LANG:10001 "CHUCK_STATE@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pfr	""	lt:2 LANG:10000 "Frapidovr@@" LANG:10001 "Frapidovr@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pfo	""	lt:2 LANG:10000 "Fovr@@" LANG:10001 "Fovr@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.Sovr	""	lt:2 LANG:10000 "Sovr@@" LANG:10001 "Sovr@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pgm	""	lt:2 LANG:10000 "program@@" LANG:10001 "program@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.spgm	""	lt:2 LANG:10000 "subprogram@@" LANG:10001 "subprogram@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.ln	""	lt:2 LANG:10000 "line@@" LANG:10001 "line@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.unit	""	lt:2 LANG:10000 "unitNum@@" LANG:10001 "unitNum@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.seq	""	lt:2 LANG:10000 "sequenceNum@@" LANG:10001 "sequenceNum@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pc	""	lt:2 LANG:10000 "PartCountAct@@" LANG:10001 "PartCountAct@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.tid	""	lt:2 LANG:10000 "Tool_number@@" LANG:10001 "Tool_number@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.tid2	""	lt:2 LANG:10000 "Tool_group@@" LANG:10001 "Tool_group@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.tid3	""	lt:2 LANG:10000 "Tool_suffix@@" LANG:10001 "Tool_suffix@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.exec	""	lt:2 LANG:10000 "execution@@" LANG:10001 "execution@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.mode	""	lt:2 LANG:10000 "mode@@" LANG:10001 "mode@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pcmt	""	lt:2 LANG:10000 "program_cmt@@" LANG:10001 "program_cmt@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.spcmt	""	lt:2 LANG:10000 "subprogram_cmt@@" LANG:10001 "subprogram_cmt@@" 
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.door	""	lt:2 LANG:10000 "doorstate@@" LANG:10001 "doorstate@@" 
+
+# DpValue
+ElementName	TypeName	_original.._value
+9617890b-7526-9f6b-214f-0c860ace6485_1.name	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"9617890b-7526-9f6b-214f-0c860ace6485"
+9617890b-7526-9f6b-214f-0c860ace6485_1.uuid	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"9617890b-7526-9f6b-214f-0c860ace6485"
+9617890b-7526-9f6b-214f-0c860ace6485_1.id	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"d1"
+9617890b-7526-9f6b-214f-0c860ace6485_1.serialNumber	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"M77KP290337"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.xpm	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	-362.1063
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.xpw	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	-727.1153
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.xl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.xf	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ypm	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	635.1057
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ypw	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.yl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.yf	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.zpm	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	540.02
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.zpw	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.zl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	45
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.zf	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.sl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cf	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cs	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ctemp	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	25
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cposm	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cposw	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.al	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.af	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.aposm	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.aposw	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cl2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.sl2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cf2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cs2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ctemp2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cpos2m	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cpos2w	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.atime	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	48803405
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.yltime	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	230765191
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.ctime	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	33701398
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.tcltime	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.pf	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.cooltemp	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Samples.concentration	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.logic	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.avail	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"AVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.functionalmode	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.d1_asset_chg	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.d1_asset_rem	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.xaxisstate	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.yaxisstate	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.zaxisstate	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.rf	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.caxisstate	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.arf	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.aaxisstate	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.rf2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.c2axisstate	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.estop	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"ARMED"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pltnum	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"1"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.peditmode	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.peditname	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.hd1chuckstate	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pfr	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"50"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pfo	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"100"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.Sovr	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	100
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pgm	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"336501"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.ln	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"0"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.unit	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"0"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.seq	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"0"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pc	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	0
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.tid	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"0"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.tid2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"0"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.exec	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"READY"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.mode	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"AUTOMATIC"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.pcmt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"MC1 B07150119-0 250COMMON 12D INCH SMART TURRET"
+9617890b-7526-9f6b-214f-0c860ace6485_1.Events.door	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	"UNAVAILABLE"
+
+# AlertValue
+StampSec	StampMSec	ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.servo	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.servo	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.servo	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.servo	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.servo	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spndl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spndl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spndl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spndl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spndl	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.xt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.xt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.xt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.xt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.xt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.yt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.yt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.yt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.yt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.yt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.zt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.zt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.zt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.zt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.zt	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.at	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.at	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.at	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.at	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.at	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ct2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.spc2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.tmp2	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ccond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ccond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ccond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ccond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.ccond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.logic	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.logic	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.logic	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.logic	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.logic	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.motion	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.motion	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.motion	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.motion	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.motion	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.path_system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.path_system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.path_system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.path_system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.path_system	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.electric	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.electric	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.electric	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.electric	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.electric	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.hydhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.hydhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.hydhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.hydhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.hydhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.coolhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.coolhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.coolhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.coolhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.coolhealth	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.pneucond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.pneucond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.pneucond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.pneucond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.pneucond	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.lube	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1		13					""		lt:2 LANG:10000 "" LANG:10001 "" 	\0			1	1				0																0								
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.lube	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	1	5									 	lt:2 LANG:10000 "" LANG:10001 "" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"0"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.lube	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	2	5									warning.	lt:2 LANG:10000 "Warning" LANG:10001 "Warning" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"2"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.lube	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	3	5									alert.	lt:2 LANG:10000 "Fault" LANG:10001 "Fault" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"3"	
+0	0	9617890b-7526-9f6b-214f-0c860ace6485_1.Conditions.lube	MTC_9617890b-7526-9f6b-214f-0c860ace6485_1	4	5									information.	lt:2 LANG:10000 "Unavailable" LANG:10001 "Unavailable" 				0	01.01.1970 00:00:00.000																			lt:2 LANG:10000 "" LANG:10001 "" 	 	0x0	0	""	"4"	

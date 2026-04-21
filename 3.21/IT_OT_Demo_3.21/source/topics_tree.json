@@ -1,0 +1,100 @@
+{
+  "myPlantTopics": {
+    "section4": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section5": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section6": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section7": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section8": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section9": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section10": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section11": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section12": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section13": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section14": {
+      "motor1": {
+        "speed\tnumber": {}
+      }
+    },
+    "section15": {
+      "motor1": {
+        "speed\tnumber": {}
+      },
+      "motor2": {
+        "speed\tnumber": {}
+      }
+    },
+    "section16": {
+      "motor2": {
+        "speed\tnumber": {}
+      }
+    },
+    "section17": {
+      "motor2": {
+        "speed\tnumber": {}
+      },
+      "motor7": {
+        "speed\tnumber": {}
+      }
+    },
+    "section18": {
+      "motor7": {
+        "speed\tnumber": {}
+      },
+      "motor8": {
+        "speed\tnumber": {}
+      },
+      "motor9": {
+        "speed\tnumber": {}
+      },
+      "motor10": {
+        "speed\tnumber": {}
+      },
+      "motor12": {
+        "speed\tnumber": {}
+      },
+      "motor15": {
+        "speed\tnumber": {}
+      }
+    }
+  }
+}

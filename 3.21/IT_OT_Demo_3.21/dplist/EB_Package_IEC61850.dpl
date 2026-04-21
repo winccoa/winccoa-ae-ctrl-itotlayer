@@ -1,0 +1,6 @@
+# ascii dump of database
+
+# Datapoint/DpId
+DpName	TypeName
+EB_Package_IEC61850	EB_Packages
+_Driver12	_DriverCommon

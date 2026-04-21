@@ -1,0 +1,75 @@
+configNOK,Configuration not OK
+configOK,Configuration OK
+configUnused,Configuration not used
+configChanged,Device $device - Configuration changed
+internetNOK,Internet not OK
+internetOK,Internet OK
+internetUnused,Internet not used
+peripheryNOK,Periphery not OK
+peripheryOK,Periphery OK
+peripheryUnused,Periphery not used
+runtimeNOK,Runtime not OK
+runtimeOK,Runtime OK
+runtimeUnused,Runtime not used
+updateNOK,Update not OK
+updateOK,Update OK
+updateUnused,Update not used
+manager_not_running,Manager not running: $1
+changeDesc,Change display name
+nameUsed,Name is already in use!
+nameEmpty,No Name is entered!
+nameNotAllowed,Name is not allowed!
+box-gpio,SIMATIC WinCC OA IOT Box
+box+gpio,SIMATIC WinCC OA IOT Box
+box-gpio_short,IOT Box
+box+gpio_short,IOT Box
+OFS,OPA Filestore
+local,Local disk
+remote,Remote IOT Box
+filename,File name
+size,Size
+link,Link
+createdAt,Created at
+noOpaConn,OPA connection is currently not established. The OPA Filestore is not reachable!
+noOpaConnGlobal,Currently there is no OPA connection.
+OfsGlobal,OPA Filestore global
+OfsDevice,OPA Filestore device
+OfsSelectSource,Select data source
+OfsSelectDirectory,Select directory
+EnterFileName,Enter file name
+placeholderFilename,Add file name ...
+loading,Loading ...
+uploadSuccess,File upload successful.
+uploadNoSuccess,File upload failed.
+deleteTags,Do you really want to delete the following tags?
+deleteTag,Do you really want to delete the following tag?
+userOpt,Operator
+userRoot,Manager
+userMain,Maintainer
+noOpaUserData,No OPA portal user data available.
+unallowedChar,The name contains unallowed characters! These characters are going to be replaced.
+importNameUsed,Name is already in use! Effected tag names will be renamed at import!
+importUnallowedChar,Unallowed characters found within tag names! These characters are going to be replaced.
+importDuplicateAddress,Duplicated address found, but not imported!
+unallowedCharNoChange,The name contains unallowed characters!
+fileExists,This file already exists. Shall the file be overwritten?
+fileNotMoved,File exists on target. Cannot move file
+fileNoWriteAccess,Unable to overwrite file. No write permission for this file.
+fileWriteOpenFailed,Unable to write file. The file might be in use.
+close,Close
+UpdateAvailable,Update available\nVersion: $1\nDescription: $2
+Updating,Updating
+Uptodate, 
+User,User:
+Role,Role:
+noOpaConnGlobalAdmin,Warning: Currently the OPA connection is not established, do you want to change the settings now?
+noOpaConnGlobalNoAdmin,Warning: Currently the OPA Connection is not established, please ask your administrator for support.
+inactivePlc,PLC $1 has been deactivated by user.
+connectedPlc,PLC $1 is connected.
+disconnectedPlc,PLC $1 is disconnected.
+cantSave,This function currently supports only local storage locations. This is not supported via Web-Client.
+Restart,Restart
+RestartSafety,This will restart the server. The server will stop handling data while the restart is performed. The UI will be closed and has to be started manually again.
+Shutdown,Shutdown
+ShutdownSafety,This will shutdown the Server. The system will stop handling data and has to be started manually afterwards. Are you sure you want to proceed?
+pmonAddManagerFailed,Pmon was not possible to add manager '$manager' with options '$options' at index '$index' via command '$action' - result: '$result'

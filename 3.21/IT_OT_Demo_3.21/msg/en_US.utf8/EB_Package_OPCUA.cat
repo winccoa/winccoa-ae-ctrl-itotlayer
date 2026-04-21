@@ -1,0 +1,50 @@
+displayName,OPC UA client
+name,OPC UA client
+header,OPC UA client
+connectedDevice,Connected to OPC UA Server: $1
+disconnectedDevice,No connection to OPC UA Server: $1
+TagInvalid,Failures: $1/$2 - Tag cannot be read. Possible reason: no connection to OPC UA server, incorrect address configuration.
+deleteAllTags,Do you really want to delete all tags?
+deleteSingleTag,Do you really want to delete the tag? It may be in use! Archived data would be lost!
+deleteDevice,Do you really want to delete the device? Archived data would be lost!
+yes,Yes
+no,No
+Panel1Name,Devices
+Panel1Desc,Devices
+Panel2Name,Tags
+Panel2Desc,Tags
+treeHeaderDisplayname,OPC UA browsing result
+treeHeaderDatatype,Data type
+deleteTag,Do you really want to delete the following tag? Archived data would be lost!
+deleteTags,Do you really want to delete the following tags? Archived data would be lost!
+importTitle,Import OPC UA tags
+importFailed,Unable to import all OPC UA tags. First rows with error(s): 
+importEmpty,Unable to import empty file
+notAllowedChangeTags,The tag name can't be changed!
+notAllowedChangeDatatype,The data type can't be changed!
+tooltipTagReady,The tag is ready to create.
+tooltipTagAlreadyUsed,The choosen tag name is already in use! Please change the tag name to a valid one.
+tooltipTagInvalid,The configured tag is marked as invalid because the value was not written by the Driver. \r\n Please check the address configuration of the tag and the connection state of the Device!
+tooltipTagOk,The configured tag and the connection to the device are OK.
+tooltipTagInactive,The tag is not active.
+tooltipRangeOkAndTagOk,The tag is OK.
+tooltipRangeNokAndTagOk,The range configuration of the tag is not OK!
+tooltipRangNokAndTagNok,The choosen tag name is already in use for this Device! Also the range configuration is not OK.
+nameIsUsed,The name is already in use.
+NotConnected,Not connected
+addDevicePlaceholderText,Add device name ...
+newDeviceDescription,Enter description (optional)
+newDeviceLocation,Enter location (optional)
+newDeviceAddress,Enter device address
+updateTagDatatype,Do you really want to change the data type of the tag? Archived data would be lost!
+newDeviceUsername,Enter username
+newDevicePassword,Enter password
+newDeviceCert,Enter certificate
+fileExtensionError,The file has an unexpected ending. The ending needs to be ".der".
+authAnonym,Anonymous
+authUser,User/Password
+authCert,Usercertificate
+deviceName,Device name
+addDevice,Add device
+noData,The tags cannot be imported because the file is empty.
+deviceNotConnected,Device nicht verbunden.

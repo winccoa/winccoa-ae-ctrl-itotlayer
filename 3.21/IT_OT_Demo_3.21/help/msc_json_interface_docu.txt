@@ -1,0 +1,97 @@
+[
+  {
+    "name":               "S7_plc_1",                                         // name of device (string)
+    "dataSourceId":       "S7_plc_1/bc07810a-fa2f-4109-9ec5-afc47cbbac84",    // datasource id of device (string)
+    "description":        "",                                                 // device description (string)
+    "protocol":           "S7PLUS",                                           // device protocol, valid data: "S7PLUS", "SINUMERIK", "FANUCFOCAS", "IEC61850", "MTCONNECT"
+    "readCycleInSeconds": "60",                                               // <optional key> read cyle of device (in WinCC OA known as poll rate) in seconds (unsigned int), if defined in "dataPointData" this setting will be overwritten
+    "protocolData": {
+
+      // FOR ALL DRIVERS
+      "onDataChanged": true,                        // <optional key> value update on data change (bool), if defined in "dataPointData" this setting will be overwritten
+      "timeFromField": true,                        // <optional key> use timestamp from PLC (bool), if defined in "dataPointData" this setting will be overwritten
+
+      // S7PLUS data
+      "ipAddress": "127.0.0.1",                     // ip address with additional port number (default port 102) of device (string)
+      "plcType":   "S7-1500",                       // plc type of S7PLUS device, valid data: "Automatic", "S7-1200", "S7-1500", "S7-1500 R/H", "S7-1500-SC", "ET200SP", "PLC-SIM"
+
+      // SIMUERIK data
+      "ipAddress":  "127.0.0.1",                    // ip address with additional port number (default port 102) of device (string)
+      "slotNumber": "2",                            // <optional key> slot number of SINUMERIK device (unsigned int)
+
+      // FANUCFOCAS data
+      "ipAddress": "127.0.0.1:8193",                // ip address with additional port number of device (string)
+
+      // IEC61850 data
+      "apName":     "MSC_AP",                       // access point name of IEC61850 device (string)
+      "serverName": "MSC_SRV01"                     // server name of IEC61850 device (string)
+      "scdFile": {
+        "name":       "SCLtest.zip",                                // name of file (string)
+        "fileId":     "f117a4cd-de2d-4ba9-a9fd-47dc56ecdf37",       // id of file (string)
+        "revisionId": "bc11e40d2326cdb7847802dc943f4abd82ef2d78"    // revision id (string)
+      }
+
+      // MTCONNECT data
+      "url": "http://mtconnect.mazakcorp.com:5610"  // url of MTCONNECT agent (string)
+
+    },
+    "dataPoints": [
+      {
+        "name":        "S7plus_tag_01",     // name of datapoint (string)
+        "dataPointId": "406789eada6a4",     // id of datapoint (string)
+        "description": "",                  // datapoint description (string)
+        "unit":        "kg",                // device unit (string)
+        "dataType":    "INT",               // datatype of datapoint, valid data: "INT", "DOUBLE", "BOOLEAN", "STRING", "LONG"
+        "dataPointData": {
+
+          // FOR ALL DRIVERS
+          "address":            "DB1001.DBD60",     // address of datapoint (string)
+          "onDataChanged":      false,              // <optional key> value update on data change (bool)
+          "timeFromField":      false,              // <optional key> use timestamp from PLC (bool)
+          "acquisitionType":    "READ"              // acquisition type of datapoint, valid data: "READ", "WRITE", "READ&WRITE"
+          "readCycleInSeconds": "0.25",             // read cyle of device (in WinCC OA known as poll rate) in seconds (unsigned int), in this case 0.25 means 250ms, can be optional if "readCycleInSeconds" is already defined globally
+          
+          // S7PLUS data
+          "typeTransformation": "UINT", // type transformation of datapoint, is related to "dataType"
+                                            // "INT"     -> "UINT", "USINT", "UDINT", "SINT", "INT", "DINT", "WORD", "BYTE", "DWORD"
+                                            // "LONG"    -> "UINT", "USINT", "UDINT", "ULINT", "SINT", "INT", "DINT", "LINT", "WORD", "BYTE", "DWORD", "LWORD", "DATE", "DATETIME", "TIME", "TIME_OF_DAY", "LDATETIME", "LTIME", "LTOD", "DTL", "S5TIME"
+                                            // "DOUBLE"  -> "REAL", "LREAL"
+                                            // "BOOLEAN" -> "BOOL"
+                                            // "STRING"  -> "STRING", "WSTRING", "DATE", "DATETIME", "TIME", "TIME_OF_DAY", "LDATETIME", "LTIME", "LTOD", "DTL", "S5TIME"
+          
+          // SIMUERIK data
+          "typeTransformation": "INT16", // type transformation of datapoint, is related to "dataType"
+                                            // "INT"     -> "INT16", "INT32", "UINT16", "UINT32", "BYTE"
+                                            // "LONG"    -> "INT16", "INT32", "UINT16", "UINT32", "BYTE", "DATETIMELONG"
+                                            // "DOUBLE"  -> "FLOAT", "DATETIMELONG"
+                                            // "BOOLEAN" -> "BIT"
+                                            // "STRING"  -> "STRING", "DATETIMELONG", "BLOB"
+          
+          // FANUCFOCAS data
+          "typeTransformation": "INT8",  // type transformation of datapoint, is related to "dataType"
+                                            // "INT"     -> "INT8", "INT16", "INT32", "UINT8", "UINT16", "UINT32"
+                                            // "LONG"    -> "INT8", "INT16", "INT32", "UINT8", "UINT16", "UINT32"
+                                            // "DOUBLE"  -> "FLOAT", "DOUBLE"
+                                            // "BOOLEAN" -> "BITINBYTE", "BITINWORD", "BITINDWORD"
+                                            // "STRING"  -> "STRING"
+          "subindex": 1,                 // defines which bit from byte or word will be used, needs to be defined when "dataType" = "BOOLEAN"
+          
+          // IEC61850 data
+          "typeTransformation": "INT8"  // type transformation of datapoint, is related to "dataType"
+                                            // "INT"     -> "INT8", "INT16", "INT32", "INT64", "UINT8", "UINT16", "UINT32"
+                                            // "LONG"    -> "INT8", "INT16", "INT32", "INT64", "UINT8", "UINT16", "UINT32", "BITSTRING", "TIMESTAMP"
+                                            // "DOUBLE"  -> "FLOAT32", "FLOAT64"
+                                            // "BOOLEAN" -> "BOOL"
+                                            // "STRING"  -> "OCTETSTRING64", "VISIBLESTRING64", "VISIBLESTRING255", "TIMESTAMP"
+          
+          // MTCONNECT data
+                                        // does not have any specific keys for "dataPointData"
+
+        }
+      },
+      {
+        // ADDITIONAL DATAPOINT
+      }
+    ]
+  }
+]

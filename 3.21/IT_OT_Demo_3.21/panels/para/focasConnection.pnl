@@ -1,0 +1,1412 @@
+V 14
+3
+LANG:10000 11 Fanuc-Focas
+LANG:10001 11 Fanuc-Focas
+LANG:10027 11 Fanuc-Focas
+PANEL,-1 -1 554 475 N "_3DFace" 0
+"main()
+{
+  int        i;
+  string     sOldPlc = \"\", sOldPlc2 = \"\", sPlc = \"\", sPlc2 = \"\";
+  dyn_string dsPlc, ds;
+
+  dsPlc = dpNames(getSystemName()+\"*\",\"_FocasConnection\");     // get list of PLCs from IDP \"_FocasConnection\" - with redu dps
+
+  // remove redu dps from list of PLCs
+  for ( i = dynlen(dsPlc); i > 0; i-- )
+  {
+    ds = strsplit(dsPlc[i],\"_\");
+    if ( dynlen(ds) >= 2 && ds[dynlen(ds)] == \"2\" )
+    {
+      dynRemove(dsPlc,i);
+      continue;
+    }
+    dsPlc[i] = dpSubStr(dsPlc[i],DPSUB_DP);
+
+    if ( strpos(dsPlc[i], \"_\", 0) != -1 )
+      dsPlc[i] = strltrim(dsPlc[i], \"_\");
+  }
+
+  if ( dynlen(dsPlc) < 1 )
+  {
+    focasShapesEnabled(FALSE);
+    cmbPlc.text = \"\";
+    return;
+  }
+  else
+    sPlc = dsPlc[1];
+
+  cmbPlc.items = dsPlc;
+  cmbPlc.text  = sPlc;
+
+  while ( true )
+  {
+    sPlc = cmbPlc.text;
+    if ( sPlc != \"\" ) sPlc = \"_\" + sPlc;
+
+    if ( sPlc != sOldPlc )
+    {
+      if ( sOldPlc != \"\" && dpExists(sOldPlc) )
+      {
+        dpDisconnect( \"focasWork\",
+                      sOldPlc + \".State.ConnState:_online.._value\");
+      }
+      if ( sPlc != \"\" || sPlc != \"_\" && dpExists(sPlc) )
+      {
+        dpConnect( \"focasWork\",
+                   sPlc + \".State.ConnState:_online.._value\");
+        readDpWritePanel(sPlc);
+      }
+      sOldPlc = sPlc;
+    }
+
+    if ( isRedundant() )
+    {
+      frState2.enabled = true;
+      txtConnected2.enabled = true;
+
+      sPlc2 = cmbPlc.text + \"_2\";
+      if ( sPlc2 != \"_2\" ) sPlc2 = \"_\" + sPlc2;
+
+      if ( sPlc2 != sOldPlc2 )
+      {
+        if ( sOldPlc2 != \"\" && dpExists(sOldPlc2) )
+        {
+          dpDisconnect( \"focasWork2\",
+                        sOldPlc2 + \".State.ConnState:_online.._value\");
+        }
+        if ( sPlc2 != \"_2\" || sPlc2 != \"__2\" )
+        {
+          dpConnect( \"focasWork2\",
+                     sPlc2 + \".State.ConnState:_online.._value\");
+        }
+        sOldPlc2 = sPlc2;
+      }
+    }
+    else
+    {
+      frState2.enabled = false;
+      txtConnected2.enabled = false;
+    }
+    delay(0,501);
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+void focasWork( string dp1, unsigned connstate)
+{
+  setConnStateField(connstate, \"tfConnected\");
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+void focasWork2( string dp1, unsigned connstate)
+{
+  setConnStateField(connstate, \"tfConnected2\");
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+" 0
+ E E E E 1 -1 -1 0  50 40
+""0  1
+E "void focasCreateNewDp(string dp)
+{
+  dpCreate(dp, \"_FocasConnection\");
+  // initialize only specific DPEs, where default in inappropriate
+  dpSet( dp + \".Config.LifebeatTimeout:_original.._value\",  10,
+         dp + \".Config.ReconnectTimeout:_original.._value\",  10);
+
+  // create redundant dp
+  // TODO:
+//   dpCreate(dp + \"_2\", \"_FocasConnection\");
+//   dpSet( dp + \"_2.Config.LifebeatTimeout:_original.._value\",  10,
+//          dp + \"_2.Config.ReconnectTimeout:_original.._value\",  10);
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+void focasSetDp()
+{
+  string sHost=\"\";
+  int    iPort=0, iLifebeatTimeout=0, iReconnectTimeout;
+  bool   bActive=false, bSetInvalid, bDoGQ;
+
+  string     sDp, sDp2;
+  dyn_string dsPlc = cmbPlc.items, ds;
+
+  if ( !getUserPermission(4) )
+  {
+    ChildPanelOnCentralModal(\"vision/MessageWarning\",
+      getCatStr(\"para\",\"warning\"),
+      makeDynString(getCatStr(\"general\",\"permission\")));
+    return;
+  }
+
+  sDp = \"_\" + cmbPlc.text;
+  sDp2 = sDp+\"_2\";
+
+  if ( sDp == \"\" ) return;
+
+  if ( !dpExists(sDp) )
+  {
+    dpCreate(sDp, \"_FocasConnection\");
+
+//  TODO:   if ( !dpExists(sDp2) )
+//       dpCreate(sDp2, \"_FocasConnection\");
+  }
+
+  sHost    = tfHost.text;
+  iPort    = spbPort.text;
+  iLifebeatTimeout = spbLifebeatTimeout.text;
+  iReconnectTimeout = spbReconnectTimeout.text;
+  bActive  = chkActive.state(0);
+  bSetInvalid  = chkSetInvalid.state(0);
+  bDoGQ  = chkGQ.state(0);
+
+  for ( int i = 1; i <= dynlen(dsPlc); i++ )
+    dsPlc[i] = \"_\" + dsPlc[i];
+
+  dpSet( sDp + \".Config.Address:_original.._value\", sHost + \":\" + iPort,
+         sDp + \".Config.LifebeatTimeout:_original.._value\", iLifebeatTimeout,
+         sDp + \".Config.ReconnectTimeout:_original.._value\", iReconnectTimeout,
+         sDp + \".Config.EstablishmentMode:_original.._value\",  bActive,
+         sDp + \".Config.SetInvalidBit:_original.._value\",  bSetInvalid,
+         sDp + \".Config.AcquireValuesOnConnect:_original.._value\",  bDoGQ);
+
+  // remove redu dps from list of PLCs
+  for ( int i = dynlen(dsPlc); i > 0; i-- )
+  {
+    ds = strsplit(dsPlc[i],\"_\");
+    if ( dynlen(ds) >= 2 && ds[dynlen(ds)] == \"2\" )
+    {
+      dynRemove(dsPlc,i);
+      continue;
+    }
+    dsPlc[i] = dpSubStr(dsPlc[i],DPSUB_DP);
+    sDp = dpSubStr(sDp,DPSUB_DP);
+
+    if ( strpos(dsPlc[i], \"_\", 0) != -1 )
+      dsPlc[i] = strltrim(dsPlc[i], \"_\");
+  }
+
+  return;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+void readDpWritePanel(string sPlc)
+{
+  string sHost, sAddress;
+  unsigned uPort = 8193, uLifebeatTimeout, uReconnectTimeout, eMode;
+  bool   bActive=false, bSetInvalid, bDoGQ;
+  dyn_string ds;
+
+  dpGet( sPlc + \".Config.Address:_online.._value\",  sAddress,
+         sPlc + \".Config.LifebeatTimeout:_online.._value\",  uLifebeatTimeout,
+         sPlc + \".Config.ReconnectTimeout:_online.._value\", uReconnectTimeout,
+         sPlc + \".Config.EstablishmentMode:_online.._value\", eMode,
+         sPlc + \".Config.SetInvalidBit:_online.._value\",  bSetInvalid,
+         sPlc + \".Config.AcquireValuesOnConnect:_online.._value\",  bDoGQ);
+
+  ds = strsplit(sAddress, \":\");
+  if (dynlen(ds) == 2)
+  {
+    sHost = ds[1];
+    uPort = (unsigned)ds[2];
+  }
+  bActive = eMode;
+
+  tfHost.text        = sHost;
+  spbPort.text       = uPort;
+  spbLifebeatTimeout.text    = uLifebeatTimeout;
+  spbReconnectTimeout.text    = uReconnectTimeout;
+  chkActive.state(0) = bActive;
+  chkSetInvalid.state(0) = bSetInvalid;
+  chkGQ.state(0) = bDoGQ;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+void focasShapesEnabled(bool state)
+{
+  cmbPlc.enabled      = state;
+  chkActive.enabled   = state;
+  chkSetInvalid.enabled   = state;
+  chkGQ.enabled   = state;
+  cmdRemoveDp.enabled = state;
+  tfHost.enabled      = state;
+  spbPort.enabled     = state;
+  spbLifebeatTimeout.enabled  = state;
+  spbReconnectTimeout.enabled  = state;
+  cmdGQ.enabled       = state;
+  cmdApply.enabled    = state;
+  cmdOk.enabled       = state;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//        set connection string and color depending on conn state
+//
+setConnStateField(uint uiConnState, string sShape)
+{
+
+  string sBackCol, sForeCol;
+
+  if ( uiConnState == 3 )
+  {
+    sBackCol = \"green\";
+    sForeCol = \"black\";
+  }
+  else if ( uiConnState == 1 || uiConnState == 5 )
+  {
+    sBackCol = \"red\";
+    sForeCol = \"white\";
+  }
+  else
+  {
+    sBackCol = \"yellow\";
+    sForeCol = \"black\";
+  }
+
+  setMultiValue(sShape, \"text\",    getCatStr(\"mqtt\", \"mqttConnState\"+uiConnState),
+                sShape, \"backCol\", sBackCol,
+                sShape, \"foreCol\", sForeCol);
+}
+
+
+
+
+
+
+
+
+" 0
+ 3
+"CBRef" "1"
+"EClose" "main()
+{
+  PanelOff();
+}" 0
+
+"dpi" "120"
+0 0 0
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+3
+LANG:10000 6 Layer1
+LANG:10001 6 Layer1
+LANG:10027 6 Layer1
+30 63
+"frPLC"
+""
+1 10 90 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+63 0 0 0 0 0
+E E E
+1
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 1.003780718336484 0 1.73469387755102 -0.03780718336484057 -63.38775510204081 0 E 10 40 540 90
+3
+LANG:10000 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,75,0,0,0,0,0
+0 3
+LANG:10000 10 Verbindung
+LANG:10001 10 Connection
+LANG:10027 22 Подключение
+13 19
+"cmdApply"
+""
+1 335 440 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 23 Änderungen übernehmen
+LANG:10001 14 Accept changes
+LANG:10027 37 Применить изменения
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  333 438 431 466
+
+T 
+3
+LANG:10000 11 Übernehmen
+LANG:10001 5 Apply
+LANG:10027 18 Применить
+"main()
+{
+  if ( cmbPlc.text == \"\" )
+    return;
+  else
+    focasSetDp();
+}
+
+
+" 0
+ E E E
+13 20
+"cmdCancel"
+""
+1 435 440 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 46 Panel schließen, ohne eine Aktion auszulösen
+LANG:10001 26 Close panel without action
+LANG:10027 52 Закрыть без выполн. операции
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  433 438 531 466
+
+T 
+3
+LANG:10000 9 Abbrechen
+LANG:10001 6 Cancel
+LANG:10027 16 Отменить
+"main()
+{
+  PanelOff();
+}" 0
+ E E E
+13 47
+"cmdHelp"
+""
+1 9 438 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+47 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 20 Online Hilfe öffnen
+LANG:10001 16 Open online help
+LANG:10027 14 Справка
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  8 438 106 466
+
+T 
+3
+LANG:10000 5 Hilfe
+LANG:10001 4 Help
+LANG:10027 14 Справка
+"main()
+{
+  std_help( \"sbus_para\" );  
+}
+
+
+" 0
+ E E E
+22 59
+"cmbPlc"
+""
+1 20 24 E E E 1 E 1 E N {0,0,0} E N "_Window" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 21 Verbindung auswählen
+LANG:10001 17 Select connection
+LANG:10027 37 Выбрать подключение
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  18 23 392 49
+0
+
+E
+"main()
+{
+  int pos;
+  dyn_string dsPlc, dsTemp;
+
+  cmbPlc.enabled = false;
+
+  dsPlc = cmbPlc.items;
+  pos = cmbPlc.selectedPos;
+
+  readDpWritePanel(\"_\" + dsPlc[pos]);
+
+  cmbPlc.enabled = true;
+}
+
+
+
+
+
+" 0
+
+E
+ 0 0
+20 72
+"chkActive"
+""
+1 35 55 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+67 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 35 Verbindung zur Steuerung herstellen
+LANG:10001 27 Establish connection to PLC
+LANG:10027 53 Установить подключение к ПЛК
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  33 53 162 80
+1
+T 
+3
+LANG:10000 5 Aktiv
+LANG:10001 6 Active
+LANG:10027 14 Активно
+
+0 
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+E E
+0 0 0 0 0
+1
+E E
+EE1 137 0 "" 0
+0
+2 90
+"txtHost"
+""
+1 28 -886 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+85 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 0.9999999999999999 0 1 3.552713678800501e-15 -25 0 E 30 150 63 165
+0 2 0 "0s" 0 0 0 192 0 0  30 150 1
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 5 Host:
+LANG:10001 5 Host:
+LANG:10027 9 Хост:
+2 93
+"txtTimeout"
+""
+1 272 158 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+88 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 274 160 375 175
+0 2 0 "0s" 0 0 0 192 0 0  274 160 1
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 17 Lifebeat Timeout:
+LANG:10001 17 Lifebeat Timeout:
+LANG:10027 17 Lifebeat Timeout:
+2 94
+"txtSec1"
+""
+1 481 324 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+89 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 483 159 514 174
+0 2 0 "0s" 0 0 0 192 0 0  483 159 1
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 5 [sec]
+LANG:10001 5 [sec]
+LANG:10027 5 [sec]
+30 95
+"frSettings"
+""
+1 10 327 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+90 0 0 0 0 0
+E E E
+1
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 1.003780718336484 0 0.5606796087081174 -0.03780718336484061 44.53883521626943 0 E 10 90 540 330
+3
+LANG:10000 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,75,0,0,0,0,0
+0 3
+LANG:10000 13 Einstellungen
+LANG:10001 8 Settings
+LANG:10027 18 Настройки
+21 96
+"spbLifebeatTimeout"
+""
+1 400 155 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+91 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 30 Timeout eingeben (in Sekunden)
+LANG:10001 26 Enter timeout (in seconds)
+LANG:10027 26 Enter timeout (in seconds)
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0  398 153 477 180
+0
+
+E
+E
+E
+
+N 0 99999 1 10 1 1
+14 97
+"tfHost"
+""
+1 122 120 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+92 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 30 Hostname / IP Adresse eingeben
+LANG:10001 27 Enter hostname / IP address
+LANG:10027 42 Введите имя или IP хоста
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0  120 118 249 145
+3 "0s" 0 0 0 0 0 -1  E E E
+2 99
+"txtPort"
+""
+1 288 125 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+94 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 274 125 302 140
+0 2 2 "0s" 0 0 0 193 0 0  288 125 1
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0 3
+LANG:10000 5 Port:
+LANG:10001 5 Port:
+LANG:10027 9 Порт:
+21 100
+"spbPort"
+""
+1 400 120 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+95 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 20 Port Nummer eingeben
+LANG:10001 17 Enter port number
+LANG:10027 36 Введите номер порта
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0  398 118 477 145
+0
+
+E
+E
+E
+
+N 0 65535 1 5050 1 1
+13 103
+"cmdGQ"
+""
+1 -300 157 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+98 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 14 Generalabfrage
+LANG:10001 13 General Query
+LANG:10027 21 Общий опрос
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0  28 253 157 280
+
+T 
+3
+LANG:10000 14 Generalabfrage
+LANG:10001 13 General Query
+LANG:10027 21 Общий опрос
+"main()
+{
+  string sDp;
+  int    iGQ;
+
+  sDp = \"_\" + cmbPlc.text;
+  dpSet(sDp + \".Command.GQ:_original.._value\", 1);
+}
+
+
+
+" 0
+ E E E
+30 104
+"frCommands"
+""
+1 10 440 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+99 0 0 0 0 0
+E E E
+1
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 1.003780718336484 0 0.5555555555555556 -0.03780718336484061 46.11111111111111 0 E 10 340 540 440
+3
+LANG:10000 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,75,0,0,0,0,0
+0 3
+LANG:10000 7 Befehle
+LANG:10001 8 Commands
+LANG:10027 14 Команды
+2 105
+"txtConnected"
+""
+1 28 317 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+100 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 30 319 105 350
+0 2 0 "0s" 0 0 0 192 0 0  30 319 2
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 13 Verb. Status:
+LANG:10001 12 Conn. State:
+LANG:10027 20 Сост.подкл.
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+30 108
+"frState"
+""
+1 10 440 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+103 0 0 0 0 0
+E E E
+1
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 0.4877126654064272 0 1.202020202020202 5.122873345935727 -113.6868686868687 0 E 10 340 540 440
+3
+LANG:10000 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,75,0,0,0,0,0
+0 3
+LANG:10000 6 Status
+LANG:10001 5 State
+LANG:10027 9 Сост.
+14 109
+"tfConnected"
+""
+1 122 317 E E E 0 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+104 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 17 Verbindungsstatus
+LANG:10001 16 Connection state
+LANG:10027 41 Состояние подключения
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  120 315 249 340
+3 "0s" 0 0 0 0 0 -1  E E E
+13 114
+"cmdNewDp"
+""
+1 539 -5 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+107 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 48 Neue Verbindung mit Grundeinstellungen erstellen
+LANG:10001 45 Create a new connection with default settings
+LANG:10027 98 Создать новое подключение с настройками по умолчанию
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0  403 23 532 50
+
+T 
+3
+LANG:10000 9 Erstellen
+LANG:10001 6 Create
+LANG:10027 14 Создать
+"main()
+{
+  string     sPlc = \"_\" + cmbPlc.text, sInput = cmbPlc.text;
+  dyn_float  df;
+  dyn_string dsPlc = cmbPlc.items, ds;
+
+  ChildPanelOnCentralModalReturn(\"vision/stringInput.pnl\", // define dp name
+    getCatStr(\"da\",\"createdp\"),
+    makeDynString(getCatStr(\"para\",\"apc_inputdpname\"), sInput),df,ds);
+
+  if ( dynlen(df) < 1 || df[1] == 0 ) return;
+
+  sPlc = (dynlen(ds)>0)?ds[1]:\"\";
+  sPlc = strrtrim(strltrim(sPlc));
+
+  if ( strpos(sPlc, \" \") != -1 || strpos(sPlc, \"__\") != -1 ||
+       patternMatch(\"*_1\", sPlc) || patternMatch(\"*_2\", sPlc) || patternMatch(\"*_\", sPlc) )
+  {
+    ChildPanelOnCentralModal(\"vision/MessageWarning\", // dp name invalid
+      getCatStr(\"para\",\"warning\"),
+      makeDynString(getCatStr(\"para\",\"dpNameInvalid\")));
+    return;
+  }
+  else if ( (sPlc == \"\") || (sPlc == \"_\") )
+  {
+    ChildPanelOnCentralModal(\"vision/MessageWarning\", // dp name empty
+      getCatStr(\"para\",\"warning\"),
+      makeDynString(getCatStr(\"para\",\"apc_dpleer\")));
+    return;
+  }
+  else if ( dpExists(\"_\"+sPlc) || dpExists(sPlc) )
+  {
+    ChildPanelOnCentralModal(\"vision/MessageWarning\", // dp exists
+      getCatStr(\"para\",\"warning\"),
+      makeDynString(getCatStr(\"sim\",\"sim_exists\")));
+    return;
+  }
+
+  if ( strpos(sPlc, \"_\", 0) != -1 )
+    sPlc = strltrim(sPlc, \"_\");
+
+  // enable the shapes again, because the first PLC has been created
+  if (dynlen(dsPlc) < 1)
+    focasShapesEnabled(TRUE);
+
+  if (sPlc != \"\" || sPlc != \"_\")
+    focasCreateNewDp(\"_\" + sPlc);
+
+  readDpWritePanel(\"_\" + sPlc);
+
+  cmbPlc.text = sPlc;
+  dsPlc = cmbPlc.items;
+
+  dynAppend(dsPlc, sPlc);
+  dynSortAsc(dsPlc);
+  dynUnique(dsPlc);
+
+  cmbPlc.items = dsPlc;
+  cmbPlc.selectedPos = dynContains(dsPlc,sPlc);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" 0
+ E E E
+13 115
+"cmdRemoveDp"
+""
+1 584 25 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+108 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 20 Verbindung entfernen
+LANG:10001 17 Remove connection
+LANG:10027 37 Удалить подключение
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0  403 53 532 80
+
+T 
+3
+LANG:10000 9 Entfernen
+LANG:10001 6 Remove
+LANG:10027 14 Удалить
+"main()
+{
+  int        iPos = cmbPlc.selectedPos;
+  string     sPlc = cmbPlc.text, sPlc2 = sPlc + \"_2\",
+             dp = \"_\" + sPlc, dp_2 = dp + \"_2\";
+  dyn_float  df;
+  dyn_string dsPlc = cmbPlc.items, ds;
+  
+  if ( sPlc == \"\" ) return;
+  
+  ChildPanelOnCentralModalReturn(\"vision/MessageInfo\", getCatStr(\"para\",\"information\"),
+    makeDynString(getCatStr(\"diskspace\",\"dpDelete\"),
+                  getCatStr(\"para\",\"yes\"),
+                  getCatStr(\"para\",\"no\")),
+    df, ds);
+
+  if (!df[1]) return;
+  
+  dynRemove(dsPlc, iPos);
+  cmbPlc.items = dsPlc;
+  
+  if ( dynlen(dsPlc) < 1 )
+  {
+    cmbPlc.text = \"\";
+    sbusShapesEnabled(FALSE);
+  }
+  else
+  {
+    if ( iPos < 1 ) iPos = 1;
+    if ( iPos > dynlen(dsPlc) ) iPos = dynlen(dsPlc);
+    
+    cmbPlc.selectedPos(iPos);
+    cmbPlc.text = dsPlc[iPos];
+  }
+  
+  delay(0,501);
+  
+  if ( dpExists(dp) )   dpDelete(dp);
+  if ( dpExists(dp_2) ) dpDelete(dp_2);
+}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E E E
+2 118
+"txtConnected2"
+""
+1 301 317.0000000000001 E E E 0 E 0 E N {0,0,0} E N "_Transparent" E E
+ E E
+109 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 303 319.0000000000001 378 350
+0 2 0 "0s" 0 0 0 192 0 0  303 319.0000000000001 2
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 13 Verb. Status:
+LANG:10001 12 Conn. State:
+LANG:10027 20 Сост.подкл.
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+30 121
+"frState2"
+""
+1 10 440 E E E 0 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+112 0 0 0 0 0
+E E E
+1
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E 0.4877126654064272 0 1.202020202020202 278.1228733459357 -113.6868686868686 0 E 10 340 540 440
+3
+LANG:10000 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,75,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,75,0,0,0,0,0
+0 3
+LANG:10000 25 Status - Redundanter Host
+LANG:10001 22 State - Redundant Host
+LANG:10027 37 Состояние рез. хоста
+14 122
+"tfConnected2"
+""
+1 395 317.0000000000001 E E E 0 E 0 E N "_WindowText" E N "_3DFace" E E
+ E E
+113 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 36 Verbindungsstatus (redundanter Host)
+LANG:10001 33 Connection state (redundant host)
+LANG:10027 83 Состояние подключения (резервированный хост)
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  393 315 522 340
+3 "0s" 0 0 0 0 0 -1  E E E
+13 127
+"cmdOk"
+""
+1 235 440 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+116 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 44 Änderungen übernehmen und Panel schließen
+LANG:10001 30 Accept changes and close panel
+LANG:10027 64 Принять изменения и закрыть панель
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  233 438 331 466
+
+T 
+3
+LANG:10000 2 OK
+LANG:10001 2 OK
+LANG:10027 2 OK
+"main()
+{
+  if ( cmbPlc.text == \"\" )
+  {
+    PanelOff();
+    return;
+  }
+  else
+  {
+    PanelOff();
+    focasSetDp();
+  }
+}
+
+
+
+
+
+
+" 0
+ E E E
+2 130
+"PRIMITIVE_TEXT1"
+""
+1 272.5 193 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+117 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 274.5 195 392 210
+0 2 0 "0s" 0 0 0 192 0 0  274.5 195 1
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 18 Reconnect Timeout:
+LANG:10001 18 Reconnect Timeout:
+LANG:10027 18 Reconnect Timeout:
+2 131
+"PRIMITIVE_TEXT2"
+""
+1 481.5 359 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+118 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 483.5 194 514 209
+0 2 0 "0s" 0 0 0 192 0 0  483.5 194 1
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0 3
+LANG:10000 5 [sec]
+LANG:10001 5 [sec]
+LANG:10027 5 [sec]
+21 132
+"spbReconnectTimeout"
+""
+1 400 190 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+119 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 30 Timeout eingeben (in Sekunden)
+LANG:10001 26 Enter timeout (in seconds)
+LANG:10027 26 Enter timeout (in seconds)
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,40,0,0,0,0,0
+0  398 188 477.5 215
+0
+
+E
+E
+E
+
+N 0 99999 1 10 1 1
+20 135
+"chkSetInvalid"
+""
+1 35 155 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+120 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 44 Ungültig bit setzten bei Verbindungsverlust
+LANG:10001 34 Set invalid bit on connection loss
+LANG:10027 34 Set invalid bit on connection loss
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  33 153 162 180
+1
+T 
+3
+LANG:10000 19 Setze Ungültig-Bit
+LANG:10001 15 Set invalid bit
+LANG:10027 15 Set invalid bit
+
+0 
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+E E
+0 0 0 0 0
+1
+E E
+EE20 136
+"chkGQ"
+""
+1 35 190 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+121 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 24 GA bei Verbindungsaufbau
+LANG:10001 30 GQ on connection establishment
+LANG:10027 30 GQ on connection establishment
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10001 26 Arial,-1,13,5,50,0,0,0,0,0
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  33 188 222 215
+1
+T 
+3
+LANG:10000 24 GQ bei Verbindungsaufbau
+LANG:10001 13 GQ on connect
+LANG:10027 13 GQ on connect
+
+0 
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+E E
+0 0 0 0 0
+1
+E E
+EE0
+LAYER, 1 
+3
+LANG:10000 6 Layer2
+LANG:10001 6 Layer2
+LANG:10027 6 Layer2
+0
+LAYER, 2 
+3
+LANG:10000 6 Layer3
+LANG:10001 6 Layer3
+LANG:10027 6 Layer3
+0
+LAYER, 3 
+3
+LANG:10000 6 Layer4
+LANG:10001 6 Layer4
+LANG:10027 6 Layer4
+0
+LAYER, 4 
+3
+LANG:10000 6 Layer5
+LANG:10001 6 Layer5
+LANG:10027 6 Layer5
+0
+LAYER, 5 
+3
+LANG:10000 6 Layer6
+LANG:10001 6 Layer6
+LANG:10027 6 Layer6
+0
+LAYER, 6 
+3
+LANG:10000 6 Layer7
+LANG:10001 6 Layer7
+LANG:10027 6 Layer7
+0
+LAYER, 7 
+3
+LANG:10000 6 Layer8
+LANG:10001 6 Layer8
+LANG:10027 6 Layer8
+0
+3 0 "PANEL_REF0" -1
+"layoutAlignment" "AlignCenter"
+"" ""
+"objects_parts/STD_OBJECTS/ButtonBarBackground.pnl" 0 650 T 71 1.142284569138277 0 1 -5 -220
+0
+0

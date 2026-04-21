@@ -1,0 +1,75 @@
+configNOK,Konfiguration nicht OK
+configOK,Konfiguration OK
+configUnused,Konfiguration nicht in Verwendung
+configChanged,Gerät $device - Konfiguration geändert
+internetNOK,Internet nicht OK
+internetOK,Internet OK
+internetUnused,Internet nicht in Verwendung
+peripheryNOK,Peripherie nicht OK
+peripheryOK,Peripherie OK
+peripheryUnused,Peripherie nicht in Verwendung
+runtimeNOK,Laufzeit nicht OK
+runtimeOK,Laufzeit OK
+runtimeUnused,Laufzeit nicht in Verwendung
+updateNOK,Update nicht OK
+updateOK,Update OK
+updateUnused,Update nicht in Verwendung
+manager_not_running,Manager läuft nicht: $1
+changeDesc,Anzeigenamen ändern
+nameUsed,Der Name wird bereits verwendet!
+nameEmpty,Kein Name angegeben!
+nameNotAllowed,Der Name ist nicht erlaubt!
+box-gpio,SIMATIC WinCC OA IOT Box
+box+gpio,SIMATIC WinCC OA IOT Box
+box-gpio_short,IOT Box
+box+gpio_short,IOT Box
+OFS,OPA Filestore
+local,Lokal
+remote,Remote IOT Box
+filename,Dateiname
+size,Größe
+link,Link
+createdAt,Erstellt am
+noOpaConn,Zur Zeit ist keine OPA-Verbindung aufrecht. Der OPA Filestore ist daher nicht erreichbar!
+noOpaConnGlobal,Zur Zeit ist keine Verbindung zum OPA aufrecht.
+OfsGlobal,OPA Filestore global
+OfsDevice,OPA Filestore Gerät
+OfsSelectSource,Datenquelle wählen
+OfsSelectDirectory,Speicherort wählen
+EnterFileName,Dateiname eingeben
+placeholderFilename,Dateiname eingeben ...
+loading,Laden ...
+uploadSuccess,Der Datei-Upload war erfolgreich.
+uploadNoSuccess,Der Datei-Upload ist fehlgeschlagen.
+deleteTags,Wollen Sie die folgenden Tags wirklich löschen?
+deleteTag,Wollen Sie das folgende Tag wirklich löschen?
+userOpt,Operator
+userRoot,Manager
+userMain,Maintainer
+noOpaUserData,Keine Benutzerdaten für das OPA Portal vorhanden.
+unallowedChar,Der Name enthält unerlaubte Zeichen! Diese Zeichen werden automatisch ersetzt!
+importNameUsed,Tagname wird bereits verwendet! Betreffende Tags wurden beim Import umbenannt!
+importUnallowedChar,Unerlaubte Zeichen in Tagnamen gefunden! Diese Zeichen werden automatisch ersetzt!
+importDuplicateAddress,Doppelte Adresse gefunden, aber nicht importiert!
+unallowedCharNoChange,Der Name enthält unerlaubte Zeichen!
+fileExists,Diese Datei exisitiert bereits. Wollen Sie die Datei überschreiben?
+fileNotMoved,Datei im Ziel schon vorhanden. Verschieben nicht möglich
+fileNoWriteAccess,Kann Datei nicht uberschreiben. Keine Schreibberechtung für dieser Datei.
+fileWriteOpenFailed,Kann Datei nicht schreiben. Diese Datei ist möglich im Verwendung.
+close,Schließen
+UpdateAvailable,Update verfügbar\nVersion: $1\nBeschreibung: $2
+Updating,Updating
+Uptodate, 
+User,Benutzer:
+Role,Rolle:
+noOpaConnGlobalAdmin,Warnung: Zur Zeit ist keine Verbindung zum OPA aufrecht. Wollen Sie Einstellungen ändern?
+noOpaConnGlobalNoAdmin,Warnung: Zur Zeit ist keine Verbindung zum OPA aufrecht. Kontaktieren Sie Ihren Administrator!
+inactivePlc,SPS $1 wurde vom Benutzer deaktiviert.
+connectedPlc,SPS $1 ist verbunden.
+disconnectedPlc,SPS $1 ist nicht verbunden.
+cantSave,Diese Funktion nutzt aktuell nur lokales Speichern. Das ist mit dem Web-Client nicht möglich.
+Restart,Neu starten
+RestartSafety,Wollen sie den Server wirklich neustarten? Das System verarbeitet während des Neustarts keine Daten. Das UI wird automatisch beendet und muss manuell neu gestartet werden.
+Shutdown,Herunterfahren
+ShutdownSafety,Wollen sie wirklich den Server herunterfahren? Das System verarbeitet keine Daten mehr bis es manuell wieder gestartet wird.
+pmonAddManagerFailed,Pmon konnte  Manager '$manager' mit Option '$options' an Iindex '$index' mit Kommando '$action' nicht hinzufügen - Result: '$result'

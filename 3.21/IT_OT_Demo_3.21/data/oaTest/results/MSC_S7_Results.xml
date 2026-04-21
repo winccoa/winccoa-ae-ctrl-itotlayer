@@ -1,0 +1,59 @@
+<testsuites>
+ <testsuite time="0" failures="2" timestamp="1970-01-01T00:00:00.000+00:00" name="MSC_S7_Results." hostname="IOT2050two" skipped="0" tests="15" errors="0">
+  <testcase time="1.846" name="MSC-AUTO-0000-SETUP" assertions="2"/>
+  <testcase time="31.557" name="MSC-AUTO-0210" assertions="10">
+   <failure message="2024.06.04 16:33:50.859: Something failed. See also stack trace for more information: &#xa;  Passed : 9&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_S7_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:34:22.400: (FAILED) Testcase 'MSC-AUTO-0210' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstMnspS7::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7.ctl:419
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7.ctl:445, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.304
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="0.486" name="MSC-AUTO-0045" assertions="3"/>
+  <testcase time="31.454" name="MSC-AUTO-0200" assertions="10">
+   <failure message="2024.06.04 16:33:19.405: Something failed. See also stack trace for more information: &#xa;  Passed : 9&#xa;  Skipped : 0&#xa;  Failed : 1&#xa;  Errors : 0&#xa;Test suite: MSC_S7_Results&#xa;Test project: &#xa;Platform: DebianGNU/Linux[ebia]&#xa;Host name: IOT2050two&#xa;IP:&#xa;  127.0.1.1">2024.06.04 16:33:50.842: (FAILED) Testcase 'MSC-AUTO-0200' failed, the condition is NOT TRUE, 
+  Note: Check result of CMD done
+  StackTrace: 
+	void TstMnsp::checkCmdValueResponse(dyn_string &amp;dsMqttCommDps, dyn_string &amp;dsCmdValues, string &amp;sTagDp, const string &amp;sExpectedResult, const int iMaxCnt = 100) at tstMnsp.ctl:1119
+	int TstMnsp::checkTagAquisition(const string &amp;sDeviceName, const mapping &amp;mExpectedTagAqui, const string &amp;sCommandFile, const mapping &amp;mExpectedCmdResult) at tstMnsp.ctl:1003
+	int TstMnspS7::startTestCase(const string &amp;sTcId) at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7.ctl:413
+	int OaTestBase::startSingle(const string &amp;testCaseId) at OaTestBase.ctl:328
+	int OaTestBase::startAll() at OaTestBase.ctl:295
+	void main() at /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7.ctl:445, 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+  Duration: 20.303
+  Location: 
+    Script: /persistent_massdata/MNSP_Connect/scripts/tests/suite_mnsp_S7.ctl
+    Library: /opt/WinCC_OA/3.19/scripts/libs/classes/oaTest/OaTestBase.ctl
+    Line: 534
+
+</failure>
+  </testcase>
+  <testcase time="0.925" name="MSC-AUTO-0002" assertions="49"/>
+  <testcase time="1.611" name="MSC-AUTO-0010" assertions="64"/>
+  <testcase time="1.788" name="MSC-AUTO-0271" assertions="17"/>
+  <testcase time="1.932" name="MSC-AUTO-0003" assertions="87"/>
+  <testcase time="0.835" name="MSC-AUTO-0020" assertions="49"/>
+  <testcase time="11.299" name="MSC-AUTO-0043" assertions="3"/>
+  <testcase time="12.624" name="MSC-AUTO-0270" assertions="17"/>
+  <testcase time="0.686" name="MSC-AUTO-0021" assertions="30"/>
+  <testcase time="9.672" name="MSC-AUTO-0001" assertions="34"/>
+  <testcase time="1.665" name="MSC-AUTO-0022" assertions="15"/>
+  <testcase time="9.638" name="MSC-AUTO-0041" assertions="3"/>
+ </testsuite>
+</testsuites>
