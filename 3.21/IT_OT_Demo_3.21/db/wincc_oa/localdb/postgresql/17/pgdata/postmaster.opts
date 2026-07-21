@@ -1,1 +1,0 @@
-/usr/lib/postgresql/17/bin/postgres "-D" "/home/debian/Documents/IT_OT_Demo_3.21/db/wincc_oa/localdb/postgresql/17/pgdata" "-k /home/debian/.winccoa"

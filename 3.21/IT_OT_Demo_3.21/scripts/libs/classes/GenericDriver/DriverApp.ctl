@@ -9,6 +9,7 @@
 //--------------------------------------------------------------------------------
 // Libraries used (#uses)
 #uses "pmon.ctl"
+#uses "pmonInterface"
 #uses "classes/EBCsv"
 #uses "classes/EBXml"
 #uses "EB_Package_Base/EB_Api"
@@ -613,7 +614,7 @@ class DriverApp
     postDeleteDeviceDp(sDeviceKey, mTmpParams);
 
     // Clear all pending logs of the device
-    logClearAll("*", sDeviceId);
+    logClearAll( sDeviceId);
 
     mResult[WssConst::DATA] = TRUE;
 
@@ -649,7 +650,7 @@ class DriverApp
 
       // Try to stop manager within 30 sec (120 * 0.250)
       int i = 120;
-      for (; !isDbgFlag(DriverConst::DEBUG_NO_ADD_REMOVE_MAN) && isManagerRunning(host1, sManager, FALSE) && i > 0; i--)
+      for (; !isDbgFlag(DriverConst::DEBUG_NO_ADD_REMOVE_MAN) && !isManagerRunning(host1, sManager, FALSE) && i > 0; i--)
       {
         delay(0, 250);
       }
@@ -2328,62 +2329,36 @@ protected int setActiveForTag(const string &sNodeId, bool bActive)
       return TRUE;
     }
 
-    dyn_dyn_string ddsNames, ddsState;
     int iPmonPort = paCfgReadValueDflt(getPath(CONFIG_REL_PATH, "config"), "general", "pmonPort", 4999);
-
     string sHostName = sHostname == getHostname() ? "localhost" : sHostname;
-    int tcpOpenRc = tcpOpen(sHostName, iPmonPort);
-    string  sProjUser = "", sProjPassword = "";
 
-    bool errList1, errList2;
-    errList1 = pmon_query(sProjUser + "#" + sProjPassword + "#MGRLIST:LIST",  sHostName, iPmonPort, ddsNames, 0, 1);
-    errList2 = pmon_query(sProjUser + "#" + sProjPassword + "#MGRLIST:STATI", sHostName, iPmonPort, ddsState, 0, 1);
+    // Use the standard PMON interface. The former implementation opened an
+    // extra TCP socket and then called pmon_query(), which could block the
+    // mnsp.ctl configuration callback after its first package operation.
+    dyn_mapping dmManagers = getListOfManagerOptions(iPmonPort, sHostName);
+    dyn_mapping dmStates   = getListOfManagersStati(iPmonPort, sHostName);
 
-    tcpClose(tcpOpenRc);
-
-    bool bRet;
-    bool bManagerMatch;
-
-    for (int i = 1; i <= dynlen(ddsNames) && i <= dynlen(ddsState) && !bManagerMatch; i++)
+    for (int i = 1; i <= dynlen(dmManagers) && i <= dynlen(dmStates); i++)
     {
-      bManagerMatch = ddsNames[i][1] == sManagerName;
-      if (ddsNames[i][1] == "WCCOActrl" && strpos(sManagerName, "WCCOActrl") == 0) //CTRL script
+      string sComponent = strrtrim(strltrim(dmManagers[i].value("Component", "")));
+      string sOptions   = strrtrim(strltrim(dmManagers[i].value("StartOptions", "")));
+      bool bManagerMatch = sComponent == sManagerName;
+
+      if (sComponent == "WCCOActrl" && strpos(sManagerName, "WCCOActrl ") == 0) // CTRL script
       {
-        for (int j = dynlen(ddsNames[i]); j > 1 && !bManagerMatch; j--) //search for CTRL script
-        {
-          if (patternMatch("*.ctl", ddsNames[i][j]))
-          {
-            if (sManagerName == "WCCOActrl" + " " + ddsNames[i][j])
-            {
-              bManagerMatch = TRUE;
-            }
-            else
-            {
-              j = 1; //wrong CTRL script
-            }
-          }
-        }
+        string sCtrlScript = substr(sManagerName, strlen("WCCOActrl "));
+        bManagerMatch = strpos(sOptions, sCtrlScript) >= 0;
       }
 
-      if(bManagerMatch)
+      if (bManagerMatch)
       {
-        bRet = ddsState[i][1] == (bCheckForRunning ? 2 : 0); //requested manager is in state 2 (running)
+        int iRequestedState = bCheckForRunning ? MAN_STATE_RUNNING : MAN_STATE_NOT_RUNNING;
+        return dmStates[i].value("State", MAN_STATE_UNKNOWN) == iRequestedState;
       }
     }
-    if (!bRet)
-    {
-      touchPackageFiles(sManagerName);
-    }
 
-  	return bRet;
-  }
-
-  private void touchPackageFiles(string sManagerName="")
-  {
-    string sFile = getPath(DATA_REL_PATH, "packages/state.box");
-    string sCmd = "touch " + sFile;
-    DebugFTN(DriverConst::DEBUG_DEVICE, "isManagerRunning -> false; touch file", sManagerName, sCmd);
-    system(sCmd);
+    // A manager that is no longer in PMON is also considered stopped.
+    return !bCheckForRunning;
   }
 
   private dyn_mapping getTagsForDevice(const string &sDeviceKey)

@@ -1,7 +1,7 @@
 [general]
-pvss_path = "/opt/WinCC_OA/3.20"
-proj_path = "/opt/WinCC_OA/3.20/TestFramework_3.20"
-proj_path = "/home/debian/Documents/IT_OT_Demo"
+pvss_path = "C:/Siemens/Automation/WinCC_OA/3.20"
+proj_path = "C:/Siemens/Automation/WinCC_OA/3.20/TestFramework_3.20"
+proj_path = "C:/Users/z004u6jf/Desktop/winccoa-ae-ctrl-itotlayer-main/3.20/IT_OT_Demo"
 proj_version = "3.20"
 langs = "en_US.utf8"
 lang = "en_US.utf8"

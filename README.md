@@ -22,7 +22,7 @@ This ensures faster engineering, consistency, and scalability for IT/OT integrat
 
 **Versions:** WinCC OA 3.21, WinCC OA 3.20
 
-**Operating System:** Linux 
+**Operating System:** All supported WinCC OA operating systems
 
 
 ## Key Features
@@ -78,7 +78,7 @@ The IT/OT layer application example is a blueprint for fast, error-free IT/OT in
 This repository includes the project folder, documentation, and the legal information of the application example, organized as following:
 - **IT_OT_Demo:** The application example project for 3.20 version
 - **IT_OT_Demo_3.21:** The application example project for 3.21 version
-- **IT_OT_Demo_Datasheet_V1.0.pdf:** HowTo of Implementation, Installation and Usage of the application example
+- **IT_OT_Demo_Datasheet_V1.2.pdf:** HowTo of Implementation, Installation and Usage of the application example
 - **LEGAL_INFO.md:** Legal Information
 - **LICENSE.md:** License Information
 - **README.md:** this file

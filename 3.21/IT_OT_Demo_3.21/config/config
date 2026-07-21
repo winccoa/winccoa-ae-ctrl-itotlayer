@@ -1,7 +1,7 @@
 [general]
-pvss_path = "/opt/WinCC_OA/3.21"
+pvss_path = "C:/Program Files/Siemens/WinCC_OA/3.21"
 #proj_path = "/opt/WinCC_OA/3.21/TestFramework_3.21"
-proj_path = "/home/debian/Documents/IT_OT_Demo_3.21"
+proj_path = "C:/Users/z004u6jf/Desktop/winccoa-ae-ctrl-itotlayer-main/3.21/IT_OT_Demo_3.21"
 proj_version = "3.21"
 langs = "en_US.utf8"
 lang = "en_US.utf8"
@@ -23,8 +23,8 @@ useNGA = 1
 
 localAddress = "::"
 
-useCMLicense = 1
-useCMContainerSerialNumber = "130-548647252"
+#useCMLicense = 1
+#useCMContainerSerialNumber = "130-548647252"
 
 [data]
 #transactionLogging = 1

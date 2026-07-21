@@ -7,6 +7,7 @@
 
 // used libraries (#uses)
 #uses "pmon.ctl"
+#uses "pmonInterface"
 #uses "pa.ctl"
 #uses "classes/EBlog"
 
@@ -21,7 +22,7 @@ enum PmonListFields
   Last = CommandlineOptions
 };
 const string PMON_RESULT_SUCCESS                  = "OK";                                //!< Result of a successful pmon command
-const string DEFAULT_PMON_MANAGER_START_MODE      = "always";                            //!< Pmon default start mode
+const string DEFAULT_PMON_MANAGER_START_MODE      = MAN_START_MODE_ALWAYS;               //!< Pmon default start mode
 const int    DEFAULT_PMON_MANAGER_SECONDS_TO_KILL =  30;                                 //!< Pmon default seconds to kill
 const int    DEFAULT_PMON_MANAGER_RESTART_COUNT   =  20;                                 //!< Pmon default number of manager restart attempts
 const int    DEFAULT_PMON_MANAGER_RESET_MINUTES   =   1;                                 //!< Pmon default restart counter reset after x minutes
@@ -37,6 +38,37 @@ enum PmonStatiFields
   ManNum,
   Last = ManNum
 };
+
+// Wrapper functions avoid name collisions with the static methods of EB_UtilsPmon.
+int EB_pmonInterfaceStopManager(int iManagerIndex)
+{
+  return stopManager(iManagerIndex);
+}
+
+int EB_pmonInterfaceStartManager(int iManagerIndex)
+{
+  return startManager(iManagerIndex);
+}
+
+int EB_pmonInterfaceDeleteManager(int iManagerIndex)
+{
+  return deleteManager(iManagerIndex);
+}
+
+int EB_pmonInterfaceSetManagerOptions(int iManagerIndex, const mapping &mOptions)
+{
+  return setManagerOptions(iManagerIndex, mOptions);
+}
+
+int EB_pmonInterfaceInsertManager(const mapping &mOptions, int iManagerIndex)
+{
+  return insertManager(mOptions, iManagerIndex);
+}
+
+dyn_mapping EB_pmonInterfaceGetManagerStates()
+{
+  return getListOfManagersStati();
+}
 
 /**
  * @brief This is the utility class for interfacing with the pmon. It contains various useful functions for interfacing with the pmon.
@@ -108,27 +140,51 @@ class EB_UtilsPmon
    * @return PmonIndex of the manager or -1 if not found
    */
   public static int findManager(const string &sManagerName, const string &sOptions)
+{
+  dyn_mapping dmManagers = getListOfManagerOptions();
+
+  for (int i = 1; i <= dynlen(dmManagers); i++)
   {
-    int i;
-    int iNumber = pmonGetCount();
-    for (i = 0; i <= iNumber; i++)
+    string sCurrentManager = mappingGetValueDflt(
+      dmManagers[i],
+      "Component",
+      ""
+    );
+
+    string sCurrentOptions = mappingGetValueDflt(
+      dmManagers[i],
+      "StartOptions",
+      ""
+    );
+
+    sCurrentManager = strrtrim(strltrim(sCurrentManager));
+    sCurrentOptions = strrtrim(strltrim(sCurrentOptions));
+
+    // PMON list is one-based in the dyn_mapping,
+    // but PMON manager indexes begin with zero.
+    int iManagerIndex = i - 1;
+
+    if (sManagerName == sCurrentManager &&
+        sOptions == "")
     {
-      if (sManagerName == pmonGetName(i) && sOptions == "")
-      {
-        return (i);
-      }
-      if (sManagerName == pmonGetName(i) && strpos(pmonGetOptions(i),sOptions) >= 0 )
-      {
-        return (i);
-      }
-      if (sManagerName == "ANY" && pmonGetOptions(i) == sOptions)
-      {
-        return (i);
-      }
+      return iManagerIndex;
     }
-    //this return should only be given when nothing matching the parameters was found
-    return (-1);
+
+    if (sManagerName == sCurrentManager &&
+        strpos(sCurrentOptions, sOptions) >= 0)
+    {
+      return iManagerIndex;
+    }
+
+    if (sManagerName == "ANY" &&
+        sCurrentOptions == sOptions)
+    {
+      return iManagerIndex;
+    }
   }
+
+  return -1;
+}
 
   /**
    * @brief Stops the manager
@@ -182,12 +238,12 @@ class EB_UtilsPmon
   {
     DebugFTN("PMON", __FUNCTION__ + "(" + uIndex + ") Stopping manager");
 
-    // Stop the manager
-    string sResult = command("SINGLE_MGR:STOP " + uIndex);
+    int iResult = EB_pmonInterfaceStopManager(uIndex);
 
-    if (sResult != PMON_RESULT_SUCCESS)
+    if (iResult != 0)
     {
-      EB_logAdd(EB_createLogEntry("Base", LOG_TYPE_RUNTIME, "pmonStopManager", "", EBlogEntry::iLOG_ENTRY_TYPE_ERROR, 0, "", "pmonStopManagerById", makeMapping("$index",  uIndex, "$result", sResult)));
+      EB_logAdd(EB_createLogEntry("Base", LOG_TYPE_RUNTIME, "pmonStopManager", "", EBlogEntry::iLOG_ENTRY_TYPE_ERROR, 0, "", "pmonStopManagerById",
+                                  makeMapping("$index", uIndex, "$result", iResult)));
     }
   }
 
@@ -199,15 +255,21 @@ class EB_UtilsPmon
   {
     DebugFTN("PMON", __FUNCTION__ + "(" + uIndex + ") Removing manager");
 
-    // Mark the manager for deletion
-    string sResult = command("SINGLE_MGR:PROP_PUT " + uIndex + " manual 0 0 0 " + PACKAGE_REMOVE_TAG);
+    mapping mOptions = makeMapping("StartMode",         MAN_START_MODE_MANUAL,
+                                   "SecondToKill",      0,
+                                   "Restart",           0,
+                                   "ResetStartCounter", 0,
+                                   "StartOptions",      PACKAGE_REMOVE_TAG);
 
-    if (sResult != PMON_RESULT_SUCCESS)
+    int iResult = EB_pmonInterfaceSetManagerOptions(uIndex, mOptions);
+
+    if (iResult != 0)
     {
-      EB_logAdd(EB_createLogEntry("Base", LOG_TYPE_RUNTIME, "pmonRemoveManager", "", EBlogEntry::iLOG_ENTRY_TYPE_ERROR, 0, "", "pmonMarkManagerRemoveById", makeMapping("$index",  uIndex, "$result", sResult)));
+      EB_logAdd(EB_createLogEntry("Base", LOG_TYPE_RUNTIME, "pmonRemoveManager", "", EBlogEntry::iLOG_ENTRY_TYPE_ERROR, 0, "", "pmonMarkManagerRemoveById",
+                                  makeMapping("$index", uIndex, "$result", iResult)));
+      return;
     }
 
-    // Stop the manager
     stopManagerById(uIndex);
   }
 
@@ -221,87 +283,146 @@ class EB_UtilsPmon
   {
     DebugFTN("PMON", __FUNCTION__, sManagerName, sOptions);
 
-    int iManagerNumber = getManNumFromOptions(sOptions);
-    if (sManagerName == getComponentName(CTRL_COMPONENT))
-    {
-      // First make sure there is a CTRLDebug dp for the new control manager
-      if (iManagerNumber > 0)
-      {
-        if (!dpExists("_CtrlDebug_CTRL_" + iManagerNumber))
-        {
-          dpCreate("_CtrlDebug_CTRL_" + iManagerNumber, "_CtrlDebug");
-        }
-      }
-    }
-    else
-    {
-      // Make sure the driver dps exists for the new driver
-      if (iManagerNumber > 0)
-      {
-        if (!dpExists("_Driver" + iManagerNumber))
-        {
-          dpCreate("_Driver" + iManagerNumber, "_DriverCommon");
-        }
-        if (!dpExists("_Stat_Configs_driver_" + iManagerNumber))
-        {
-          dpCreate("_Stat_Configs_driver_" + iManagerNumber, "_Statistics_DriverConfigs");
-        }
-      }
-    }
+  int iManagerNumber = getManNumFromOptions(sOptions);
 
-    // Pass all manager options as a single argument
-    string sManagerOptions = "\"" + sOptions + "\"";
-    string sResult;
-
-    int iManagerIndex = findManager(sManagerName, sOptions);
-    DebugFTN("PMON", __FUNCTION__, "iManagerIndex", iManagerIndex);
-    int iNewManagerIndex = -1;
-    string sAction = "pmonAlreadyExists";
-    if (iManagerIndex == -1)
+  if (sManagerName == getComponentName(CTRL_COMPONENT))
+  {
+    if (iManagerNumber > 0)
     {
-      iNewManagerIndex = findManager(sManagerName, PACKAGE_REMOVE_TAG);
-      //iNewManagerIndex = findManager(getComponentName(CTRL_COMPONENT), PACKAGE_REMOVE_TAG);
-      DebugFTN("PMON", __FUNCTION__, "iNewManagerIndex from remove", iNewManagerIndex);
-      if (iNewManagerIndex != -1)
+      if (!dpExists("_CtrlDebug_CTRL_" + iManagerNumber))
       {
-        sAction = "pmonActionInsert";
-        sResult = command("SINGLE_MGR:PROP_PUT " + iNewManagerIndex + " " + DEFAULT_PMON_MANAGER_START_MODE + " " + DEFAULT_PMON_MANAGER_SECONDS_TO_KILL
-                                      + " " + DEFAULT_PMON_MANAGER_RESTART_COUNT + " " + DEFAULT_PMON_MANAGER_RESET_MINUTES + " " + sManagerOptions);
-        // if manager was last manager it is removed from list
-        if (sResult != PMON_RESULT_SUCCESS)
-        {
-          sAction = "pmonActionAppend";
-          sResult = command("SINGLE_MGR:INS " + iNewManagerIndex + " " + sManagerName + " " + DEFAULT_PMON_MANAGER_START_MODE + " " + DEFAULT_PMON_MANAGER_SECONDS_TO_KILL
-                                      + " " + DEFAULT_PMON_MANAGER_RESTART_COUNT + " " + DEFAULT_PMON_MANAGER_RESET_MINUTES + " " + sManagerOptions);
-        }
-      }
-      else
-      {
-        dyn_bool dbRunning = getPmonStates();
-        iNewManagerIndex = dynlen(dbRunning);
-        DebugFTN("PMON", __FUNCTION__, "iNewManagerIndex from new", iNewManagerIndex);
-        if (iNewManagerIndex > 0)
-        {
-          sAction = "pmonActionAppend";
-          sResult = command("SINGLE_MGR:INS " + iNewManagerIndex + " " + sManagerName + " " + DEFAULT_PMON_MANAGER_START_MODE + " " + DEFAULT_PMON_MANAGER_SECONDS_TO_KILL
-                                      + " " + DEFAULT_PMON_MANAGER_RESTART_COUNT + " " + DEFAULT_PMON_MANAGER_RESET_MINUTES + " " + sManagerOptions);
-        }
+        dpCreate("_CtrlDebug_CTRL_" + iManagerNumber, "_CtrlDebug");
       }
     }
-    DebugFTN("PMON", __FUNCTION__, "sResult", sResult == PMON_RESULT_SUCCESS, "sAction", sAction, sResult);
-    if (sResult != PMON_RESULT_SUCCESS)
+  }
+  else
+  {
+    if (iManagerNumber > 0)
     {
-      EB_logAdd(EB_createLogEntry("Base", LOG_TYPE_RUNTIME, "pmonAddManager", "", EBlogEntry::iLOG_ENTRY_TYPE_ERROR, 0, "", "pmonAddManagerFailed",
-                                  makeMapping("$action",  getCatStr("EB_Package_Base", sAction),
-                                              "$index",   iNewManagerIndex,
-                                              "$manager", sManagerName,
-                                              "$options", sOptions,
-                                              "$result",  sResult)));
-    }
+      if (!dpExists("_Driver" + iManagerNumber))
+      {
+        dpCreate("_Driver" + iManagerNumber, "_DriverCommon");
+      }
 
-    return sResult == PMON_RESULT_SUCCESS;
+      if (!dpExists("_Stat_Configs_driver_" + iManagerNumber))
+      {
+        dpCreate(
+          "_Stat_Configs_driver_" + iManagerNumber,
+          "_Statistics_DriverConfigs"
+        );
+      }
+    }
   }
 
+  int iManagerIndex = findManager(sManagerName, sOptions);
+
+  DebugFTN(
+    "PMON",
+    __FUNCTION__,
+    "iManagerIndex",
+    iManagerIndex
+  );
+
+  // Manager already exists with the same options.
+if (iManagerIndex != -1)
+{
+  if (pmonGetState(iManagerIndex) != PMON_STATE_RUNNING)
+  {
+    delay(1);
+
+    int iStartResult = EB_pmonInterfaceStartManager(iManagerIndex);
+
+    if (iStartResult != 0)
+    {
+      EB_logAdd(
+        EB_createLogEntry(
+          "Base",
+          LOG_TYPE_RUNTIME,
+          "pmonAddManager",
+          "",
+          EBlogEntry::iLOG_ENTRY_TYPE_ERROR,
+          0,
+          "",
+          "pmonAddManagerFailed",
+          makeMapping(
+            "$action", "PMON start existing manager",
+            "$index", iManagerIndex,
+            "$manager", sManagerName,
+            "$options", sOptions,
+            "$result", iStartResult
+          )
+        )
+      );
+
+      return FALSE;
+    }
+  }
+
+  return TRUE;
+}
+
+  // Check whether the same manager was previously marked for deletion.
+  int iNewManagerIndex = findManager(
+    sManagerName,
+    PACKAGE_REMOVE_TAG
+  );
+
+  if (iNewManagerIndex != -1)
+  {
+    mapping mOptions = makeMapping("StartMode",         DEFAULT_PMON_MANAGER_START_MODE,
+                                   "SecondToKill",      DEFAULT_PMON_MANAGER_SECONDS_TO_KILL,
+                                   "Restart",           DEFAULT_PMON_MANAGER_RESTART_COUNT,
+                                   "ResetStartCounter", DEFAULT_PMON_MANAGER_RESET_MINUTES,
+                                   "StartOptions",      sOptions);
+
+    int iResult = EB_pmonInterfaceSetManagerOptions(iNewManagerIndex, mOptions);
+
+    if (iResult != 0)
+    {
+      EB_logAdd(EB_createLogEntry("Base", LOG_TYPE_RUNTIME, "pmonAddManager", "", EBlogEntry::iLOG_ENTRY_TYPE_ERROR, 0, "", "pmonAddManagerFailed",
+                                  makeMapping("$action", "PMON property update", "$index", iNewManagerIndex, "$manager", sManagerName,
+                                              "$options", sOptions, "$result", iResult)));
+      return FALSE;
+    }
+  }
+  else
+  {
+    iNewManagerIndex = pmonGetCount();
+
+    mapping mOptions = makeMapping("Component",         sManagerName,
+                                   "StartMode",         DEFAULT_PMON_MANAGER_START_MODE,
+                                   "SecondToKill",      DEFAULT_PMON_MANAGER_SECONDS_TO_KILL,
+                                   "Restart",           DEFAULT_PMON_MANAGER_RESTART_COUNT,
+                                   "ResetStartCounter", DEFAULT_PMON_MANAGER_RESET_MINUTES,
+                                   "StartOptions",      sOptions);
+
+    int iResult = EB_pmonInterfaceInsertManager(mOptions, iNewManagerIndex);
+
+    if (iResult < 0)
+    {
+      EB_logAdd(EB_createLogEntry("Base", LOG_TYPE_RUNTIME, "pmonAddManager", "", EBlogEntry::iLOG_ENTRY_TYPE_ERROR, 0, "", "pmonAddManagerFailed",
+                                  makeMapping("$action", "PMON insert", "$index", iNewManagerIndex, "$manager", sManagerName,
+                                              "$options", sOptions, "$result", iResult)));
+      return FALSE;
+    }
+  }
+
+    // An inserted manager with start mode "always" is not guaranteed to start
+    // immediately. Start it explicitly after PMON has updated its manager list.
+    delay(1);
+
+    int iStartResult = EB_pmonInterfaceStartManager(iNewManagerIndex);
+
+    if (iStartResult != 0)
+    {
+      EB_logAdd(EB_createLogEntry("Base", LOG_TYPE_RUNTIME, "pmonAddManager", "", EBlogEntry::iLOG_ENTRY_TYPE_ERROR, 0, "", "pmonAddManagerFailed",
+                                  makeMapping("$action", "PMON start", "$index", iNewManagerIndex, "$manager", sManagerName,
+                                              "$options", sOptions, "$result", iStartResult)));
+      return FALSE;
+    }
+
+    return TRUE;
+  }
   /**
    * @brief Gets the manager number from options
    * @param sOptions The options of the manager
@@ -330,14 +451,11 @@ class EB_UtilsPmon
   public static dyn_bool getPmonStates()
   {
     dyn_bool dbResult;
-    dyn_dyn_string ddsList = query("MGRLIST:STATI");
+    dyn_mapping dmStates = EB_pmonInterfaceGetManagerStates();
 
-    for (int i = 1; i <= dynlen(ddsList); i++)
+    for (int i = 1; i <= dynlen(dmStates); i++)
     {
-      if (dynlen(ddsList[i]) >= 5)
-      {
-        dbResult[i] = ddsList[i][1] == PMON_STATE_RUNNING;
-      }
+      dbResult[i] = mappingGetValueDflt(dmStates[i], "State", PMON_STATE_NOT_RUNNING) == PMON_STATE_RUNNING;
     }
 
     return dbResult;
@@ -348,15 +466,43 @@ class EB_UtilsPmon
    */
   public static void deleteManagers()
   {
-    int iManagerIndex = findManager("ANY", PACKAGE_REMOVE_TAG);
-    while (iManagerIndex != -1)
+  int iManagerIndex = findManager(
+    "ANY",
+    PACKAGE_REMOVE_TAG
+  );
+
+  while (iManagerIndex != -1)
+  {
+    int iResult = EB_pmonInterfaceDeleteManager(iManagerIndex);
+
+    if (iResult != 0)
     {
-      string sResult = command("SINGLE_MGR:DEL " + iManagerIndex);
-      iManagerIndex = findManager("ANY", PACKAGE_REMOVE_TAG);
+      EB_logAdd(
+        EB_createLogEntry(
+          "Base",
+          LOG_TYPE_RUNTIME,
+          "pmonRemoveManager",
+          "",
+          EBlogEntry::iLOG_ENTRY_TYPE_ERROR,
+          0,
+          "",
+          "pmonRemoveManager",
+          makeMapping(
+            "$index", iManagerIndex,
+            "$result", iResult
+          )
+        )
+      );
+
+      break;
     }
 
+    iManagerIndex = findManager(
+      "ANY",
+      PACKAGE_REMOVE_TAG
+    );
   }
-
+  }
   /**
    * @brief Gets the state of the manager
    * @param sManagerName The manager name

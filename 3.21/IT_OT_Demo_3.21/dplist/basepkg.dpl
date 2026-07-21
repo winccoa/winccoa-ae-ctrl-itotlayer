@@ -1,0 +1,116 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_EB_Log._EB_Log	1#1
+	log	23#2
+EB_Packages.EB_Packages	1#1
+	Description	25#105
+	Version	25#5
+	Config	25#6
+	Status	21#7
+	Position	21#8
+	Alerts	1#9
+		Runtime	41#27:_EB_Log
+		Configuration	41#30:_EB_Log
+		Internet	41#31:_EB_Log
+		Periphery	41#36:_EB_Log
+		Update	41#37:_EB_Log
+		Internal	41#48:_EB_Log
+	TileName	25#106
+	Picture	25#72
+	Header	25#107
+	Panels	1#75
+		Path	9#76
+		Name	9#110
+		Description	9#111
+	HomeScreen	25#79
+	Editable	23#80
+	Libs	1#124
+		Path	9#125
+		Hash	9#126
+
+# Datapoint/DpId
+DpName	TypeName	ID
+EB_Package_Base	EB_Packages	527
+
+# CNS
+CNSpath	name	displaySeparators	displayNames	data	CNSDataIdentifierType	UserData	ViewId
+	"EB_Package_BACnet"	lt:1 LANG:10001 "."	lt:1 LANG:10001 "BACnet"				4284
+".EB_Package_BACnet:"	"Node_1784566790"		lt:1 LANG:10001 "BACnetDev1"	720896 BACnet#1.State	999	"657874726100060A4241436E6574446576310074696C655479706500061461742E65746D2E6472697665722E646576696365004465766963655479706500060D47656E65726963446576696365004F413A4D515454000307000000"	
+".EB_Package_BACnet:Node_1784566790"	"Node_1784566791"		lt:1 LANG:10001 "ValvePositionSensor"	720896 EB_Int0002.	2	"4F413A4D515454000307000000"	
+".EB_Package_BACnet:Node_1784566790"	"Node_1784566792"		lt:1 LANG:10001 "PackageSealQualitySensor"	720896 EB_Float0002.	2	"4F413A4D515454000307000000"	
+".EB_Package_BACnet:Node_1784566790"	"Node_1784566793"		lt:1 LANG:10001 "PackageWeightSensor"	720896 EB_String0002.	2	"4F413A4D515454000307000000"	
+".EB_Package_BACnet:Node_1784566790"	"Node_1784566794"		lt:1 LANG:10001 "LabelingAccuracySensor"	720896 EB_Bool0002.	2	"4F413A4D515454000307000000"	
+	"EB_Package_FanucFocas"	lt:1 LANG:10001 "."	lt:1 LANG:10001 "FanucFocas"				4281
+	"EB_Package_IEC61850"	lt:1 LANG:10001 "."	lt:1 LANG:10001 "IEC61850"				4282
+".EB_Package_IEC61850:"	"Node_1784566785"		lt:1 LANG:10001 "IEC61850conn"	720896 IEC61850#1.State	999	"657874726100060C4945433631383530636F6E6E0074696C655479706500061461742E65746D2E6472697665722E646576696365004465766963655479706500060D47656E65726963446576696365004F413A4D515454000307000000"	
+".EB_Package_IEC61850:Node_1784566785"	"Node_1784566786"		lt:1 LANG:10001 "FoilTemperatureSensor"	720896 EB_Int0001.	2	"4F413A4D515454000307000000"	
+".EB_Package_IEC61850:Node_1784566785"	"Node_1784566787"		lt:1 LANG:10001 "LabelDispenseRateSensor"	720896 EB_Float0001.	2	"4F413A4D515454000307000000"	
+".EB_Package_IEC61850:Node_1784566785"	"Node_1784566788"		lt:1 LANG:10001 "EmergencyTrigger"	720896 EB_Bool0001.	2	"4F413A4D515454000307000000"	
+".EB_Package_IEC61850:Node_1784566785"	"Node_1784566789"		lt:1 LANG:10001 "SetLabelName"	720896 EB_String0001.	2	"4F413A4D515454000307000000"	
+	"EB_Package_MTConnect"	lt:1 LANG:10001 "."	lt:1 LANG:10001 "MTConnect"				4283
+	"EB_Package_S7"	lt:1 LANG:10001 "."	lt:1 LANG:10001 "S7"				4278
+".EB_Package_S7:"	"Node_1784566795"		lt:1 LANG:10001 "s7testdriver"	720896 S7#1.State	999	"657874726100060C7337746573746472697665720074696C655479706500061461742E65746D2E6472697665722E646576696365004465766963655479706500060D47656E65726963446576696365004F413A4D515454000307000000"	
+".EB_Package_S7:Node_1784566795"	"Node_1784566796"		lt:1 LANG:10001 "SpeedSensor"	720896 EB_Int0003.	2	"4F413A4D515454000307000000"	
+".EB_Package_S7:Node_1784566795"	"Node_1784566797"		lt:1 LANG:10001 "LiquidLevelSensor"	720896 EB_Float0003.	2	"4F413A4D515454000307000000"	
+".EB_Package_S7:Node_1784566795"	"Node_1784566798"		lt:1 LANG:10001 "ValvePositionStart"	720896 EB_Bool0003.	2	"4F413A4D515454000307000000"	
+	"EB_Package_S7Plus"	lt:1 LANG:10001 "."	lt:1 LANG:10001 "S7Plus"				4280
+".EB_Package_S7Plus:"	"Node_1784566805"		lt:1 LANG:10001 "mt_S7Plus_11"	720896 S7Plus#1.State	999	"657874726100060C6D745F5337506C75735F31310074696C655479706500061461742E65746D2E6472697665722E646576696365004465766963655479706500060D47656E65726963446576696365004F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_S7Plus:Node_1784566805"	"Node_1784566806"		lt:1 LANG:10001 "LiquidTemperatureValue"	720896 EB_Int0007.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_S7Plus:Node_1784566805"	"Node_1784566807"		lt:1 LANG:10001 "DatapointForTesting"	720896 EB_Int0008.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_S7Plus:Node_1784566805"	"Node_1784566808"		lt:1 LANG:10001 "WaterTemperatureValue"	720896 EB_Float0005.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_S7Plus:Node_1784566805"	"Node_1784566809"		lt:1 LANG:10001 "HeaterON"	720896 EB_Bool0005.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+	"EB_Package_Sinumerik"	lt:1 LANG:10001 "."	lt:1 LANG:10001 "Sinumerik"				4279
+".EB_Package_Sinumerik:"	"Node_1784566799"		lt:1 LANG:10001 "sinumeriktestdriver"	720896 Sinumerik#1.State	999	"657874726100061373696E756D6572696B746573746472697665720074696C655479706500061461742E65746D2E6472697665722E646576696365004465766963655479706500060D47656E65726963446576696365004F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_Sinumerik:Node_1784566799"	"Node_1784566800"		lt:1 LANG:10001 "FlowValue"	720896 EB_Int0004.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_Sinumerik:Node_1784566799"	"Node_1784566801"		lt:1 LANG:10001 "FlowSetPoint"	720896 EB_Int0005.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_Sinumerik:Node_1784566799"	"Node_1784566802"		lt:1 LANG:10001 "FlowTracking"	720896 EB_Int0006.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_Sinumerik:Node_1784566799"	"Node_1784566803"		lt:1 LANG:10001 "PressureOn"	720896 EB_Bool0004.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+".EB_Package_Sinumerik:Node_1784566799"	"Node_1784566804"		lt:1 LANG:10001 "TempratureSetPoint"	720896 EB_Float0004.	2	"4F413A4D5154540003070000004F413A4F504300030A000000"	
+	"Plant1"	lt:1 LANG:10001 "."	lt:1 LANG:10001 "Plant1"				19997
+".Plant1:"	"Production2"		lt:1 LANG:10001 "Production2"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2"	"Area1"		lt:1 LANG:10001 "Area1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1"	"Line1"		lt:1 LANG:10001 "Line1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1"	"Station1"		lt:1 LANG:10001 "Station1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station1"	"Conveyor1"		lt:1 LANG:10001 "Conveyor1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station1.Conveyor1"	"WaterTemperatureValue"		lt:1 LANG:10001 "WaterTemperatureValue"	720896 EB_Float0005.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station1"	"Robot1"		lt:1 LANG:10001 "Robot1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station1.Robot1"	"PressureOn"		lt:1 LANG:10001 "PressureOn"	720896 EB_Bool0004.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station1.Robot1"	"SpeedSensor"		lt:1 LANG:10001 "SpeedSensor"	720896 EB_Int0003.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1"	"Station2"		lt:1 LANG:10001 "Station2"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station2"	"Mixer1"		lt:1 LANG:10001 "Mixer1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station2.Mixer1"	"FlowSetPoint"		lt:1 LANG:10001 "FlowSetPoint"	720896 EB_Int0005.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station2.Mixer1"	"FlowValue"		lt:1 LANG:10001 "FlowValue"	720896 EB_Int0004.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station2"	"Pump1"		lt:1 LANG:10001 "Pump1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line1.Station2.Pump1"	"LiquidLevelSensor"		lt:1 LANG:10001 "LiquidLevelSensor"	720896 EB_Float0003.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1"	"Line2"		lt:1 LANG:10001 "Line2"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line2"	"Station3"		lt:1 LANG:10001 "Station3"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line2.Station3"	"Tank1"		lt:1 LANG:10001 "Tank1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line2.Station3.Tank1"	"LiquidLevelSensor"		lt:1 LANG:10001 "LiquidLevelSensor"	720896 EB_Float0003.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line2.Station3"	"Valve1"		lt:1 LANG:10001 "Valve1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line2.Station3.Valve1"	"ValvePositionStart"		lt:1 LANG:10001 "ValvePositionStart"	720896 EB_Bool0003.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line2"	"Station4"		lt:1 LANG:10001 "Station4"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line2.Station4"	"Sealer1"		lt:1 LANG:10001 "Sealer1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area1.Line2.Station4.Sealer1"	"PackageSealQualitySensor"		lt:1 LANG:10001 "PackageSealQualitySensor"	720896 EB_Float0002.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2"	"Area2"		lt:1 LANG:10001 "Area2"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area2"	"Packaging"		lt:1 LANG:10001 "Packaging"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area2.Packaging"	"Labeller1"		lt:1 LANG:10001 "Labeller1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area2.Packaging.Labeller1"	"PackageSealQualitySensor"		lt:1 LANG:10001 "PackageSealQualitySensor"	720896 EB_Float0002.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area2.Packaging"	"Wrapper1"		lt:1 LANG:10001 "Wrapper1"		1	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+".Plant1:Production2.Area2.Packaging.Wrapper1"	"PackageWeightSensor"		lt:1 LANG:10001 "PackageWeightSensor"	720896 EB_String0002.	2	"4F413A4F504300030A0000004F413A4D515454000307000000"	
+
+# AlertValue
+StampSec	StampMSec	ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+1738260168	810	EB_Package_Base.Alerts.Runtime	EB_Packages		59					""		lt:1 LANG:10001 ""		 		1								lt:1 LANG:10001 ""	lt:1 LANG:10001 ""	1	0	"EB_Packages.Alerts.Runtime.log"		""	""	1	1	1	1	1		0							
+1738260168	813	EB_Package_Base.Alerts.Runtime.log	EB_Packages		12					""	""	lt:1 LANG:10001 ""	\0	information.		1	1	0	0	01.01.1970 00:00:00.000	1			lt:1 LANG:10001 "not Ok came"	lt:1 LANG:10001 "Ok came"												0								
+1738260168	816	EB_Package_Base.Alerts.Configuration	EB_Packages		59					""		lt:1 LANG:10001 ""		 		1								lt:1 LANG:10001 ""	lt:1 LANG:10001 ""	1	0	"EB_Packages.Alerts.Configuration.log"		""	""	1	1	1	1	1		0							
+1738260168	818	EB_Package_Base.Alerts.Configuration.log	EB_Packages		12					""	""	lt:1 LANG:10001 ""	\0	information.		1	1	0	0	01.01.1970 00:00:00.000	1			lt:1 LANG:10001 "not Ok came"	lt:1 LANG:10001 "Ok came"												0								
+1738260168	821	EB_Package_Base.Alerts.Internet	EB_Packages		59					""		lt:1 LANG:10001 ""		 		1								lt:1 LANG:10001 ""	lt:1 LANG:10001 ""	1	0	"EB_Packages.Alerts.Internet.log"		""	""	1	1	1	1	1		0							
+1738260168	823	EB_Package_Base.Alerts.Internet.log	EB_Packages		12					""	""	lt:1 LANG:10001 ""	\0	information.		1	1	0	0	01.01.1970 00:00:00.000	1			lt:1 LANG:10001 "not Ok came"	lt:1 LANG:10001 "Ok came"												0								
+1738260168	825	EB_Package_Base.Alerts.Periphery	EB_Packages		59					""		lt:1 LANG:10001 ""		 		1								lt:1 LANG:10001 ""	lt:1 LANG:10001 ""	1	0	"EB_Packages.Alerts.Periphery.log"		""	""	1	1	1	1	1		0							
+1738260168	827	EB_Package_Base.Alerts.Periphery.log	EB_Packages		12					""	""	lt:1 LANG:10001 ""	\0	information.		1	1	0	0	01.01.1970 00:00:00.000	1			lt:1 LANG:10001 "not Ok came"	lt:1 LANG:10001 "Ok came"												0								
+1738260168	830	EB_Package_Base.Alerts.Update	EB_Packages		59					""		lt:1 LANG:10001 ""		 		1								lt:1 LANG:10001 ""	lt:1 LANG:10001 ""	1	0	"EB_Packages.Alerts.Update.log"		""	""	1	1	1	1	1		0							
+1738260168	832	EB_Package_Base.Alerts.Update.log	EB_Packages		12					""	""	lt:1 LANG:10001 ""	\0	information.		1	1	0	0	01.01.1970 00:00:00.000	1			lt:1 LANG:10001 "not Ok came"	lt:1 LANG:10001 "Ok came"												0								
+1738260168	834	EB_Package_Base.Alerts.Internal	EB_Packages		59					""		lt:1 LANG:10001 ""		 		1								lt:1 LANG:10001 ""	lt:1 LANG:10001 ""	1	0	"EB_Packages.Alerts.Internal.log"		""	""	1	1	1	1	1		0							
+1738260168	835	EB_Package_Base.Alerts.Internal.log	EB_Packages		12					""	""	lt:1 LANG:10001 ""	\0	information.		1	1	0	0	01.01.1970 00:00:00.000	1			lt:1 LANG:10001 "not Ok came"	lt:1 LANG:10001 "Ok came"												0								

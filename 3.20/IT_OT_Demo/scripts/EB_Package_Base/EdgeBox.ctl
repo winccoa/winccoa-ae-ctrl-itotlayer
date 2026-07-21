@@ -9,6 +9,7 @@
 #uses "EB_Package_Base/PackageState"
 #uses "EB_Package_Base/OA_Consts"
 #uses "EB_Package_Base/EB_UtilsPackage"
+#uses "pmonInterface"
 
 /**
  * @brief Defines the possible manager actions, which are executed upon installing/updating a package
@@ -79,10 +80,34 @@ void main()
     dbVU_doAsciiImport(getPath(DPLIST_REL_PATH, "EdgeBoxComplete.dpl"));
   }
 
-  updateSystem();
+updateSystem();
 
-  // Determine the installed packages
-  dyn_string dsPaths = getDirectories(PACKAGE_REL_PATH);
+// Wait until PMON finishes the project startup.
+// Adding managers while PMON is still processing START_ALL is unreliable.
+int iPmonWaitCount = 60;
+
+while (getProjectStatus() != PROJ_RUNNING_STATE_MONITORING &&
+       iPmonWaitCount > 0)
+{
+  delay(1);
+  iPmonWaitCount--;
+}
+
+if (iPmonWaitCount == 0)
+{
+  throwError(
+    makeError(
+      "",
+      PRIO_WARNING,
+      ERR_SYSTEM,
+      54,
+      "PMON did not reach monitoring state within 60 seconds"
+    )
+  );
+}
+
+// Determine the installed packages
+dyn_string dsPaths = getDirectories(PACKAGE_REL_PATH);
   dynAppend(dsPaths, getFilesForMonitoring());
   for (int i = dynlen(dsPaths); i > 0; i--)
   {
@@ -746,7 +771,7 @@ synchronized void packageInstall(const string &sDp, mapping &mConfig, const mapp
   // Add the managers
   for (int i = 1; i <= dynlen(dmManagerActions); i++)
   {
-    if (dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Install)
+    if (dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Install || dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Restart)
     {
       string sManager = dmManagerActions[i][MAPKEY_MANAGERS_MANAGER];
       string sOptions = dmManagerActions[i][MAPKEY_MANAGERS_OPTIONS];

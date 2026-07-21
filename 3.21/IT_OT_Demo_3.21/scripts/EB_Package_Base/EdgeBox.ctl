@@ -9,6 +9,7 @@
 #uses "EB_Package_Base/PackageState"
 #uses "EB_Package_Base/OA_Consts"
 #uses "EB_Package_Base/EB_UtilsPackage"
+#uses "pmonInterface"
 
 /**
  * @brief Defines the possible manager actions, which are executed upon installing/updating a package
@@ -79,11 +80,61 @@ void main()
     dbVU_doAsciiImport(getPath(DPLIST_REL_PATH, "EdgeBoxComplete.dpl"));
   }
 
-  updateSystem();
+updateSystem();
 
-  // Determine the installed packages
+// Wait until PMON finishes the project startup.
+// Adding managers while PMON is still processing START_ALL is unreliable.
+int iPmonWaitCount = 60;
+
+while (getProjectStatus() != PROJ_RUNNING_STATE_MONITORING &&
+       iPmonWaitCount > 0)
+{
+  delay(1);
+  iPmonWaitCount--;
+}
+
+if (iPmonWaitCount == 0)
+{
+  throwError(
+    makeError(
+      "",
+      PRIO_WARNING,
+      ERR_SYSTEM,
+      54,
+      "PMON did not reach monitoring state within 60 seconds"
+    )
+  );
+}
+
+  // Register the manager callback before package processing. Stop events must
+  // not be missed while the initial package list is being installed.
+  string sQuery = "SELECT '_online.._value' FROM '_Connections.{Api,Ctrl,Device,Driver}.ManNums' WHERE _DPT = \"_Connections\"";
+  dpQueryConnectSingle("managersCB", TRUE, "", sQuery);
+
+  // Clean up managers left with ***REMOVE*** by an interrupted older run.
+  EB_UtilsPmon::deleteManagers();
+
+  // Determine the installed packages and register all file watches before
+  // processing them, so a delete event cannot be lost during a long install.
   dyn_string dsPaths = getDirectories(PACKAGE_REL_PATH);
   dynAppend(dsPaths, getFilesForMonitoring());
+
+  for (int i = dynlen(dsPaths); i > 0; i--)
+  {
+    fswAddPath(dsPaths[i]);
+  }
+
+  dynSort(dsPaths);
+  g_dsMonitoredPaths = dsPaths;
+  sysConnect("pathChangedCB", "fswPathChanged");
+
+  // mnsp.ctl writes this DPE immediately after copying or deleting a package
+  // file. Handle that notification here as well, because on Windows the file
+  // watcher can miss a directory-change event. Previously this depended on the
+  // separate remoteUI.ctl workaround and deletion could remain pending until
+  // mnsp.ctl was restarted.
+  dpConnect("packageRefreshCB", FALSE, "MindSphereConnector.packageUpdate");
+
   for (int i = dynlen(dsPaths); i > 0; i--)
   {
     if (isfile(dsPaths[i]))
@@ -93,21 +144,10 @@ void main()
 
       packageUpdate(sFileName, tFileTime);
     }
-
-    fswAddPath(dsPaths[i]);
   }
-
-  sysConnect("pathChangedCB", "fswPathChanged");
-
-  dynSort(dsPaths);
-  g_dsMonitoredPaths = dsPaths;
 
   // Update the 'manager is not running' logs
   updateManagerLogs();
-
-  string sQuery = "SELECT '_online.._value' FROM '_Connections.{Api,Ctrl,Device,Driver}.ManNums' WHERE _DPT = \"_Connections\"";
-
-  dpQueryConnectSingle("managersCB", TRUE, "", sQuery);
 
   // Clean up after a package has been removed
   sQuery = "SELECT '.Status:_online.._value' FROM '" + EB_PREFIX_PACKAGE + "*'"
@@ -137,6 +177,13 @@ void packageDpRemoveCB(const anytype &aUserData, const dyn_dyn_anytype &ddaData)
 {
   for (int i = 2; i <= dynlen(ddaData); i++)
   {
+    if (dpSubStr(ddaData[i][1], DPSUB_DP) == EB_PREFIX_PACKAGE + "Base")
+    {
+      throwError(makeError("", PRIO_WARNING, ERR_SYSTEM, 54,
+                           "Refusing to delete permanent package datapoint '" + ddaData[i][1] + "'"));
+      continue;
+    }
+
     DebugFTN("RESTART", __FUNCTION__ + "() Removing package dp: " + ddaData[i][1]);
 
     dpDelete(ddaData[i][1]);
@@ -178,6 +225,47 @@ void managersCB(const anytype &aUserData, const dyn_dyn_anytype &ddaData)
   // Update the 'manager is not running' logs
   updateManagerLogs();
 
+  // Deletion is completed synchronously by removeManagerById(). This callback
+  // only updates connection/debug information.
+}
+
+/**
+ * @brief Removes every manager defined by a saved package configuration.
+ */
+void removeManagersFromConfig(const mapping &mConfig)
+{
+  dyn_mapping dmManagerActions = getActionsForManagers(makeMapping(), mConfig);
+
+  for (int i = 1; i <= dynlen(dmManagerActions); i++)
+  {
+    if (dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Remove)
+    {
+      EB_UtilsPmon::removeManager(dmManagerActions[i][MAPKEY_MANAGERS_MANAGER],
+                                  dmManagerActions[i][MAPKEY_MANAGERS_OPTIONS]);
+    }
+  }
+}
+
+/**
+ * @brief Rescans the package directory after mnsp.ctl changes a package file.
+ */
+void packageRefreshCB(const string &sDpe, const bool &bValue)
+{
+  // Give the file operation a short moment to become visible to the watcher.
+  delay(0, 200);
+
+  dyn_string dsDirectories = getDirectories(PACKAGE_REL_PATH);
+
+  for (int i = 1; i <= dynlen(dsDirectories); i++)
+  {
+    pathChangedCB("packageRefresh", dsDirectories[i]);
+  }
+
+  // removeManagerById() can physically delete only the last stopped manager
+  // while the package files are processed from lower to higher PMON indexes.
+  // At this point all removed package managers are already stopped and marked
+  // with ***REMOVE***. Run the existing descending cleanup now so PMON deletes
+  // the remaining managers from the highest index down to the lowest index.
   EB_UtilsPmon::deleteManagers();
 }
 
@@ -599,6 +687,17 @@ void packageUpdate(const string &sFileName, time tModified)
 void packageRemove(const string &sDp)
 {
   DebugFTN("RESTART", __FUNCTION__, sDp);
+
+  // EB_Package_Base is the permanent logging/base datapoint. It does not have
+  // to be treated like a removable protocol package even if no matching INI
+  // file is present. Deleting it removes Alerts.Runtime/Configuration/Internal.
+  if (dpSubStr(sDp, DPSUB_DP) == EB_PREFIX_PACKAGE + "Base")
+  {
+    throwError(makeError("", PRIO_WARNING, ERR_SYSTEM, 54,
+                         "Refusing to remove permanent package datapoint '" + sDp + "'"));
+    return;
+  }
+
   // create new description lang string from json
   string sJson;
 
@@ -612,22 +711,12 @@ void packageRemove(const string &sDp)
   // Remove the managers
   string sFileName = sDp + PACKAGE_FILE_EXTENSION;
 
-  dyn_mapping dmManagerActions = getActionsForManagers(makeMapping(), mConfig);
+  removeManagersFromConfig(mConfig);
 
-  for (int i = 1; i <= dynlen(dmManagerActions); i++)
-  {
-    if (dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Remove)
-    {
-      string sManager = dmManagerActions[i][MAPKEY_MANAGERS_MANAGER];
-      string sOptions = dmManagerActions[i][MAPKEY_MANAGERS_OPTIONS];
-      EB_UtilsPmon::removeManager(sManager, sOptions);
-    }
-  }
-
-  packageDpRemoveCB(sDp, makeDynAnytype(makeDynString(), makeDynString(sDp)));
-
-  // set new information to datapoints
+  // Set the final state before deleting the package DP. The old order deleted
+  // the DP first and then attempted dpSetWait() on a non-existing element.
   dpSetWait(sDp + ".Status", (int)PackageState::Removed);
+  packageDpRemoveCB(sDp, makeDynAnytype(makeDynString(), makeDynString(sDp)));
 }
 
 /**
@@ -743,13 +832,21 @@ synchronized void packageInstall(const string &sDp, mapping &mConfig, const mapp
   dyn_mapping dmManagerActions = getActionsForManagers(mConfig, mOldConfig);
   DebugFTN("RESTART", __FUNCTION__, dmManagerActions);
 
-  // Add the managers
+  // Apply all manager actions. A package update can remove a manager from the
+  // new configuration, therefore Remove must be handled here as well as in
+  // packageRemove().
   for (int i = 1; i <= dynlen(dmManagerActions); i++)
   {
-    if (dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Install)
+    string sManager = dmManagerActions[i][MAPKEY_MANAGERS_MANAGER];
+    string sOptions = dmManagerActions[i][MAPKEY_MANAGERS_OPTIONS];
+
+    if (dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Remove)
     {
-      string sManager = dmManagerActions[i][MAPKEY_MANAGERS_MANAGER];
-      string sOptions = dmManagerActions[i][MAPKEY_MANAGERS_OPTIONS];
+      EB_UtilsPmon::removeManager(sManager, sOptions);
+    }
+    else if (dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Install ||
+             dmManagerActions[i][MAPKEY_MANAGERS_ACTION] == ManagerAction::Restart)
+    {
       EB_UtilsPmon::addManager(sManager, sOptions);
     }
   }

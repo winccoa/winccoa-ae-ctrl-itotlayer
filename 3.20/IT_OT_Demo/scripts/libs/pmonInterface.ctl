@@ -20,27 +20,48 @@ const int PROJ_RUNNING_STATE_STARTING = 1;
 const int PROJ_RUNNING_STATE_MONITORING = 2;
 const int PROJ_RUNNING_STATE_STOPPING = 3;
 
+string normalizePmonStartMode(const anytype &aStartMode)
+{
+  if (getType(aStartMode) == STRING_VAR)
+  {
+    return strtolower((string)aStartMode);
+  }
+
+  return pmonStartModeToStr(aStartMode);
+}
+
 int insertManager(const mapping &opts, int manIdx = -1, int port = pmonPort(), string host = "localhost", string user = "", string pw = "")
 {
   DebugTN(__FUNCTION__, manIdx, opts);
-  if ( manIdx < 0 )
+
+  if (manIdx < 0)
+  {
     manIdx = dynlen(getListOfManagerOptions());
+  }
+
+  string sStartMode = mappingGetValueDflt(
+    opts,
+    "StartMode",
+    MAN_START_MODE_MANUAL
+  );
 
   string data = "SINGLE_MGR:INS " + manIdx +
-      " " + mappingGetValueDflt(opts, "Component", getComponentName(UI_COMPONENT)) +
-        " " + pmonStartModeToStr(mappingGetValueDflt(opts, "StartMode", MAN_START_MODE_MANUAL)) +
-        " " + mappingGetValueDflt(opts, "SecondToKill", 20) +
-        " " + mappingGetValueDflt(opts, "Restart", 2) +
-        " " + mappingGetValueDflt(opts, "ResetStartCounter", 2) +
-        " " + mappingGetValueDflt(opts, "StartOptions", "");
+                " " + mappingGetValueDflt(opts, "Component", getComponentName(UI_COMPONENT)) +
+                " " + sStartMode +
+                " " + mappingGetValueDflt(opts, "SecondToKill", 20) +
+                " " + mappingGetValueDflt(opts, "Restart", 2) +
+                " " + mappingGetValueDflt(opts, "ResetStartCounter", 2) +
+                " " + mappingGetValueDflt(opts, "StartOptions", "");
+
   data = user + "#" + pw + "#" + data;
 
-  if ( _pmonGet(host, port, data) == NULL )
+  if (_pmonGet(host, port, data) == NULL)
+  {
     return -1;
+  }
 
   return manIdx;
 }
-
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /**
   Function starts manager at the given idx. Index begin with 1. Pmon has idx 0 in progs file
@@ -358,19 +379,29 @@ int changeManagerOptions(int idx, const mapping &opts, int port = pmonPort(), st
 int setManagerOptions(int idx, const mapping &opts, int port = pmonPort(), string host = "localhost", string user = "", string pw = "")
 {
   DebugTN(__FUNCTION__, idx, opts);
+
+  string sStartMode = mappingGetValueDflt(
+    opts,
+    "StartMode",
+    MAN_START_MODE_MANUAL
+  );
+
   string data = "SINGLE_MGR:PROP_PUT " + idx +
-    //  " " + mappingGetValueDflt(opts, "Component", 0) +  // manager name not changeable
-        " " + pmonStartModeToStr(mappingGetValueDflt(opts, "StartMode", 0)) +
-        " " + mappingGetValueDflt(opts, "SecondToKill", 20) +
-        " " + mappingGetValueDflt(opts, "Restart", 2) +
-        " " + mappingGetValueDflt(opts, "ResetStartCounter", 2) +
-        " " + mappingGetValueDflt(opts, "StartOptions", "");
+                " " + sStartMode +
+                " " + mappingGetValueDflt(opts, "SecondToKill", 20) +
+                " " + mappingGetValueDflt(opts, "Restart", 2) +
+                " " + mappingGetValueDflt(opts, "ResetStartCounter", 2) +
+                " " + mappingGetValueDflt(opts, "StartOptions", "");
+
   data = user + "#" + pw + "#" + data;
 
-  anytype answer = _pmonGet(host, port, data);
+  if (_pmonGet(host, port, data) == NULL)
+  {
+    return -1;
+  }
+
   return 0;
 }
-
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,6 +1,5 @@
 #uses "pmon"
 #uses "classes/projectEnvironment/ProjEnvPmonComponent"
-#uses "var"
 
 const int MAN_STATE_UNKNOWN = -1;
 const int MAN_STATE_NOT_RUNNING = 0;
@@ -20,27 +19,44 @@ const int PROJ_RUNNING_STATE_STARTING = 1;
 const int PROJ_RUNNING_STATE_MONITORING = 2;
 const int PROJ_RUNNING_STATE_STOPPING = 3;
 
+string normalizePmonStartMode(const anytype &aStartMode)
+{
+  if (getType(aStartMode) == STRING_VAR)
+  {
+    return strtolower((string)aStartMode);
+  }
+
+  return pmonStartModeToStr(aStartMode);
+}
+
 int insertManager(const mapping &opts, int manIdx = -1, int port = pmonPort(), string host = "localhost", string user = "", string pw = "")
 {
   DebugTN(__FUNCTION__, manIdx, opts);
-  if ( manIdx < 0 )
+
+  if (manIdx < 0)
+  {
     manIdx = dynlen(getListOfManagerOptions());
+  }
+
+  string sStartMode = normalizePmonStartMode(opts.value("StartMode", MAN_START_MODE_MANUAL));
 
   string data = "SINGLE_MGR:INS " + manIdx +
-      " " + mappingGetValueDflt(opts, "Component", getComponentName(UI_COMPONENT)) +
-        " " + pmonStartModeToStr(mappingGetValueDflt(opts, "StartMode", MAN_START_MODE_MANUAL)) +
-        " " + mappingGetValueDflt(opts, "SecondToKill", 20) +
-        " " + mappingGetValueDflt(opts, "Restart", 2) +
-        " " + mappingGetValueDflt(opts, "ResetStartCounter", 2) +
-        " " + mappingGetValueDflt(opts, "StartOptions", "");
+                " " + opts.value("Component", getComponentName(UI_COMPONENT)) +
+                " " + sStartMode +
+                " " + opts.value("SecondToKill", 20) +
+                " " + opts.value("Restart", 2) +
+                " " + opts.value("ResetStartCounter", 2) +
+                " " + opts.value("StartOptions", "");
+
   data = user + "#" + pw + "#" + data;
 
-  if ( _pmonGet(host, port, data) == NULL )
+  if (_pmonGet(host, port, data) == NULL)
+  {
     return -1;
+  }
 
   return manIdx;
 }
-
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /**
   Function starts manager at the given idx. Index begin with 1. Pmon has idx 0 in progs file
@@ -52,14 +68,13 @@ int insertManager(const mapping &opts, int manIdx = -1, int port = pmonPort(), s
 */
 int startManager(int manIdx, int port = pmonPort(), string host = "localhost")
 {
-  string url = "http://" +  host + ":" + port + "/SINGLE_MGR";
-  string data = "idx=" + manIdx + "&START='Start'";
-  mapping result, input = makeMapping("content", data);
-  if ( netPost(url, input, result) )
+  string data = "##SINGLE_MGR:START " + manIdx;
+
+  if (_pmonGet(host, port, data) == NULL)
   {
-    DebugTN(__FUNCTION__, url, input, result);
     return -1;
   }
+
   return 0;
 }
 
@@ -74,13 +89,13 @@ int startManager(int manIdx, int port = pmonPort(), string host = "localhost")
 */
 int stopManager(int manIdx, int port = pmonPort(), string host = "localhost")
 {
-  string url = "http://" +  host + ":" + port + "/SINGLE_MGR";
-  string data = "idx=" + manIdx + "&STOP='Stop'";
-  mapping result, input = makeMapping("content", data);
-  if ( netPost(url, input, result) )
+  string data = "##SINGLE_MGR:STOP " + manIdx;
+
+  if (_pmonGet(host, port, data) == NULL)
   {
     return -1;
   }
+
   return 0;
 }
 
@@ -117,14 +132,13 @@ int killManager(int manIdx, int port = pmonPort(), string host = "localhost")
 */
 int deleteManager(int manIdx, int port = pmonPort(), string host = "localhost")
 {
-  string url = "http://" +  host + ":" + port + "/SINGLE_MGR";
-  string data = "idx=" + manIdx + "&DEL='Del'";
-  mapping result, input = makeMapping("content", data);
-  if ( netPost(url, input, result) )
+  string data = "##SINGLE_MGR:DEL " + manIdx;
+
+  if (_pmonGet(host, port, data) == NULL)
   {
-    DebugTN(__FUNCTION__, url, input, result);
     return -1;
   }
+
   return 0;
 }
 
@@ -166,7 +180,8 @@ mapping getManagerInfo(int idx, int port = pmonPort(), string host = "localhost"
 */
 int getManagerStatus(int idx, int port = pmonPort(), string host = "localhost", string user = "", string pw = "")
 {
-  return mappingGetValueDflt(getManagerInfo(idx, port, host, user, pw), "State", -1);
+  mapping mManagerInfo = getManagerInfo(idx, port, host, user, pw);
+  return mManagerInfo.value("State", -1);
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -182,7 +197,8 @@ int getManagerStatus(int idx, int port = pmonPort(), string host = "localhost", 
 */
 int getManagerPid(int idx, int port = pmonPort(), string host = "localhost", string user = "", string pw = "")
 {
-  return mappingGetValueDflt(getManagerInfo(idx, port, host, user, pw), "Pid", -1);
+  mapping mManagerInfo = getManagerInfo(idx, port, host, user, pw);
+  return mManagerInfo.value("Pid", -1);
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -198,7 +214,8 @@ int getManagerPid(int idx, int port = pmonPort(), string host = "localhost", str
 */
 int getManagerStartTime(int idx, int port = pmonPort(), string host = "localhost", string user = "", string pw = "")
 {
-  return mappingGetValueDflt(getManagerInfo(idx, port, host, user, pw), "StartTime", -1);
+  mapping mManagerInfo = getManagerInfo(idx, port, host, user, pw);
+  return mManagerInfo.value("StartTime", -1);
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -244,7 +261,9 @@ dyn_mapping getListOfManagersStati(int port = pmonPort(), string host = "localho
     string startTime = items[4];
     string manNo = items[5];
 
-    strRemove(pid, " ");
+    // strRemove() is not available in WinCC OA 3.21 CTRL. strreplace()
+    // modifies the string in place and is supported by this project version.
+    strreplace(pid, " ", "");
     mapping map = makeMapping("State", (int)state,
                               "Pid", (int)pid,
                               "StartMode", (int)startMode,
@@ -358,19 +377,25 @@ int changeManagerOptions(int idx, const mapping &opts, int port = pmonPort(), st
 int setManagerOptions(int idx, const mapping &opts, int port = pmonPort(), string host = "localhost", string user = "", string pw = "")
 {
   DebugTN(__FUNCTION__, idx, opts);
+
+  string sStartMode = normalizePmonStartMode(opts.value("StartMode", MAN_START_MODE_MANUAL));
+
   string data = "SINGLE_MGR:PROP_PUT " + idx +
-    //  " " + mappingGetValueDflt(opts, "Component", 0) +  // manager name not changeable
-        " " + pmonStartModeToStr(mappingGetValueDflt(opts, "StartMode", 0)) +
-        " " + mappingGetValueDflt(opts, "SecondToKill", 20) +
-        " " + mappingGetValueDflt(opts, "Restart", 2) +
-        " " + mappingGetValueDflt(opts, "ResetStartCounter", 2) +
-        " " + mappingGetValueDflt(opts, "StartOptions", "");
+                " " + sStartMode +
+                " " + opts.value("SecondToKill", 20) +
+                " " + opts.value("Restart", 2) +
+                " " + opts.value("ResetStartCounter", 2) +
+                " " + opts.value("StartOptions", "");
+
   data = user + "#" + pw + "#" + data;
 
-  anytype answer = _pmonGet(host, port, data);
+  if (_pmonGet(host, port, data) == NULL)
+  {
+    return -1;
+  }
+
   return 0;
 }
-
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -618,7 +643,7 @@ private anytype _pmonGet(string host, int port, string cmd)
 
     if ( readCount == 0 )
     {
-      isList = strStartWith(answer, "LIST:");
+      isList = strpos(answer, "LIST:") == 0;
       if ( isList )
       {
         expListCount = substr(answer, strlen("LIST:"), strpos(answer, "\n"));

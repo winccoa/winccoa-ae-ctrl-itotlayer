@@ -75,6 +75,11 @@ class Logging
    */
   public static void clear(LogCategory eCategory, const string &sKey, string sId = "", string sManagerKey = "")
   {
+    if (!ensureLog())
+    {
+      return;
+    }
+
     DebugFTN("LOG_CLEAR", __FUNCTION__ + "(" + sKey + ", " + sId + ")");
 
     string sReason   = sManagerKey + sKey;
@@ -100,6 +105,11 @@ class Logging
    */
   public static void clearAll(const string &sKey, string sId = "", string sManagerKey = "")
   {
+    if (!ensureLog())
+    {
+      return;
+    }
+
     DebugFTN("LOG_CLEAR", __FUNCTION__ + "(" + sKey + ", " + sId + ")");
     string sReason  = sManagerKey + sKey;
 
@@ -119,6 +129,11 @@ class Logging
    */
   public static unsigned getCount(const string &sKey, string sId = "", string sManagerKey = "")
   {
+    if (!ensureLog())
+    {
+      return 0;
+    }
+
     DebugFTN("LOG_COUNT", __FUNCTION__ + "(" + sKey + ", " + sId + ", " + sManagerKey + ")");
     string sReason  = sKey;
     strreplace(sReason, "???", sManagerKey);
@@ -145,6 +160,11 @@ class Logging
    */
   public static void write(LogCategory eCategory, const string &sKey, LogSeverity eSeverity, const dyn_anytype &daArguments, string sId = "", int iForcePending = FORCEPENDING_NO, string sManagerKey = "", time tTime = 0, bool bLogInFileAnyway = FALSE)
   {
+    if (!ensureLog())
+    {
+      return;
+    }
+
     DebugFTN("LOG_WRITE", __FUNCTION__ + "(" + eCategory + ", " + sKey + ", " + eSeverity + ", ..., " + sId + ", " + bForcePending + ", " + sManagerKey + ")", daArguments);
 
     bool   bPending = (iForcePending == FORCEPENDING_FORCEPENDING || iForcePending == FORCEPENDING_PENDING) ? TRUE : eSeverity > LogSeverity::Information;
@@ -176,8 +196,8 @@ class Logging
 //--------------------------------------------------------------------------------
 //@private members
 //--------------------------------------------------------------------------------
-  private static       shared_ptr<EBlog> spLog          = new EBlog(APP_LOG);
   private static const string            APP_LOG        = "Base";
+  private static       shared_ptr<EBlog> spLog          = nullptr;
   private static const mapping           CATEGORY_TEXTS = makeMapping(LogCategory::All,           LOG_TYPE_ALL,
                                                                       LogCategory::Configuration, LOG_TYPE_CONFIGURATION,
                                                                       LogCategory::Runtime,       LOG_TYPE_RUNTIME,
@@ -185,4 +205,26 @@ class Logging
                                                                       LogCategory::Periphery,     LOG_TYPE_PERIPHERY,
                                                                       LogCategory::Update,        LOG_TYPE_UPDATE,
                                                                       LogCategory::Internal,      LOG_TYPE_INTERNAL);
+
+  /**
+   * @brief Lazily initializes the package logger.
+   * @details A CTRL library reload can reset a static shared_ptr while the
+   *          manager keeps running. Logging must never terminate mnsp.ctl just
+   *          because this optional logger object has to be recreated.
+   */
+  private static bool ensureLog()
+  {
+    if (spLog == nullptr)
+    {
+      spLog = new EBlog(APP_LOG);
+    }
+
+    if (spLog == nullptr)
+    {
+      DebugTN(__FUNCTION__, "Could not initialize EBlog instance");
+      return FALSE;
+    }
+
+    return TRUE;
+  }
 };
